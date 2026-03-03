@@ -1,6 +1,6 @@
 {
-  "name": "Conversión a Escala de Coherencia Universal",
-  "short_name": "Escala CU",
+  "name": "OptimeFlow(s) Normaliza Coherente",
+  "short_name": "Normaliza Coherente",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

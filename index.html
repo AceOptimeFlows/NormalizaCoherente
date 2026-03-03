@@ -72,11 +72,13 @@
     <section class="card">
       <h3 data-i18n="mode.title">Modo</h3>
       <div class="row">
-        <label class="switch">
+        <!-- ✅ ahora estilo “botón” -->
+        <label class="switch toggle">
           <input type="radio" name="mode" id="modeEP" checked>
           <span data-i18n="mode.epLabel"> Estructural Puro </span>
         </label>
-        <label class="switch">
+        <!-- ✅ ahora estilo “botón” -->
+        <label class="switch toggle">
           <input type="radio" name="mode" id="modeNR">
           <span data-i18n="mode.nrLabel"> Normalizado por Referencia </span>
         </label>
@@ -248,7 +250,8 @@
         <!-- DCHA: MODO INVERSO -->
         <div>
           <div class="inverse-box">
-            <label class="switch">
+            <!-- ✅ ahora estilo “botón” -->
+            <label class="switch toggle">
               <input type="checkbox" id="invMode">
               <span data-i18n="inverse.title"><strong>Introducir CU → calcular observado</strong></span>
             </label>
@@ -257,22 +260,26 @@
             </div>
 
             <div class="row mt8">
-              <label class="switch">
+              <!-- ✅ ahora estilo “botón” -->
+              <label class="switch toggle">
                 <input type="radio" name="invSource" id="invFromCU" checked>
                 <span data-i18n="inverse.useCU">Usar CU</span>
               </label>
-              <label class="switch">
+              <!-- ✅ ahora estilo “botón” -->
+              <label class="switch toggle">
                 <input type="radio" name="invSource" id="invFromCUExt">
                 <span data-i18n="inverse.useCUExt">Usar CU extendido</span>
               </label>
             </div>
 
             <div class="row mt8" id="invSideRow" hidden>
-              <label class="switch">
+              <!-- ✅ ahora estilo “botón” -->
+              <label class="switch toggle">
                 <input type="radio" name="invSide" id="invSideBelow" checked>
                 <span data-i18n="inverse.sideBelow">Fuera de rango: <strong>&lt; Min</strong></span>
               </label>
-              <label class="switch">
+              <!-- ✅ ahora estilo “botón” -->
+              <label class="switch toggle">
                 <input type="radio" name="invSide" id="invSideAbove">
                 <span data-i18n="inverse.sideAbove">Fuera de rango: <strong>&gt; Max</strong></span>
               </label>

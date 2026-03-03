@@ -686,6 +686,116 @@ input.is-locked{
 
 .grow{flex:1}
 
+/* ============================================================
+   ✅ NUEVO: “switches” como botones (radio/checkbox sin checks)
+   (solo cuando el label tenga class="toggle")
+   ============================================================ */
+.switch.toggle{
+  position:relative;
+  display:block;               /* el “botón” manda */
+  flex:1 1 160px;              /* permite 2 en el panel inverso (340px) */
+  margin-right:0;
+}
+
+.switch.toggle > input{
+  position:absolute;
+  left:0;
+  top:0;
+  width:1px;
+  height:1px;
+  opacity:0;
+  pointer-events:none;
+  margin:0;
+}
+
+.switch.toggle > span{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+
+  padding:12px 14px;
+  min-height:46px;
+
+  border-radius:999px;
+  border:1px solid var(--input-border);
+
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--chip) 88%, var(--surface2)),
+      color-mix(in oklab, var(--chip) 70%, var(--surface2))
+    );
+
+  color:var(--text);
+  font-weight:800;
+  font-size:clamp(0.92rem, 3.4vw, 1.02rem);
+  line-height:1.15;
+
+  cursor:pointer;
+  user-select:none;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.08);
+
+  transition:
+    background .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease,
+    transform .12s ease,
+    filter .2s ease;
+}
+
+.switch.toggle:hover > span{
+  border-color: color-mix(in oklab, var(--accent) 60%, var(--input-border));
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--chip) 82%, var(--accent) 18%),
+      color-mix(in oklab, var(--chip) 68%, var(--accent) 12%)
+    );
+  transform:translateY(-1px);
+  filter:brightness(1.03);
+}
+
+.switch.toggle:active > span{
+  transform:translateY(0);
+  filter:brightness(0.99);
+}
+
+.switch.toggle > input:focus-visible + span{
+  outline:3px solid color-mix(in oklab, var(--accent) 55%, white);
+  outline-offset:2px;
+}
+
+.switch.toggle > input:checked + span{
+  border-color: color-mix(in oklab, var(--accent) 85%, white);
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--chip) 70%, var(--accent) 30%),
+      color-mix(in oklab, var(--chip) 84%, var(--surface2))
+    );
+  box-shadow:
+    0 0 0 2px color-mix(in oklab, var(--accent) 35%, transparent),
+    0 0 22px color-mix(in oklab, var(--accent) 28%, transparent),
+    inset 0 1px 0 rgba(255,255,255,0.10);
+}
+
+.switch.toggle > input:disabled + span{
+  opacity:.55;
+  cursor:not-allowed;
+  transform:none;
+  filter:none;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+.switch.toggle > span strong{
+  font-weight:900;
+}
+
 /* Grid de idioma */
 .lang-grid{
   display:grid;
@@ -741,6 +851,10 @@ input.is-locked{
   .switch{
     margin-right:0;
     margin-bottom:8px;
+  }
+  /* ✅ evita “doble” espacio en los toggles (ya hay gap en .row) */
+  .switch.toggle{
+    margin-bottom:0;
   }
 }
 
@@ -981,6 +1095,11 @@ select{
   .tiny{font-size:11px}
   .formula{font-size:1.1rem}
   .cu-ext-rich{font-size:0.85rem}
+
+  /* ✅ aún más “touch friendly” */
+  .switch.toggle > span{
+    min-height:54px;
+  }
 }
 
 /* === FOOTER estilo OptimeFlow(s) (compacto como ensaYOnesa) === */
