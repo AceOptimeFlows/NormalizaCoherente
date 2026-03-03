@@ -1,0 +1,30 @@
+{
+  "title": "Normaliza Coherente — Escala de Coherencia Universal (CU) — PWA",
+  "upload_type": "software",
+  "description": "Normaliza Coherente es una app web (PWA) para convertir un valor observado a la Escala de Coherencia Universal (CU) usando un rango de referencia (Mín/Máx) y un factor operativo. Incluye modo directo (Obs→CU), CU extendido (50 decimales), modo inverso (CU→Obs), plantillas de escalas y normalizaciones guardadas en local.",
+  "access_right": "open",
+  "license": "MIT",
+  "version": "1.0.0",
+  "creators": [
+    {
+      "name": "Calvo Espinosa, Andrés",
+      "orcid": "0009-0005-4079-7418",
+      "affiliation": "Coherencia Universal (CU) / Universal Coherence (UC)"
+    }
+  ],
+  "keywords": [
+    "Coherencia Universal",
+    "Escala CU",
+    "normalización",
+    "métrica estructural",
+    "PWA",
+    "offline"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.18714577",
+      "relation": "isSupplementTo",
+      "scheme": "doi"
+    }
+  ]
+}

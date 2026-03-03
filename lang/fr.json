@@ -1,0 +1,236 @@
+{
+  "common": {
+    "close": "Fermer",
+    "copied": "Copié."
+  },
+  "menu": {
+    "whatIsCU": "Qu’est-ce que l’échelle UC ?",
+    "help": "Aide",
+    "language": "Langue",
+    "themes": "Thèmes",
+    "install": "Installer",
+    "installUnavailable": "Installation indisponible sur cet appareil/navigateur."
+  },
+  "mode": {
+    "title": "Mode",
+    "epLabel": "Structurel pur",
+    "nrLabel": "Normalisé par référence",
+    "notes": "<strong>EP:</strong> signe automatique (±) et sans découpage de la magnitude. <br><strong>NR:</strong> borne le quotient à [0,1] et applique ±0.999…990 ; en cas de dépassements, il sera suggéré de redéfinir le minimum/le maximum."
+  },
+  "reconv": {
+    "title": "Reconversion d’échelle",
+    "templateLabel": "Modèle d’échelle",
+    "templatePlaceholder": "— Sélectionner un modèle —",
+    "saveFromTemplate": "➕ Enregistrer comme normalisation",
+    "normNameLabel": "Nom de la normalisation",
+    "normNamePlaceholder": "p. ex., Latitude",
+    "unitLabel": "Unité (optionnel)",
+    "unitPlaceholder": "p. ex., degrés",
+    "valueLabel": "Valeur à normaliser (observée)",
+    "valuePlaceholder": "p. ex., 37,5",
+    "knownValues": "Valeurs connues",
+    "utils": "Utilitaires",
+    "minLabel": "Minimum",
+    "minPlaceholder": "p. ex., -90",
+    "maxLabel": "Maximum",
+    "maxPlaceholder": "p. ex., 90",
+    "saveNorm": "Enregistrer la normalisation",
+    "applyNow": "Normaliser maintenant",
+    "savedTitle": "Normalisations enregistrées",
+    "useInInputs": "Utiliser dans Entrées",
+    "delete": "Supprimer",
+    "tip": "Astuce : crée « Latitude (−90, 90) degrés » et « Longitude (−180, 180) degrés » pour les réutiliser.",
+    "noNorms": "— Aucune normalisation enregistrée —",
+    "templateApplied": "Modèle appliqué. Complète « Valeur à normaliser ».",
+    "saved": "Normalisation enregistrée.",
+    "savedFromTemplate": "Enregistré comme normalisation.",
+    "applied": "Appliqué à Entrées.",
+    "use": "Normalisation appliquée à Entrées.",
+    "useNamed": "Utilisation de « {name} » dans Entrées.",
+    "loaded": "« {name} » chargée dans Reconversion.",
+    "deleted": "« {name} » supprimée.",
+    "errors": {
+      "noName": "Donne un nom à la normalisation.",
+      "revMinMax": "Vérifie Min et Max.",
+      "complete": "Complète Valeur/Min/Max.",
+      "selectTemplate": "Sélectionne d’abord un modèle.",
+      "revMinMaxSave": "Vérifie Min et Max avant d’enregistrer."
+    }
+  },
+  "inputs": {
+    "title": "Entrées",
+    "obsLabel": "Valeur observée",
+    "obsPlaceholder": "0.000000000000010",
+    "minLabel": "Valeur minimale observée",
+    "maxLabel": "Valeur maximale observée",
+    "maxPlaceholder": "0.999999999999990",
+    "digits": "chiffres",
+    "vmoButton": "VmO (Valeur minimale observable)",
+    "vmoMaxButton": "VMO (Valeur maximale observable)",
+    "clear": "Effacer"
+  },
+  "results": {
+    "title": "Résultats",
+    "cuLabel": "Valeur UC",
+    "cuExtLabel": "Valeur UC étendue",
+    "copy": "Copier",
+    "note": "Dans l’échelle UC, le <strong>0</strong> est une <em>limite asymptotique inatteignable</em> ; nous travaillons toujours avec des expressions minimales/maximales ±0.000…010 et ±0.999…990."
+  },
+  "inverse": {
+    "title": "Saisir UC → calculer l’observé",
+    "description": "Verrouille « Valeur à normaliser » et utilise l’UC (ou l’UC étendue) pour reconstruire l’observé avec le Min/Max de Reconversion.",
+    "useCU": "Utiliser l’UC",
+    "useCUExt": "Utiliser l’UC étendue",
+    "sideBelow": "Hors plage : <strong>&lt; Min</strong>",
+    "sideAbove": "Hors plage : <strong>&gt; Max</strong>",
+    "calc": "Calculer l’observé",
+    "blocked": "Mode inverse actif : saisis l’UC dans Résultats.",
+    "blockedObs": "Mode inverse actif : la valeur Observée est verrouillée.",
+    "revMinMax": "Complète Min et Max dans Reconversion.",
+    "revCU": "Saisis une UC valide dans Résultats.",
+    "invalidCU": "UC invalide.",
+    "noteNR": "En NR, le signe hors plage n’est pas réversible ; on suppose une valeur dans la plage.",
+    "done": "Observé calculé depuis UC → envoyé à Reconversion."
+  },
+  "formula": {
+    "title": "Formule appliquée",
+    "value": "Valeur",
+    "note": "La fraction et le signe se mettent à jour avec tes entrées et le mode sélectionné."
+  },
+  "about": {
+    "title": "Qu’est-ce que l’échelle UC ?",
+    "intro": "L’<strong>échelle de cohérence universelle (UC)</strong> est une manière de <em>normaliser</em> toute grandeur (température, distance, probabilité, etc.) vers une valeur <strong>adimensionnelle</strong> comparable. Au lieu de mélanger des unités, tu définis une plage de référence (<strong>Min</strong> et <strong>Max</strong>) et l’app indique où tombe ton <strong>Observé</strong> à l’intérieur (ou à l’extérieur) de cette plage.",
+    "coreTitle": "Idée centrale",
+    "coreLi1": "Tu définis une plage : <strong>Min</strong> et <strong>Max</strong> (la référence).",
+    "coreLi2": "Tu calcules la position relative : <code>(Obs − Min) / (Max − Min)</code>.",
+    "coreLi3": "Tu mets à l’échelle le résultat vers un maximum opérationnel (en évitant ±1) : <code>× (±0.999…990)</code>.",
+    "rangeTitle": "Centre structurel et plage opérationnelle",
+    "rangeP1": "En UC, le <strong>0</strong> représente un <strong>centre structurel idéal (Cₛ)</strong> traité comme une <em>limite asymptotique inatteignable</em>. C’est pourquoi, en pratique, on travaille avec un minimum opérationnel : <strong>VmO = 0.000000000000010</strong> (et son symétrique négatif).",
+    "rangeP2": "À l’extrémité supérieure, c’est pareil : on utilise <strong>VMO = 0.999999999999990</strong> (et son symétrique négatif) pour garder une marge asymptotique et éviter les saturations en ±1.",
+    "formulaTitle": "Comment c’est calculé (mode direct)",
+    "formulaP1": "La conversion appliquée par l’app est : <code>(Obs − Min) / (Max − Min) × (±0.999…990)</code>. La fraction mesure la position relative dans la plage ; le facteur fixe le plafond opérationnel.",
+    "formulaP2": "Le signe est déterminé ainsi : si <strong>Obs</strong> est dans <code>[Min, Max]</code>, le résultat est <strong>+</strong>. S’il est hors plage, il est marqué <strong>−</strong> (en EP, la magnitude peut aussi dépasser 1).",
+    "modesTitle": "Différence entre EP et NR",
+    "modesLi1": "<strong>EP (Structurel pur)</strong> : ne découpe pas la magnitude. Si Obs s’éloigne de la plage, le quotient peut être &gt; 1 et l’UC peut aussi croître en magnitude (en gardant le signe hors plage).",
+    "modesLi2": "<strong>NR (Normalisé par référence)</strong> : borne la magnitude à <code>[0,1]</code>. Si Obs est hors plage, un avertissement s’affiche et le résultat est limité à ±0.999…990.",
+    "extTitle": "UC étendue",
+    "extP1": "En plus de l’UC arrondie, une <strong>UC étendue</strong> (50 décimales) est affichée pour l’audit, l’enregistrement ou la copie exacte. C’est la même valeur, simplement avec plus de décimales.",
+    "refTitle": "Référence / essai",
+    "refP1": "Essai / document de référence (DOI/Zenodo) : <a href=\"https://doi.org/10.5281/zenodo.18714577\" target=\"_blank\" rel=\"noopener\">10.5281/zenodo.18714577</a>."
+  },
+  "help": {
+    "title": "Aide",
+    "intro": "Cette app convertit de <strong>Observé → UC</strong> (mode direct) ou de <strong>UC → Observé</strong> (mode inverse). L’essentiel est de bien définir la plage de référence (<strong>Min</strong> et <strong>Max</strong>), car cette plage est le « contexte » de la normalisation.",
+    "quickTitle": "Guide rapide (mode direct)",
+    "quick1": "Choisis le <strong>Mode</strong> : EP ou NR.",
+    "quick2": "Dans <strong>Reconversion d’échelle</strong>, sélectionne un <strong>Modèle</strong> ou saisis ta propre plage (Min/Max) et, si tu veux, la valeur observée.",
+    "quick3": "Appuie sur <strong>Utiliser dans Entrées</strong> (ou <strong>Normaliser maintenant</strong>) pour copier les valeurs dans <strong>Entrées</strong> et voir la <strong>Formule appliquée</strong>.",
+    "quick4": "Vérifie <strong>Résultats</strong> : <strong>Valeur UC</strong> et <strong>Valeur UC étendue</strong> sont calculées. Tu peux les copier en un geste.",
+    "quick5": "Pour recommencer, utilise <strong>Effacer</strong>.",
+    "resultsTitle": "Interpréter les résultats",
+    "resultsLi1": "<strong>Valeur UC</strong> : résultat au format compact (arrondi) pour une lecture rapide.",
+    "resultsLi2": "<strong>Valeur UC étendue</strong> : la même valeur avec 50 décimales pour une précision maximale.",
+    "resultsLi3": "La « pastille » <code>±0.999…990</code> indique le facteur opérationnel et le signe utilisé. En général : <strong>+</strong> = dans la plage, <strong>−</strong> = hors plage (selon le mode).",
+    "normTitle": "Modèles et normalisations enregistrées",
+    "normLi1": "Les <strong>Modèles</strong> renseignent Min/Max (et l’unité) rapidement pour des échelles courantes (pH, Kelvin, Likert, etc.).",
+    "normLi2": "Avec <strong>➕ Enregistrer comme normalisation</strong> ou <strong>Enregistrer la normalisation</strong>, tu peux sauvegarder ta plage et la réutiliser.",
+    "normLi3": "Avec <strong>Utiliser dans Entrées</strong>, tu appliques la normalisation enregistrée sans ressaisir les données.",
+    "normLi4": "Pour nettoyer la liste, utilise <strong>Supprimer</strong> dans « Normalisations enregistrées ».",
+    "inverseTitle": "Mode inverse (UC → observé)",
+    "inverseLi1": "Active <strong>Saisir UC → calculer l’observé</strong>.",
+    "inverseLi2": "Assure-toi d’avoir <strong>Min</strong> et <strong>Max</strong> définis dans <strong>Reconversion</strong> (ils sont nécessaires pour reconstruire l’observé).",
+    "inverseLi3": "Choisis si tu saisis l’<strong>UC</strong> ou l’<strong>UC étendue</strong>, entre la valeur dans Résultats, et l’app calculera l’observé.",
+    "inverseLi4": "En <strong>EP</strong>, si l’UC est négative (hors plage), tu peux indiquer si cela correspond à <strong>&lt; Min</strong> ou <strong>&gt; Max</strong> pour lever l’ambiguïté.",
+    "inverseLi5": "En <strong>NR</strong>, le signe hors plage n’est pas réversible de façon unique ; lors de la reconstruction, l’app suppose une valeur dans la plage.",
+    "privacyTitle": "Sauvegarde et confidentialité",
+    "privacyP1": "L’app fonctionne 100% en local : les normalisations et préférences (langue/thème) sont enregistrées dans le navigateur de ton appareil. Aucune donnée n’est envoyée à un serveur."
+  },
+  "constants": {
+    "title": "Valeurs connues",
+    "empty": "Aucune valeur chargée.",
+    "toMin": "→ Min",
+    "toObs": "→ Obs",
+    "toMax": "→ Max",
+    "useMin": "Mettre en minimum",
+    "useObs": "Mettre en valeur (observée)",
+    "useMax": "Mettre en maximum",
+    "fieldMin": "Minimum",
+    "fieldObs": "Valeur (observée)",
+    "fieldMax": "Maximum",
+    "assignedTo": "« {name} » attribué à {field}."
+  },
+  "utils": {
+    "title": "Utilitaires",
+    "page1": {
+      "title": "Convertisseur date → ordinal",
+      "desc": "Interprète UTC et le calendrier grégorien proleptique (année 0 = 1 av. J.-C.). Origine ≡ « seconde 1 »."
+    },
+    "originLabel": "Origine (seconde 1)",
+    "originPlaceholder": "p. ex., 01-01-0001 12:35:12",
+    "targetLabel": "Destination",
+    "targetPlaceholder": "p. ex., 31-12-2025 23:59:59",
+    "unitLabel": "Unité",
+    "unit": {
+      "s": "secondes (ordinal basé sur 1)",
+      "min": "minutes (ordinal)",
+      "h": "heures (ordinal)",
+      "d": "jours (ordinal)",
+      "sem": "semaines (ordinal)",
+      "mes": "mois (ordinal calendaire)",
+      "año": "années (ordinal calendaire)",
+      "lustro": "lustres (5 ans)",
+      "decada": "décennies (10 ans)",
+      "c25": "¼ de siècle (25 ans)",
+      "c50": "½ siècle (50 ans)",
+      "c75": "¾ de siècle (75 ans)",
+      "c100": "siècles (100 ans)"
+    },
+    "calc": "Calculer",
+    "resultLabel": "Résultat",
+    "resultTitle": "Cliquer pour envoyer vers « Valeur à normaliser »",
+    "copy": "Copier",
+    "tip": "Astuce : clique sur le résultat pour le transférer vers « Valeur à normaliser (observée) ».",
+    "toValue": "Transféré vers « Valeur à normaliser ».",
+    "errors": {
+      "revDates": "Vérifie les dates (Origine et Destination).",
+      "targetBefore": "La destination doit être postérieure ou égale à l’origine.",
+      "generic": "Impossible de calculer."
+    }
+  },
+  "lang": {
+    "title": "Langue",
+    "description": "Choisis la langue de l’interface. Le contenu enregistré et les valeurs numériques ne sont pas modifiés.",
+    "applied": "Langue appliquée."
+  },
+  "themes": {
+    "title": "Thèmes",
+    "description": "Choisis un thème visuel. Il s’applique à toute l’app et sera mémorisé sur cet appareil.",
+    "default": "Par défaut (nuit)",
+    "solar": "Solaire chaud",
+    "ocean": "Océan froid",
+    "forest": "Forêt",
+    "monoLight": "Monochrome clair",
+    "monoDark": "Monochrome sombre",
+    "neon": "Néon",
+    "paper": "Papier chaud",
+    "applied": "Thème appliqué."
+  },
+  "footer": {
+    "appName": "Normaliza Coherente",
+    "subtitle": "Échelle de cohérence universelle",
+    "version": "Normaliza Coherente — v1.0",
+    "author": "Andrés Calvo Espinosa",
+    "privacyBtn": "Confidentialité"
+  },
+  "errors": {
+    "equalMinMax": "Min et Max ne peuvent pas être égaux."
+  },
+  "coherence": {
+    "title": "Cohérence universelle",
+    "text": "Que cette œuvre serve de gratitude et d’engagement : penser, ressentir et agir dans la même direction, sans « ornements » ; continuer à créer avec éthique, avec joie et avec respect pour tout ce qui nous relie."
+  },
+  "privacy": {
+    "title": "Confidentialité",
+    "body": "<p><strong>OptimeFlow(s) Normaliza Coherente</strong> fonctionne 100% en local (dans ton navigateur). Nous n’envoyons pas vers des serveurs externes les valeurs que tu saisis et nous n’utilisons ni analytique ni traqueurs.</p><h4>Données enregistrées sur cet appareil</h4><ul class=\"steps\"><li><strong>Préférences</strong> : thème visuel et langue.</li><li><strong>Normalisations enregistrées</strong> : nom, unité et plages Min/Max (et, si tu l’enregistres, la valeur observée).</li><li><strong>Cache hors ligne</strong> (si tu l’installes en PWA) : le navigateur peut stocker des fichiers de l’app pour l’ouvrir sans connexion.</li></ul><h4>Autorisations du navigateur</h4><ul class=\"steps\"><li><strong>Presse-papiers</strong> : utilisé uniquement quand tu appuies sur « Copier ».</li><li><strong>Stockage</strong> : utilisé pour enregistrer tes préférences et normalisations dans <em>localStorage</em>.</li></ul><h4>Connectivité</h4><p>Pour charger ou mettre à jour l’app, ton navigateur peut télécharger les fichiers (HTML/CSS/JS) depuis la même origine. Cela n’inclut pas l’envoi de tes données d’usage. Si tu actives le mode hors ligne/PWA, le <em>Service Worker</em> peut mettre ces fichiers en cache.</p><h4>Comment supprimer tes données</h4><p>Tu peux tout supprimer depuis les réglages du navigateur (données du site : stockage/localStorage et cache) ou en désinstallant la PWA, si tu l’as installée.</p><h4>Liens externes</h4><p>Si tu ouvres des liens vers des sites externes (par exemple, DOI/Zenodo ou ORCID), leurs propres politiques de confidentialité s’appliquent.</p>"
+  }
+}

@@ -1,0 +1,236 @@
+{
+  "common": {
+    "close": "Tancar",
+    "copied": "Copiat."
+  },
+  "menu": {
+    "whatIsCU": "Què és l’Escala UC?",
+    "help": "Ajuda",
+    "language": "Idioma",
+    "themes": "Temes",
+    "install": "Instal·lar",
+    "installUnavailable": "La instal·lació no està disponible en aquest dispositiu/navegador."
+  },
+  "mode": {
+    "title": "Mode",
+    "epLabel": "Estructural pur",
+    "nrLabel": "Normalitzat per referència",
+    "notes": "<strong>EP:</strong> signe automàtic (±) i sense retall de magnitud. <br><strong>NR:</strong> limita el quocient a [0,1] i aplica ±0.999…990; si hi ha desbordaments es suggerirà redefinir el mínim/màxim."
+  },
+  "reconv": {
+    "title": "Reconversió d’escala",
+    "templateLabel": "Plantilla d’escala",
+    "templatePlaceholder": "— Selecciona una plantilla —",
+    "saveFromTemplate": "➕ Desa com a normalització",
+    "normNameLabel": "Nom de la normalització",
+    "normNamePlaceholder": "p. ex., Latitud",
+    "unitLabel": "Unitat (opcional)",
+    "unitPlaceholder": "p. ex., graus",
+    "valueLabel": "Valor a normalitzar (observat)",
+    "valuePlaceholder": "p. ex., 37.5",
+    "knownValues": "Valors coneguts",
+    "utils": "Utilitats",
+    "minLabel": "Mínim",
+    "minPlaceholder": "p. ex., -90",
+    "maxLabel": "Màxim",
+    "maxPlaceholder": "p. ex., 90",
+    "saveNorm": "Desa la normalització",
+    "applyNow": "Normalitza ara",
+    "savedTitle": "Normalitzacions desades",
+    "useInInputs": "Fer servir a Entrades",
+    "delete": "Eliminar",
+    "tip": "Consell: crea “Latitud (−90, 90) graus” i “Longitud (−180, 180) graus” per reutilitzar-les.",
+    "noNorms": "— No hi ha normalitzacions desades —",
+    "templateApplied": "Plantilla aplicada. Completa “Valor a normalitzar”.",
+    "saved": "Normalització desada.",
+    "savedFromTemplate": "Desat com a normalització.",
+    "applied": "Aplicat a Entrades.",
+    "use": "Normalització aplicada a Entrades.",
+    "useNamed": "Fent servir “{name}” a Entrades.",
+    "loaded": "Carregada “{name}” a Reconversió.",
+    "deleted": "Eliminada “{name}”.",
+    "errors": {
+      "noName": "Posa un nom a la normalització.",
+      "revMinMax": "Revisa Mín i Màx.",
+      "complete": "Completa Valor/Mín/Màx.",
+      "selectTemplate": "Selecciona primer una plantilla.",
+      "revMinMaxSave": "Revisa Mín i Màx abans de desar."
+    }
+  },
+  "inputs": {
+    "title": "Entrades",
+    "obsLabel": "Valor observat",
+    "obsPlaceholder": "0.000000000000010",
+    "minLabel": "Valor mínim observat",
+    "maxLabel": "Valor màxim observat",
+    "maxPlaceholder": "0.999999999999990",
+    "digits": "xifres",
+    "vmoButton": "VmO (Valor mínim observable)",
+    "vmoMaxButton": "VMO (Valor màxim observable)",
+    "clear": "Netejar"
+  },
+  "results": {
+    "title": "Resultats",
+    "cuLabel": "Valor UC",
+    "cuExtLabel": "Valor UC estès",
+    "copy": "Copiar",
+    "note": "A l’Escala UC el <strong>0</strong> és un <em>límit asimptòtic inassolible</em>; treballem sempre amb expressions mínimes/màximes ±0.000…010 i ±0.999…990."
+  },
+  "inverse": {
+    "title": "Introduir UC → calcular observat",
+    "description": "Bloqueja “Valor a normalitzar” i fa servir l’UC (o l’UC estès) per reconstruir l’observat amb el Mín/Màx de Reconversió.",
+    "useCU": "Fer servir UC",
+    "useCUExt": "Fer servir UC estès",
+    "sideBelow": "Fora de rang: <strong>&lt; Min</strong>",
+    "sideAbove": "Fora de rang: <strong>&gt; Max</strong>",
+    "calc": "Calcular observat",
+    "blocked": "Mode invers actiu: introdueix UC a Resultats.",
+    "blockedObs": "Mode invers actiu: el valor Observat està bloquejat.",
+    "revMinMax": "Completa Mín i Màx a Reconversió.",
+    "revCU": "Introdueix un UC vàlid a Resultats.",
+    "invalidCU": "UC no vàlid.",
+    "noteNR": "En NR el signe fora de rang no és reversible; s’assumeix dins del rang.",
+    "done": "Observat calculat des d’UC → enviat a Reconversió."
+  },
+  "formula": {
+    "title": "Fórmula aplicada",
+    "value": "Valor",
+    "note": "La fracció i el signe s’actualitzen amb les teves entrades i el mode seleccionat."
+  },
+  "about": {
+    "title": "Què és l’Escala UC?",
+    "intro": "L’<strong>Escala de Coherència Universal (UC)</strong> és una manera de <em>normalitzar</em> qualsevol magnitud (temperatura, distància, probabilitat, etc.) a un valor <strong>adimensional</strong> comparable. En lloc de barrejar unitats, defineixes un rang de referència (<strong>Mín</strong> i <strong>Màx</strong>) i l’app expressa on cau el teu <strong>Observat</strong> dins (o fora) d’aquest rang.",
+    "coreTitle": "Idea central",
+    "coreLi1": "Defineixes un rang: <strong>Mín</strong> i <strong>Màx</strong> (la referència).",
+    "coreLi2": "Calcules la posició relativa: <code>(Obs − Min) / (Max − Min)</code>.",
+    "coreLi3": "Escales el resultat a un màxim operatiu (evitant ±1): <code>× (±0.999…990)</code>.",
+    "rangeTitle": "Centre estructural i rang operatiu",
+    "rangeP1": "En UC, el <strong>0</strong> representa un <strong>centre estructural ideal (Cₛ)</strong> tractat com a <em>límit asimptòtic inassolible</em>. Per això, a la pràctica es treballa amb un mínim operatiu: <strong>VmO = 0.000000000000010</strong> (i el seu simètric negatiu).",
+    "rangeP2": "A l’extrem superior passa el mateix: s’utilitza <strong>VMO = 0.999999999999990</strong> (i el seu simètric negatiu) per mantenir un marge asimptòtic i evitar saturacions a ±1.",
+    "formulaTitle": "Com es calcula (mode directe)",
+    "formulaP1": "La conversió que aplica l’app és: <code>(Obs − Min) / (Max − Min) × (±0.999…990)</code>. La fracció mesura la posició relativa dins del rang; el factor fixa el sostre operatiu.",
+    "formulaP2": "El signe es determina així: si <strong>Obs</strong> és dins de <code>[Min, Max]</code>, el resultat va amb <strong>+</strong>. Si és fora, es marca amb <strong>−</strong> (en EP, a més, la magnitud pot superar 1).",
+    "modesTitle": "Diferència entre EP i NR",
+    "modesLi1": "<strong>EP (Estructural pur)</strong>: no retalla la magnitud. Si Obs s’allunya del rang, el quocient pot ser &gt; 1 i l’UC també pot créixer en magnitud (mantenint el signe de fora de rang).",
+    "modesLi2": "<strong>NR (Normalitzat per referència)</strong>: limita la magnitud a <code>[0,1]</code>. Si Obs és fora del rang, es mostrarà un avís i el resultat quedarà limitat a ±0.999…990.",
+    "extTitle": "UC estès",
+    "extP1": "A més de l’UC arrodonit, es mostra un <strong>UC estès</strong> amb més precisió (50 decimals) per auditoria, registre o còpia exacta. És la mateixa quantitat, només amb més decimals.",
+    "refTitle": "Referència / assaig",
+    "refP1": "Assaig / document de referència (DOI/Zenodo): <a href=\"https://doi.org/10.5281/zenodo.18714577\" target=\"_blank\" rel=\"noopener\">10.5281/zenodo.18714577</a>."
+  },
+  "help": {
+    "title": "Ajuda",
+    "intro": "Aquesta app converteix de <strong>Observat → UC</strong> (mode directe) o de <strong>UC → Observat</strong> (mode invers). L’important és definir bé el rang de referència (<strong>Mín</strong> i <strong>Màx</strong>), perquè aquest rang és el “context” de la normalització.",
+    "quickTitle": "Guia ràpida (mode directe)",
+    "quick1": "Tria el <strong>Mode</strong>: EP o NR.",
+    "quick2": "A <strong>Reconversió d’escala</strong>, selecciona una <strong>Plantilla</strong> o escriu el teu rang (Mín/Màx) i, si vols, el valor observat.",
+    "quick3": "Prem <strong>Fer servir a Entrades</strong> (o <strong>Normalitza ara</strong>) per copiar els valors a <strong>Entrades</strong> i veure la <strong>Fórmula aplicada</strong>.",
+    "quick4": "Revisa <strong>Resultats</strong>: es calculen <strong>Valor UC</strong> i <strong>Valor UC estès</strong>. Els pots copiar amb un toc.",
+    "quick5": "Si vols començar de zero, usa <strong>Netejar</strong>.",
+    "resultsTitle": "Interpretar Resultats",
+    "resultsLi1": "<strong>Valor UC</strong>: resultat en format compacte (arrodonit) per lectura ràpida.",
+    "resultsLi2": "<strong>Valor UC estès</strong>: el mateix valor amb 50 decimals per màxima precisió.",
+    "resultsLi3": "La “píndola” amb <code>±0.999…990</code> indica el factor operatiu i el signe usat. En general: <strong>+</strong> = dins de rang, <strong>−</strong> = fora de rang (segons el mode).",
+    "normTitle": "Plantilles i normalitzacions desades",
+    "normLi1": "Les <strong>Plantilles</strong> omplen Mín/Màx (i unitat) ràpidament per a escales comunes (pH, Kelvin, Likert, etc.).",
+    "normLi2": "Amb <strong>➕ Desa com a normalització</strong> o <strong>Desa la normalització</strong> pots desar el teu rang i reutilitzar-lo.",
+    "normLi3": "Amb <strong>Fer servir a Entrades</strong> apliques la normalització desada a la calculadora sense reescriure dades.",
+    "normLi4": "Per netejar la llista, usa <strong>Eliminar</strong> a “Normalitzacions desades”.",
+    "inverseTitle": "Mode invers (UC → observat)",
+    "inverseLi1": "Activa <strong>Introduir UC → calcular observat</strong>.",
+    "inverseLi2": "Assegura’t de tenir <strong>Mín</strong> i <strong>Màx</strong> definits a <strong>Reconversió</strong> (són necessaris per reconstruir l’observat).",
+    "inverseLi3": "Tria si introduiràs <strong>UC</strong> o <strong>UC estès</strong>, escriu el valor a Resultats i l’app calcularà l’observat.",
+    "inverseLi4": "En <strong>EP</strong>, si l’UC és negatiu (fora de rang) pots indicar si correspon a <strong>&lt; Min</strong> o <strong>&gt; Max</strong> per desambiguar.",
+    "inverseLi5": "En <strong>NR</strong>, el signe fora de rang no és reversible de manera única; en reconstruir, l’app assumeix un valor dins del rang.",
+    "privacyTitle": "Desat i privacitat",
+    "privacyP1": "L’app funciona 100% en local: les normalitzacions i preferències (idioma/tema) es desen al navegador del teu dispositiu. No s’envien dades a cap servidor."
+  },
+  "constants": {
+    "title": "Valors coneguts",
+    "empty": "No hi ha valors carregats.",
+    "toMin": "→ Min",
+    "toObs": "→ Obs",
+    "toMax": "→ Màx",
+    "useMin": "Posar a Mínim",
+    "useObs": "Posar a Valor (observat)",
+    "useMax": "Posar a Màxim",
+    "fieldMin": "Mínim",
+    "fieldObs": "Valor (observat)",
+    "fieldMax": "Màxim",
+    "assignedTo": "Assignat “{name}” a {field}."
+  },
+  "utils": {
+    "title": "Utilitats",
+    "page1": {
+      "title": "Conversor data → ordinal",
+      "desc": "Interpreta UTC i el calendari gregorià prolèptic (any 0 = 1 aC). Origen ≡ “segon 1”."
+    },
+    "originLabel": "Origen (segon 1)",
+    "originPlaceholder": "p. ex., 01-01-0001 12:35:12",
+    "targetLabel": "Destí",
+    "targetPlaceholder": "p. ex., 31-12-2025 23:59:59",
+    "unitLabel": "Unitat",
+    "unit": {
+      "s": "segons (ordinal basat en 1)",
+      "min": "minuts (ordinal)",
+      "h": "hores (ordinal)",
+      "d": "dies (ordinal)",
+      "sem": "setmanes (ordinal)",
+      "mes": "mesos (ordinal de calendari)",
+      "año": "anys (ordinal de calendari)",
+      "lustro": "lustres (5 anys)",
+      "decada": "dècades (10 anys)",
+      "c25": "¼ de segle (25 anys)",
+      "c50": "½ segle (50 anys)",
+      "c75": "¾ de segle (75 anys)",
+      "c100": "segles (100 anys)"
+    },
+    "calc": "Calcular",
+    "resultLabel": "Resultat",
+    "resultTitle": "Clica per enviar a ‘Valor a normalitzar’",
+    "copy": "Copiar",
+    "tip": "Consell: clica el resultat per traslladar-lo a “Valor a normalitzar (observat)”.",
+    "toValue": "Traslladat a “Valor a normalitzar”.",
+    "errors": {
+      "revDates": "Revisa les dates (Origen i Destí).",
+      "targetBefore": "El destí ha de ser posterior o igual a l’origen.",
+      "generic": "No s’ha pogut calcular."
+    }
+  },
+  "lang": {
+    "title": "Idioma",
+    "description": "Tria l’idioma de la interfície. El contingut desat i els valors numèrics no es modifiquen.",
+    "applied": "Idioma aplicat."
+  },
+  "themes": {
+    "title": "Temes",
+    "description": "Tria un tema visual. S’aplica a tota l’app i es recordarà en aquest dispositiu.",
+    "default": "Predeterminat nocturn",
+    "solar": "Solar càlid",
+    "ocean": "Oceà fred",
+    "forest": "Bosc",
+    "monoLight": "Monocrom clar",
+    "monoDark": "Monocrom fosc",
+    "neon": "Neó",
+    "paper": "Paper càlid",
+    "applied": "Tema aplicat."
+  },
+  "footer": {
+    "appName": "Normaliza Coherente",
+    "subtitle": "Escala de Coherència Universal",
+    "version": "Normaliza Coherente — v1.0",
+    "author": "Andrés Calvo Espinosa",
+    "privacyBtn": "Privacitat"
+  },
+  "errors": {
+    "equalMinMax": "Mín i Màx no poden ser iguals."
+  },
+  "coherence": {
+    "title": "Coherència Universal",
+    "text": "Que aquesta obra serveixi com a agraïment i com a compromís: pensar, sentir i actuar en la mateixa direcció, sense \"adorns\"; seguir creant amb ètica, amb alegria i amb respecte per tot allò que ens connecta."
+  },
+  "privacy": {
+    "title": "Privacitat",
+    "body": "<p><strong>OptimeFlow(s) Normaliza Coherente</strong> funciona 100% en local (al teu navegador). No enviem a servidors externs els valors que introdueixes, ni utilitzem analítica o rastrejadors.</p><h4>Dades que es desen en aquest dispositiu</h4><ul class=\"steps\"><li><strong>Preferències</strong>: tema visual i idioma.</li><li><strong>Normalitzacions desades</strong>: nom, unitat i rangs Mín/Màx (i, si ho deses, el valor observat).</li><li><strong>Memòria cau offline</strong> (si l’instal·les com a PWA): el navegador pot emmagatzemar fitxers de l’app per obrir-la sense connexió.</li></ul><h4>Permisos del navegador</h4><ul class=\"steps\"><li><strong>Portapapers</strong>: només s’utilitza quan prems “Copiar”.</li><li><strong>Emmagatzematge</strong>: s’utilitza per desar preferències i normalitzacions a <em>localStorage</em>.</li></ul><h4>Connectivitat</h4><p>Per carregar o actualitzar l’app, el teu navegador pot descarregar els fitxers (HTML/CSS/JS) des del mateix origen. Això no inclou l’enviament de les teves dades d’ús. Si actives el mode offline/PWA, el <em>Service Worker</em> pot posar en memòria cau aquests fitxers.</p><h4>Com esborrar les teves dades</h4><p>Pots eliminar-ho tot des de la configuració del navegador (dades del lloc: emmagatzematge/localStorage i memòria cau) o desinstal·lant la PWA, si l’has instal·lada.</p><h4>Enllaços externs</h4><p>Si obres enllaços a llocs externs (per exemple, DOI/Zenodo o ORCID), s’hi apliquen les seves pròpies polítiques de privacitat.</p>"
+  }
+}

@@ -1,0 +1,236 @@
+{
+  "common": {
+    "close": "Cerrar",
+    "copied": "Copiado."
+  },
+  "menu": {
+    "whatIsCU": "¿Qué es la Escala CU?",
+    "help": "Ayuda",
+    "language": "Idioma",
+    "themes": "Temas",
+    "install": "Instalar",
+    "installUnavailable": "Instalación no disponible en este dispositivo/navegador."
+  },
+  "mode": {
+    "title": "Modo",
+    "epLabel": "Estructural Puro",
+    "nrLabel": "Normalizado por Referencia",
+    "notes": "<strong>EP:</strong> signo automático (±) y sin recorte de magnitud. <br><strong>NR:</strong> acota el cociente a [0,1] y aplica ±0.999…990; si hay desbordes se sugerirá redefinir el mínimo/máximo."
+  },
+  "reconv": {
+    "title": "Reconversión de escala",
+    "templateLabel": "Plantilla de escala",
+    "templatePlaceholder": "— Selecciona plantilla —",
+    "saveFromTemplate": "➕ Guardar como normalización",
+    "normNameLabel": "Nombre de la normalización",
+    "normNamePlaceholder": "p.ej., Latitud",
+    "unitLabel": "Unidad (opcional)",
+    "unitPlaceholder": "p.ej., grados",
+    "valueLabel": "Valor a normalizar (observado)",
+    "valuePlaceholder": "p.ej., 37.5",
+    "knownValues": "Valores conocidos",
+    "utils": "Utilidades",
+    "minLabel": "Mínimo",
+    "minPlaceholder": "p.ej., -90",
+    "maxLabel": "Máximo",
+    "maxPlaceholder": "p.ej., 90",
+    "saveNorm": "Guardar normalización",
+    "applyNow": "Normalizar ahora",
+    "savedTitle": "Normalizaciones guardadas",
+    "useInInputs": "Usar en Entradas",
+    "delete": "Eliminar",
+    "tip": "Consejo: crea “Latitud (−90, 90) grados” y “Longitud (−180, 180) grados” para reutilizarlas.",
+    "noNorms": "— No hay normalizaciones guardadas —",
+    "templateApplied": "Plantilla aplicada. Completa “Valor a normalizar”.",
+    "saved": "Normalización guardada.",
+    "savedFromTemplate": "Guardado como normalización.",
+    "applied": "Aplicado a Entradas.",
+    "use": "Normalización aplicada a Entradas.",
+    "useNamed": "Usando “{name}” en Entradas.",
+    "loaded": "Cargada “{name}” en Reconversión.",
+    "deleted": "Eliminada “{name}”.",
+    "errors": {
+      "noName": "Ponle un nombre a la normalización.",
+      "revMinMax": "Revisa Mín y Máx.",
+      "complete": "Completa Valor/Mín/Máx.",
+      "selectTemplate": "Selecciona primero una plantilla.",
+      "revMinMaxSave": "Revisa Mín y Máx antes de guardar."
+    }
+  },
+  "inputs": {
+    "title": "Entradas",
+    "obsLabel": "Valor observado",
+    "obsPlaceholder": "0.000000000000010",
+    "minLabel": "Valor mínimo observado",
+    "maxLabel": "Valor máximo observado",
+    "maxPlaceholder": "0.999999999999990",
+    "digits": "cifras",
+    "vmoButton": "VmO (Valor Mínimo Observable)",
+    "vmoMaxButton": "VMO (Valor Máximo Observable)",
+    "clear": "Limpiar"
+  },
+  "results": {
+    "title": "Resultados",
+    "cuLabel": "Valor CU",
+    "cuExtLabel": "Valor CU extendido",
+    "copy": "Copiar",
+    "note": "En la Escala CU el <strong>0</strong> es un <em>límite asintótico inalcanzable</em>; trabajamos siempre con expresiones mínimas/máximas ±0.000…010 y ±0.999…990."
+  },
+  "inverse": {
+    "title": "Introducir CU → calcular observado",
+    "description": "Bloquea “Valor a normalizar” y usa el CU (o CU extendido) para reconstruir el observado con el Mín/Máx de Reconversión.",
+    "useCU": "Usar CU",
+    "useCUExt": "Usar CU extendido",
+    "sideBelow": "Fuera de rango: <strong>&lt; Min</strong>",
+    "sideAbove": "Fuera de rango: <strong>&gt; Max</strong>",
+    "calc": "Calcular observado",
+    "blocked": "Modo inverso activo: introduce CU en Resultados.",
+    "blockedObs": "Modo inverso activo: el valor Observado está bloqueado.",
+    "revMinMax": "Completa Mín y Máx en Reconversión.",
+    "revCU": "Introduce un CU válido en Resultados.",
+    "invalidCU": "CU inválido.",
+    "noteNR": "En NR el signo fuera de rango no es reversible; se asume dentro del rango.",
+    "done": "Calculado Observado desde CU → enviado a Reconversión."
+  },
+  "formula": {
+    "title": "Fórmula aplicada",
+    "value": "Valor",
+    "note": "La fracción y el signo se actualizan con tus entradas y el modo seleccionado."
+  },
+  "about": {
+    "title": "¿Qué es la Escala CU?",
+    "intro": "La <strong>Escala de Coherencia Universal (CU)</strong> es una forma de <em>normalizar</em> cualquier magnitud (temperatura, distancia, probabilidad, etc.) a un valor <strong>adimensional</strong> comparable. En lugar de mezclar unidades, defines un rango de referencia (<strong>Mín</strong> y <strong>Máx</strong>) y la app expresa dónde cae tu <strong>Observado</strong> dentro (o fuera) de ese rango.",
+    "coreTitle": "Idea central",
+    "coreLi1": "Defines un rango: <strong>Mín</strong> y <strong>Máx</strong> (la referencia).",
+    "coreLi2": "Calculas la posición relativa: <code>(Obs − Min) / (Max − Min)</code>.",
+    "coreLi3": "Escalas el resultado a un máximo operativo (evitando ±1): <code>× (±0.999…990)</code>.",
+    "rangeTitle": "Centro estructural y rango operativo",
+    "rangeP1": "En CU, el <strong>0</strong> representa un <strong>centro estructural ideal (Cₛ)</strong> tratado como <em>límite asintótico inalcanzable</em>. Por eso, en la práctica se trabaja con un mínimo operativo: <strong>VmO = 0.000000000000010</strong> (y su simétrico negativo).",
+    "rangeP2": "En el extremo superior ocurre lo mismo: se usa <strong>VMO = 0.999999999999990</strong> (y su simétrico negativo) para mantener un margen asintótico y evitar saturaciones en ±1.",
+    "formulaTitle": "Cómo se calcula (modo directo)",
+    "formulaP1": "La conversión que aplica la app es: <code>(Obs − Min) / (Max − Min) × (±0.999…990)</code>. La fracción mide la posición relativa dentro del rango; el factor fija el techo operativo.",
+    "formulaP2": "El signo se determina así: si <strong>Obs</strong> está dentro de <code>[Min, Max]</code>, el resultado va con <strong>+</strong>. Si está fuera, se marca con <strong>−</strong> (en EP, además, la magnitud puede superar 1).",
+    "modesTitle": "Diferencia entre EP y NR",
+    "modesLi1": "<strong>EP (Estructural Puro)</strong>: no recorta la magnitud. Si Obs se aleja del rango, el cociente puede ser &gt; 1 y el CU también crecerá en magnitud (manteniendo el signo de fuera de rango).",
+    "modesLi2": "<strong>NR (Normalizado por Referencia)</strong>: acota la magnitud a <code>[0,1]</code>. Si Obs está fuera del rango se mostrará un aviso y el resultado quedará limitado a ±0.999…990.",
+    "extTitle": "CU extendido",
+    "extP1": "Además del CU redondeado, se muestra un <strong>CU extendido</strong> con mayor precisión (50 decimales) para auditoría, registro o copiado exacto. Es la misma cantidad, solo con más decimales.",
+    "refTitle": "Referencia / ensayo",
+    "refP1": "Ensayo / documento de referencia (DOI/Zenodo): <a href=\"https://doi.org/10.5281/zenodo.18714577\" target=\"_blank\" rel=\"noopener\">10.5281/zenodo.18714577</a>."
+  },
+  "help": {
+    "title": "Ayuda",
+    "intro": "Esta app convierte de <strong>Observado → CU</strong> (modo directo) o de <strong>CU → Observado</strong> (modo inverso). Lo importante es definir bien el rango de referencia (<strong>Mín</strong> y <strong>Máx</strong>), porque ese rango es el “contexto” de la normalización.",
+    "quickTitle": "Guía rápida (modo directo)",
+    "quick1": "Elige el <strong>Modo</strong>: EP o NR.",
+    "quick2": "En <strong>Reconversión de escala</strong>, selecciona una <strong>Plantilla</strong> o escribe tu propio rango (Mín/Máx) y, si quieres, el valor observado.",
+    "quick3": "Pulsa <strong>Usar en Entradas</strong> (o <strong>Normalizar ahora</strong>) para copiar los valores a <strong>Entradas</strong> y ver la <strong>Fórmula aplicada</strong>.",
+    "quick4": "Revisa <strong>Resultados</strong>: se calculan <strong>Valor CU</strong> y <strong>Valor CU extendido</strong>. Puedes copiarlos con un toque.",
+    "quick5": "Si quieres empezar de cero, usa <strong>Limpiar</strong>.",
+    "resultsTitle": "Interpretar Resultados",
+    "resultsLi1": "<strong>Valor CU</strong>: resultado en formato compacto (redondeado) para lectura rápida.",
+    "resultsLi2": "<strong>Valor CU extendido</strong>: el mismo valor con 50 decimales para máxima precisión.",
+    "resultsLi3": "La “pastilla” con <code>±0.999…990</code> indica el factor operativo y el signo usado. En general: <strong>+</strong> = dentro de rango, <strong>−</strong> = fuera de rango (según el modo).",
+    "normTitle": "Plantillas y normalizaciones guardadas",
+    "normLi1": "Las <strong>Plantillas</strong> rellenan Mín/Máx (y unidad) rápidamente para escalas comunes (pH, Kelvin, Likert, etc.).",
+    "normLi2": "Con <strong>➕ Guardar como normalización</strong> o <strong>Guardar normalización</strong> puedes guardar tu rango y reutilizarlo.",
+    "normLi3": "Con <strong>Usar en Entradas</strong> aplicas la normalización guardada a la calculadora sin reescribir datos.",
+    "normLi4": "Para limpiar tu lista, usa <strong>Eliminar</strong> en “Normalizaciones guardadas”.",
+    "inverseTitle": "Modo inverso (CU → observado)",
+    "inverseLi1": "Activa <strong>Introducir CU → calcular observado</strong>.",
+    "inverseLi2": "Asegúrate de tener <strong>Mín</strong> y <strong>Máx</strong> definidos en <strong>Reconversión</strong> (son necesarios para reconstruir el observado).",
+    "inverseLi3": "Elige si introducirás <strong>CU</strong> o <strong>CU extendido</strong>, escribe el valor en Resultados y la app calculará el observado.",
+    "inverseLi4": "En <strong>EP</strong>, si el CU es negativo (fuera de rango) puedes indicar si corresponde a <strong>&lt; Min</strong> o <strong>&gt; Max</strong> para desambiguar.",
+    "inverseLi5": "En <strong>NR</strong>, el signo fuera de rango no es reversible de forma única; al reconstruir, la app asume un valor dentro del rango.",
+    "privacyTitle": "Guardado y privacidad",
+    "privacyP1": "La app funciona 100% en local: las normalizaciones y preferencias (idioma/tema) se guardan en el navegador de tu dispositivo. No se envían datos a ningún servidor."
+  },
+  "constants": {
+    "title": "Valores conocidos",
+    "empty": "No hay valores cargados.",
+    "toMin": "→ Mín",
+    "toObs": "→ Obs",
+    "toMax": "→ Máx",
+    "useMin": "Poner en Mínimo",
+    "useObs": "Poner en Valor (observado)",
+    "useMax": "Poner en Máximo",
+    "fieldMin": "Mínimo",
+    "fieldObs": "Valor (observado)",
+    "fieldMax": "Máximo",
+    "assignedTo": "Asignado “{name}” a {field}."
+  },
+  "utils": {
+    "title": "Utilidades",
+    "page1": {
+      "title": "Conversor fecha → ordinal",
+      "desc": "Interpreta UTC y calendario gregoriano proléptico (año 0 = 1 a.C.). Origen ≡ “segundo 1”."
+    },
+    "originLabel": "Origen (segundo 1)",
+    "originPlaceholder": "p. ej., 01-01-0001 12:35:12",
+    "targetLabel": "Destino",
+    "targetPlaceholder": "p. ej., 31-12-2025 23:59:59",
+    "unitLabel": "Unidad",
+    "unit": {
+      "s": "segundos (ordinal 1‑based)",
+      "min": "minutos (ordinal)",
+      "h": "horas (ordinal)",
+      "d": "días (ordinal)",
+      "sem": "semanas (ordinal)",
+      "mes": "meses (ordinal calendario)",
+      "año": "años (ordinal calendario)",
+      "lustro": "lustros (5 años)",
+      "decada": "décadas (10 años)",
+      "c25": "¼ de siglo (25 años)",
+      "c50": "½ siglo (50 años)",
+      "c75": "¾ de siglo (75 años)",
+      "c100": "siglos (100 años)"
+    },
+    "calc": "Calcular",
+    "resultLabel": "Resultado",
+    "resultTitle": "Click para enviar a ‘Valor a normalizar’",
+    "copy": "Copiar",
+    "tip": "Consejo: haz click en el resultado para trasladarlo a “Valor a normalizar (observado)”.",
+    "toValue": "Trasladado a “Valor a normalizar”.",
+    "errors": {
+      "revDates": "Revisa las fechas (Origen y Destino).",
+      "targetBefore": "El destino debe ser posterior o igual al origen.",
+      "generic": "No se pudo calcular."
+    }
+  },
+  "lang": {
+    "title": "Idioma",
+    "description": "Elige el idioma de la interfaz. El contenido guardado y los valores numéricos no se modifican.",
+    "applied": "Idioma aplicado."
+  },
+  "themes": {
+    "title": "Temas",
+    "description": "Elige un tema visual. Se aplica a toda la app y se recordará en este dispositivo.",
+    "default": "Default nocturno",
+    "solar": "Solar cálido",
+    "ocean": "Océano frío",
+    "forest": "Bosque",
+    "monoLight": "Monocromo claro",
+    "monoDark": "Monocromo oscuro",
+    "neon": "Neón",
+    "paper": "Papel cálido",
+    "applied": "Tema aplicado."
+  },
+  "footer": {
+    "appName": "Normaliza Coherente",
+    "subtitle": "Escala de Coherencia Universal",
+    "version": "Normaliza Coherente — v1.0",
+    "author": "Andrés Calvo Espinosa",
+    "privacyBtn": "Privacidad"
+  },
+  "errors": {
+    "equalMinMax": "Mín y Máx no pueden ser iguales."
+  },
+  "coherence": {
+    "title": "Coherencia Universal",
+    "text": "Que esta obra sirva como agradecimiento y como compromiso: pensar, sentir y actuar en la misma dirección, sin \"adornos\"; seguir creando con ética, con alegría y con respeto por todo lo que nos conecta."
+  },
+  "privacy": {
+    "title": "Privacidad",
+    "body": "<p><strong>OptimeFlow(s) Normaliza Coherente</strong> funciona 100% en local (en tu navegador). No enviamos a servidores externos los valores que introduces, ni utilizamos analítica o rastreadores.</p><h4>Datos que se guardan en este dispositivo</h4><ul class=\"steps\"><li><strong>Preferencias</strong>: tema visual e idioma.</li><li><strong>Normalizaciones guardadas</strong>: nombre, unidad y rangos Mín/Máx (y, si lo guardas, el valor observado).</li><li><strong>Cache offline</strong> (si la instalas como PWA): el navegador puede almacenar archivos de la app para abrirla sin conexión.</li></ul><h4>Permisos del navegador</h4><ul class=\"steps\"><li><strong>Portapapeles</strong>: solo se usa cuando pulsas “Copiar”.</li><li><strong>Almacenamiento</strong>: se usa para guardar tus preferencias y normalizaciones en <em>localStorage</em>.</li></ul><h4>Conectividad</h4><p>Para cargar o actualizar la app, tu navegador puede descargar los archivos (HTML/CSS/JS) desde el mismo origen. Esto no incluye el envío de tus datos de uso. Si activas el modo offline/PWA, el <em>Service Worker</em> puede cachear esos archivos.</p><h4>Cómo borrar tus datos</h4><p>Puedes eliminar todo desde la configuración del navegador (datos del sitio: almacenamiento/localStorage y cache) o desinstalando la PWA, si la instalaste.</p><h4>Enlaces externos</h4><p>Si abres enlaces a sitios externos (por ejemplo, DOI/Zenodo u ORCID), aplican sus propias políticas de privacidad.</p>"
+  }
+}

@@ -1,0 +1,236 @@
+{
+  "common": {
+    "close": "Schließen",
+    "copied": "Kopiert."
+  },
+  "menu": {
+    "whatIsCU": "Was ist die UC-Skala?",
+    "help": "Hilfe",
+    "language": "Sprache",
+    "themes": "Themen",
+    "install": "Installieren",
+    "installUnavailable": "Installation ist auf diesem Gerät/Browser nicht verfügbar."
+  },
+  "mode": {
+    "title": "Modus",
+    "epLabel": "Rein strukturell",
+    "nrLabel": "Referenz-normalisiert",
+    "notes": "<strong>EP:</strong> automatisches Vorzeichen (±) und keine Magnitudenbegrenzung. <br><strong>NR:</strong> begrenzt den Quotienten auf [0,1] und wendet ±0.999…990 an; bei Überläufen wird vorgeschlagen, Minimum/Maximum neu zu definieren."
+  },
+  "reconv": {
+    "title": "Skalen-Umrechnung",
+    "templateLabel": "Skalenvorlage",
+    "templatePlaceholder": "— Vorlage auswählen —",
+    "saveFromTemplate": "➕ Als Normalisierung speichern",
+    "normNameLabel": "Name der Normalisierung",
+    "normNamePlaceholder": "z. B. Breitengrad",
+    "unitLabel": "Einheit (optional)",
+    "unitPlaceholder": "z. B. Grad",
+    "valueLabel": "Zu normalisierender Wert (beobachtet)",
+    "valuePlaceholder": "z. B. 37,5",
+    "knownValues": "Bekannte Werte",
+    "utils": "Utilities",
+    "minLabel": "Minimum",
+    "minPlaceholder": "z. B. -90",
+    "maxLabel": "Maximum",
+    "maxPlaceholder": "z. B. 90",
+    "saveNorm": "Normalisierung speichern",
+    "applyNow": "Jetzt normalisieren",
+    "savedTitle": "Gespeicherte Normalisierungen",
+    "useInInputs": "In Eingaben verwenden",
+    "delete": "Löschen",
+    "tip": "Tipp: Erstelle „Breitengrad (−90, 90) Grad“ und „Längengrad (−180, 180) Grad“, um sie wiederzuverwenden.",
+    "noNorms": "— Keine gespeicherten Normalisierungen —",
+    "templateApplied": "Vorlage angewendet. Fülle „Zu normalisierender Wert“ aus.",
+    "saved": "Normalisierung gespeichert.",
+    "savedFromTemplate": "Als Normalisierung gespeichert.",
+    "applied": "Auf Eingaben angewendet.",
+    "use": "Normalisierung auf Eingaben angewendet.",
+    "useNamed": "„{name}“ wird in Eingaben verwendet.",
+    "loaded": "„{name}“ in Umrechnung geladen.",
+    "deleted": "„{name}“ gelöscht.",
+    "errors": {
+      "noName": "Gib der Normalisierung einen Namen.",
+      "revMinMax": "Prüfe Min und Max.",
+      "complete": "Fülle Wert/Min/Max aus.",
+      "selectTemplate": "Wähle zuerst eine Vorlage aus.",
+      "revMinMaxSave": "Prüfe Min und Max vor dem Speichern."
+    }
+  },
+  "inputs": {
+    "title": "Eingaben",
+    "obsLabel": "Beobachteter Wert",
+    "obsPlaceholder": "0.000000000000010",
+    "minLabel": "Minimal beobachteter Wert",
+    "maxLabel": "Maximal beobachteter Wert",
+    "maxPlaceholder": "0.999999999999990",
+    "digits": "Ziffern",
+    "vmoButton": "VmO (Minimal beobachtbarer Wert)",
+    "vmoMaxButton": "VMO (Maximal beobachtbarer Wert)",
+    "clear": "Leeren"
+  },
+  "results": {
+    "title": "Ergebnisse",
+    "cuLabel": "UC-Wert",
+    "cuExtLabel": "Erweiterter UC-Wert",
+    "copy": "Kopieren",
+    "note": "In der UC-Skala ist <strong>0</strong> ein <em>unerreichbares asymptotisches Limit</em>; wir arbeiten immer mit minimalen/maximalen Ausdrücken ±0.000…010 und ±0.999…990."
+  },
+  "inverse": {
+    "title": "UC eingeben → beobachteten Wert berechnen",
+    "description": "Sperrt „Zu normalisierender Wert“ und verwendet den UC (oder erweiterten UC), um den beobachteten Wert mit Minimum/Maximum aus der Umrechnung zu rekonstruieren.",
+    "useCU": "UC verwenden",
+    "useCUExt": "Erweiterten UC verwenden",
+    "sideBelow": "Außerhalb des Bereichs: <strong>&lt; Min</strong>",
+    "sideAbove": "Außerhalb des Bereichs: <strong>&gt; Max</strong>",
+    "calc": "Beobachteten Wert berechnen",
+    "blocked": "Inversmodus aktiv: UC in Ergebnisse eingeben.",
+    "blockedObs": "Inversmodus aktiv: Der beobachtete Wert ist gesperrt.",
+    "revMinMax": "Fülle Min und Max in Umrechnung aus.",
+    "revCU": "Gib einen gültigen UC in Ergebnisse ein.",
+    "invalidCU": "Ungültiger UC.",
+    "noteNR": "In NR ist das Vorzeichen außerhalb des Bereichs nicht eindeutig umkehrbar; es wird als innerhalb des Bereichs angenommen.",
+    "done": "Beobachteter Wert aus UC berechnet → an Umrechnung gesendet."
+  },
+  "formula": {
+    "title": "Angewandte Formel",
+    "value": "Wert",
+    "note": "Der Bruch und das Vorzeichen werden mit deinen Eingaben und dem ausgewählten Modus aktualisiert."
+  },
+  "about": {
+    "title": "Was ist die UC-Skala?",
+    "intro": "Die <strong>Skala der Universellen Kohärenz (UC)</strong> ist eine Möglichkeit, <em>jede</em> Größe (Temperatur, Distanz, Wahrscheinlichkeit usw.) auf einen <strong>dimensionslosen</strong> vergleichbaren Wert zu <em>normalisieren</em>. Statt Einheiten zu mischen, definierst du einen Referenzbereich (<strong>Min</strong> und <strong>Max</strong>) und die App zeigt, wo dein <strong>Beobachteter</strong> Wert innerhalb (oder außerhalb) dieses Bereichs liegt.",
+    "coreTitle": "Kernidee",
+    "coreLi1": "Du definierst einen Bereich: <strong>Min</strong> und <strong>Max</strong> (die Referenz).",
+    "coreLi2": "Du berechnest die relative Position: <code>(Obs − Min) / (Max − Min)</code>.",
+    "coreLi3": "Du skalierst das Ergebnis auf ein operatives Maximum (vermeidet ±1): <code>× (±0.999…990)</code>.",
+    "rangeTitle": "Strukturelles Zentrum und operativer Bereich",
+    "rangeP1": "In UC repräsentiert <strong>0</strong> ein <strong>ideales strukturelles Zentrum (Cₛ)</strong>, das als <em>unerreichbares asymptotisches Limit</em> behandelt wird. Deshalb arbeitet man praktisch mit einem operativen Minimum: <strong>VmO = 0.000000000000010</strong> (und seinem negativen Spiegel).",
+    "rangeP2": "Am oberen Ende passiert das Gleiche: <strong>VMO = 0.999999999999990</strong> (und sein negatives Spiegelbild) wird verwendet, um einen asymptotischen Puffer zu behalten und Sättigungen bei ±1 zu vermeiden.",
+    "formulaTitle": "Wie es berechnet wird (Direktmodus)",
+    "formulaP1": "Die Umrechnung, die die App anwendet, ist: <code>(Obs − Min) / (Max − Min) × (±0.999…990)</code>. Der Bruch misst die relative Position im Bereich; der Faktor setzt die operative Obergrenze.",
+    "formulaP2": "Das Vorzeichen wird so bestimmt: Liegt <strong>Obs</strong> innerhalb von <code>[Min, Max]</code>, ist das Ergebnis <strong>+</strong>. Liegt es außerhalb, wird es mit <strong>−</strong> markiert (in EP kann die Magnitude außerdem größer als 1 werden).",
+    "modesTitle": "Unterschied zwischen EP und NR",
+    "modesLi1": "<strong>EP (Rein strukturell)</strong>: begrenzt die Magnitude nicht. Entfernt sich Obs vom Bereich, kann der Quotient &gt; 1 sein und der UC in Magnitude wachsen (mit dem Vorzeichen „außerhalb des Bereichs“).",
+    "modesLi2": "<strong>NR (Referenz-normalisiert)</strong>: begrenzt die Magnitude auf <code>[0,1]</code>. Liegt Obs außerhalb des Bereichs, wird ein Hinweis angezeigt und das Ergebnis auf ±0.999…990 begrenzt.",
+    "extTitle": "Erweiterter UC",
+    "extP1": "Neben dem gerundeten UC wird ein <strong>erweiterter UC</strong> mit höherer Präzision (50 Dezimalstellen) für Audit, Protokollierung oder exaktes Kopieren angezeigt. Es ist dieselbe Zahl, nur mit mehr Dezimalstellen.",
+    "refTitle": "Referenz / Essay",
+    "refP1": "Essay / Referenzdokument (DOI/Zenodo): <a href=\"https://doi.org/10.5281/zenodo.18714577\" target=\"_blank\" rel=\"noopener\">10.5281/zenodo.18714577</a>."
+  },
+  "help": {
+    "title": "Hilfe",
+    "intro": "Diese App rechnet von <strong>Beobachtet → UC</strong> (Direktmodus) oder von <strong>UC → Beobachtet</strong> (Inversmodus). Entscheidend ist, den Referenzbereich (<strong>Min</strong> und <strong>Max</strong>) korrekt zu definieren, denn dieser Bereich ist der „Kontext“ der Normalisierung.",
+    "quickTitle": "Kurzanleitung (Direktmodus)",
+    "quick1": "Wähle den <strong>Modus</strong>: EP oder NR.",
+    "quick2": "In <strong>Skalen-Umrechnung</strong> wähle eine <strong>Vorlage</strong> oder gib deinen eigenen Bereich (Min/Max) ein und, wenn du willst, den beobachteten Wert.",
+    "quick3": "Tippe auf <strong>In Eingaben verwenden</strong> (oder <strong>Jetzt normalisieren</strong>), um die Werte in <strong>Eingaben</strong> zu übernehmen und die <strong>Angewandte Formel</strong> zu sehen.",
+    "quick4": "Prüfe <strong>Ergebnisse</strong>: <strong>UC-Wert</strong> und <strong>Erweiterter UC-Wert</strong> werden berechnet. Du kannst sie mit einem Tipp kopieren.",
+    "quick5": "Wenn du neu starten willst, nutze <strong>Leeren</strong>.",
+    "resultsTitle": "Ergebnisse interpretieren",
+    "resultsLi1": "<strong>UC-Wert</strong>: Ergebnis im kompakten (gerundeten) Format für schnelles Lesen.",
+    "resultsLi2": "<strong>Erweiterter UC-Wert</strong>: derselbe Wert mit 50 Dezimalstellen für maximale Präzision.",
+    "resultsLi3": "Die „Pille“ mit <code>±0.999…990</code> zeigt den operativen Faktor und das verwendete Vorzeichen. Im Allgemeinen: <strong>+</strong> = im Bereich, <strong>−</strong> = außerhalb (je nach Modus).",
+    "normTitle": "Vorlagen und gespeicherte Normalisierungen",
+    "normLi1": "<strong>Vorlagen</strong> füllen Min/Max (und Einheit) schnell für gängige Skalen (pH, Kelvin, Likert usw.).",
+    "normLi2": "Mit <strong>➕ Als Normalisierung speichern</strong> oder <strong>Normalisierung speichern</strong> kannst du deinen Bereich speichern und wiederverwenden.",
+    "normLi3": "Mit <strong>In Eingaben verwenden</strong> wendest du die gespeicherte Normalisierung an, ohne Daten neu einzugeben.",
+    "normLi4": "Zum Aufräumen nutze <strong>Löschen</strong> bei „Gespeicherte Normalisierungen“.",
+    "inverseTitle": "Inversmodus (UC → beobachtet)",
+    "inverseLi1": "Aktiviere <strong>UC eingeben → beobachteten Wert berechnen</strong>.",
+    "inverseLi2": "Stelle sicher, dass <strong>Min</strong> und <strong>Max</strong> in <strong>Umrechnung</strong> definiert sind (sie werden benötigt, um den beobachteten Wert zu rekonstruieren).",
+    "inverseLi3": "Wähle, ob du <strong>UC</strong> oder <strong>erweiterten UC</strong> eingibst, tippe den Wert in Ergebnisse ein, und die App berechnet den beobachteten Wert.",
+    "inverseLi4": "In <strong>EP</strong> kannst du, wenn der UC negativ ist (außerhalb des Bereichs), angeben, ob es <strong>&lt; Min</strong> oder <strong>&gt; Max</strong> entspricht, um es zu entflechten.",
+    "inverseLi5": "In <strong>NR</strong> ist das Vorzeichen außerhalb des Bereichs nicht eindeutig umkehrbar; beim Rekonstruieren nimmt die App einen Wert innerhalb des Bereichs an.",
+    "privacyTitle": "Speicherung und Datenschutz",
+    "privacyP1": "Die App läuft 100% lokal: Normalisierungen und Einstellungen (Sprache/Theme) werden im Browser deines Geräts gespeichert. Es werden keine Daten an Server gesendet."
+  },
+  "constants": {
+    "title": "Bekannte Werte",
+    "empty": "Keine Werte geladen.",
+    "toMin": "→ Min",
+    "toObs": "→ Obs",
+    "toMax": "→ Max",
+    "useMin": "Als Minimum setzen",
+    "useObs": "Als Wert (beobachtet) setzen",
+    "useMax": "Als Maximum setzen",
+    "fieldMin": "Minimum",
+    "fieldObs": "Wert (beobachtet)",
+    "fieldMax": "Maximum",
+    "assignedTo": "„{name}“ zu {field} zugewiesen."
+  },
+  "utils": {
+    "title": "Utilities",
+    "page1": {
+      "title": "Datum → Ordinal-Konverter",
+      "desc": "Interpretiert UTC und den proleptischen gregorianischen Kalender (Jahr 0 = 1 v. Chr.). Ursprung ≡ „Sekunde 1“."
+    },
+    "originLabel": "Ursprung (Sekunde 1)",
+    "originPlaceholder": "z. B. 01-01-0001 12:35:12",
+    "targetLabel": "Ziel",
+    "targetPlaceholder": "z. B. 31-12-2025 23:59:59",
+    "unitLabel": "Einheit",
+    "unit": {
+      "s": "Sekunden (1-basiertes Ordinal)",
+      "min": "Minuten (Ordinal)",
+      "h": "Stunden (Ordinal)",
+      "d": "Tage (Ordinal)",
+      "sem": "Wochen (Ordinal)",
+      "mes": "Monate (Kalenderordinal)",
+      "año": "Jahre (Kalenderordinal)",
+      "lustro": "Lustrum (5 Jahre)",
+      "decada": "Jahrzehnte (10 Jahre)",
+      "c25": "¼ Jahrhundert (25 Jahre)",
+      "c50": "½ Jahrhundert (50 Jahre)",
+      "c75": "¾ Jahrhundert (75 Jahre)",
+      "c100": "Jahrhunderte (100 Jahre)"
+    },
+    "calc": "Berechnen",
+    "resultLabel": "Ergebnis",
+    "resultTitle": "Klick, um an „Zu normalisierender Wert“ zu senden",
+    "copy": "Kopieren",
+    "tip": "Tipp: Klicke auf das Ergebnis, um es nach „Zu normalisierender Wert (beobachtet)“ zu übernehmen.",
+    "toValue": "Nach „Zu normalisierender Wert“ übernommen.",
+    "errors": {
+      "revDates": "Prüfe die Daten (Ursprung und Ziel).",
+      "targetBefore": "Das Ziel muss nach dem Ursprung liegen oder gleich sein.",
+      "generic": "Konnte nicht berechnet werden."
+    }
+  },
+  "lang": {
+    "title": "Sprache",
+    "description": "Wähle die Sprache der Oberfläche. Gespeicherte Inhalte und numerische Werte werden nicht verändert.",
+    "applied": "Sprache angewendet."
+  },
+  "themes": {
+    "title": "Themen",
+    "description": "Wähle ein visuelles Theme. Es gilt für die ganze App und wird auf diesem Gerät gespeichert.",
+    "default": "Nacht-Standard",
+    "solar": "Warmes Solar",
+    "ocean": "Kalter Ozean",
+    "forest": "Wald",
+    "monoLight": "Helles Monochrom",
+    "monoDark": "Dunkles Monochrom",
+    "neon": "Neon",
+    "paper": "Warmes Papier",
+    "applied": "Theme angewendet."
+  },
+  "footer": {
+    "appName": "Normaliza Coherente",
+    "subtitle": "Skala der Universellen Kohärenz",
+    "version": "Normaliza Coherente — v1.0",
+    "author": "Andrés Calvo Espinosa",
+    "privacyBtn": "Datenschutz"
+  },
+  "errors": {
+    "equalMinMax": "Min und Max dürfen nicht gleich sein."
+  },
+  "coherence": {
+    "title": "Universelle Kohärenz",
+    "text": "Möge dieses Werk als Dank und als Verpflichtung dienen: in dieselbe Richtung zu denken, zu fühlen und zu handeln, ohne „Schmuck“; weiter zu erschaffen mit Ethik, Freude und Respekt für alles, was uns verbindet."
+  },
+  "privacy": {
+    "title": "Datenschutz",
+    "body": "<p><strong>OptimeFlow(s) Normaliza Coherente</strong> läuft 100% lokal (in deinem Browser). Wir senden die von dir eingegebenen Werte nicht an externe Server und verwenden weder Analytik noch Tracker.</p><h4>Daten, die auf diesem Gerät gespeichert werden</h4><ul class=\"steps\"><li><strong>Einstellungen</strong>: Theme und Sprache.</li><li><strong>Gespeicherte Normalisierungen</strong>: Name, Einheit und Min/Max-Bereiche (und, wenn du es speicherst, der beobachtete Wert).</li><li><strong>Offline-Cache</strong> (wenn du es als PWA installierst): Der Browser kann App-Dateien speichern, damit sie ohne Verbindung geöffnet werden kann.</li></ul><h4>Browser-Berechtigungen</h4><ul class=\"steps\"><li><strong>Zwischenablage</strong>: wird nur verwendet, wenn du „Kopieren“ drückst.</li><li><strong>Speicher</strong>: wird verwendet, um Einstellungen und Normalisierungen in <em>localStorage</em> zu speichern.</li></ul><h4>Konnektivität</h4><p>Zum Laden oder Aktualisieren der App kann dein Browser die Dateien (HTML/CSS/JS) vom selben Ursprung herunterladen. Das beinhaltet nicht das Senden deiner Nutzungsdaten. Wenn du den Offline/PWA-Modus aktivierst, kann der <em>Service Worker</em> diese Dateien cachen.</p><h4>So löschst du deine Daten</h4><p>Du kannst alles in den Browser-Einstellungen löschen (Website-Daten: Speicher/localStorage und Cache) oder indem du die PWA deinstallierst, falls du sie installiert hast.</p><h4>Externe Links</h4><p>Wenn du Links zu externen Websites öffnest (z. B. DOI/Zenodo oder ORCID), gelten deren eigenen Datenschutzrichtlinien.</p>"
+  }
+}

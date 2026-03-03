@@ -1,0 +1,236 @@
+{
+  "common": {
+    "close": "Close",
+    "copied": "Copied."
+  },
+  "menu": {
+    "whatIsCU": "What is the UC Scale?",
+    "help": "Help",
+    "language": "Language",
+    "themes": "Themes",
+    "install": "Install",
+    "installUnavailable": "Installation not available on this device/browser."
+  },
+  "mode": {
+    "title": "Mode",
+    "epLabel": "Pure Structural",
+    "nrLabel": "Reference-Normalized",
+    "notes": "<strong>EP:</strong> automatic sign (±) and no magnitude clipping. <br><strong>NR:</strong> bounds the ratio to [0,1] and applies ±0.999…990; if there are overflows, you’ll be prompted to redefine Min/Max."
+  },
+  "reconv": {
+    "title": "Scale remapping",
+    "templateLabel": "Scale template",
+    "templatePlaceholder": "— Select a template —",
+    "saveFromTemplate": "➕ Save as normalization",
+    "normNameLabel": "Normalization name",
+    "normNamePlaceholder": "e.g., Latitude",
+    "unitLabel": "Unit (optional)",
+    "unitPlaceholder": "e.g., degrees",
+    "valueLabel": "Value to normalize (observed)",
+    "valuePlaceholder": "e.g., 37.5",
+    "knownValues": "Known values",
+    "utils": "Utilities",
+    "minLabel": "Minimum",
+    "minPlaceholder": "e.g., -90",
+    "maxLabel": "Maximum",
+    "maxPlaceholder": "e.g., 90",
+    "saveNorm": "Save normalization",
+    "applyNow": "Normalize now",
+    "savedTitle": "Saved normalizations",
+    "useInInputs": "Use in Inputs",
+    "delete": "Delete",
+    "tip": "Tip: create “Latitude (−90, 90) degrees” and “Longitude (−180, 180) degrees” to reuse them.",
+    "noNorms": "— No saved normalizations —",
+    "templateApplied": "Template applied. Fill in “Value to normalize (observed)”.",
+    "saved": "Normalization saved.",
+    "savedFromTemplate": "Saved as normalization.",
+    "applied": "Applied to Inputs.",
+    "use": "Normalization applied to Inputs.",
+    "useNamed": "Using “{name}” in Inputs.",
+    "loaded": "Loaded “{name}” into Remapping.",
+    "deleted": "Deleted “{name}”.",
+    "errors": {
+      "noName": "Give the normalization a name.",
+      "revMinMax": "Check Min and Max.",
+      "complete": "Fill in Value/Min/Max.",
+      "selectTemplate": "Select a template first.",
+      "revMinMaxSave": "Check Min and Max before saving."
+    }
+  },
+  "inputs": {
+    "title": "Inputs",
+    "obsLabel": "Observed value",
+    "obsPlaceholder": "0.000000000000010",
+    "minLabel": "Minimum observed value",
+    "maxLabel": "Maximum observed value",
+    "maxPlaceholder": "0.999999999999990",
+    "digits": "digits",
+    "vmoButton": "VmO (Minimum Observable Value)",
+    "vmoMaxButton": "VMO (Maximum Observable Value)",
+    "clear": "Clear"
+  },
+  "results": {
+    "title": "Results",
+    "cuLabel": "UC value",
+    "cuExtLabel": "Extended UC value",
+    "copy": "Copy",
+    "note": "In the UC Scale, <strong>0</strong> is an <em>unattainable asymptotic limit</em>; we always work with minimal/maximum expressions ±0.000…010 and ±0.999…990."
+  },
+  "inverse": {
+    "title": "Enter UC → compute observed",
+    "description": "Locks “Value to normalize (observed)” and uses the UC (or extended UC) to reconstruct the observed value using the Min/Max from Remapping.",
+    "useCU": "Use UC",
+    "useCUExt": "Use extended UC",
+    "sideBelow": "Out of range: <strong>&lt; Min</strong>",
+    "sideAbove": "Out of range: <strong>&gt; Max</strong>",
+    "calc": "Compute observed",
+    "blocked": "Inverse mode active: enter UC in Results.",
+    "blockedObs": "Inverse mode active: the Observed value is locked.",
+    "revMinMax": "Fill in Min and Max in Remapping.",
+    "revCU": "Enter a valid UC in Results.",
+    "invalidCU": "Invalid UC.",
+    "noteNR": "In NR, the out-of-range sign is not uniquely reversible; it is assumed to be within range.",
+    "done": "Observed computed from UC → sent to Remapping."
+  },
+  "formula": {
+    "title": "Applied formula",
+    "value": "Value",
+    "note": "The fraction and the sign update with your inputs and the selected mode."
+  },
+  "about": {
+    "title": "What is the UC Scale?",
+    "intro": "The <strong>Universal Coherence (UC) Scale</strong> is a way to <em>normalize</em> any magnitude (temperature, distance, probability, etc.) into a <strong>dimensionless</strong> comparable value. Instead of mixing units, you define a reference range (<strong>Min</strong> and <strong>Max</strong>) and the app expresses where your <strong>Observed</strong> value falls within (or outside) that range.",
+    "coreTitle": "Core idea",
+    "coreLi1": "You define a range: <strong>Min</strong> and <strong>Max</strong> (the reference).",
+    "coreLi2": "You compute the relative position: <code>(Obs − Min) / (Max − Min)</code>.",
+    "coreLi3": "You scale the result to an operational maximum (avoiding ±1): <code>× (±0.999…990)</code>.",
+    "rangeTitle": "Structural center and operational range",
+    "rangeP1": "In UC, <strong>0</strong> represents an <strong>ideal structural center (Cₛ)</strong> treated as an <em>unattainable asymptotic limit</em>. That’s why, in practice, we work with an operational minimum: <strong>VmO = 0.000000000000010</strong> (and its negative symmetric).",
+    "rangeP2": "The same happens at the upper end: <strong>VMO = 0.999999999999990</strong> (and its negative symmetric) is used to keep an asymptotic margin and avoid saturation at ±1.",
+    "formulaTitle": "How it is computed (direct mode)",
+    "formulaP1": "The conversion the app applies is: <code>(Obs − Min) / (Max − Min) × (±0.999…990)</code>. The fraction measures the relative position within the range; the factor sets the operational ceiling.",
+    "formulaP2": "The sign is determined as follows: if <strong>Obs</strong> is within <code>[Min, Max]</code>, the result is <strong>+</strong>. If it is outside, it is marked <strong>−</strong> (in EP, the magnitude can also exceed 1).",
+    "modesTitle": "Difference between EP and NR",
+    "modesLi1": "<strong>EP (Pure Structural)</strong>: does not clip the magnitude. If Obs moves away from the range, the ratio can be &gt; 1 and the UC can also grow in magnitude (keeping the out-of-range sign).",
+    "modesLi2": "<strong>NR (Reference-Normalized)</strong>: bounds the magnitude to <code>[0,1]</code>. If Obs is outside the range, a warning will be shown and the result will be limited to ±0.999…990.",
+    "extTitle": "Extended UC",
+    "extP1": "In addition to the rounded UC, an <strong>extended UC</strong> with higher precision (50 decimals) is shown for auditing, logging, or exact copying. It’s the same quantity, just with more decimals.",
+    "refTitle": "Reference / essay",
+    "refP1": "Essay / reference document (DOI/Zenodo): <a href=\"https://doi.org/10.5281/zenodo.18714577\" target=\"_blank\" rel=\"noopener\">10.5281/zenodo.18714577</a>."
+  },
+  "help": {
+    "title": "Help",
+    "intro": "This app converts from <strong>Observed → UC</strong> (direct mode) or from <strong>UC → Observed</strong> (inverse mode). The key is defining the reference range (<strong>Min</strong> and <strong>Max</strong>) correctly, because that range is the “context” of the normalization.",
+    "quickTitle": "Quick guide (direct mode)",
+    "quick1": "Choose the <strong>Mode</strong>: EP or NR.",
+    "quick2": "In <strong>Scale remapping</strong>, select a <strong>Template</strong> or type your own range (Min/Max) and, if you want, the observed value.",
+    "quick3": "Press <strong>Use in Inputs</strong> (or <strong>Normalize now</strong>) to copy the values to <strong>Inputs</strong> and see the <strong>Applied formula</strong>.",
+    "quick4": "Check <strong>Results</strong>: <strong>UC value</strong> and <strong>Extended UC value</strong> are computed. You can copy them with one tap.",
+    "quick5": "If you want to start over, use <strong>Clear</strong>.",
+    "resultsTitle": "Interpreting Results",
+    "resultsLi1": "<strong>UC value</strong>: a compact (rounded) format for quick reading.",
+    "resultsLi2": "<strong>Extended UC value</strong>: the same value with 50 decimals for maximum precision.",
+    "resultsLi3": "The “pill” with <code>±0.999…990</code> indicates the operational factor and the sign used. In general: <strong>+</strong> = in range, <strong>−</strong> = out of range (depending on the mode).",
+    "normTitle": "Templates and saved normalizations",
+    "normLi1": "<strong>Templates</strong> fill in Min/Max (and unit) quickly for common scales (pH, Kelvin, Likert, etc.).",
+    "normLi2": "With <strong>➕ Save as normalization</strong> or <strong>Save normalization</strong> you can store your range and reuse it.",
+    "normLi3": "With <strong>Use in Inputs</strong> you apply the saved normalization to the calculator without retyping data.",
+    "normLi4": "To clean your list, use <strong>Delete</strong> in “Saved normalizations”.",
+    "inverseTitle": "Inverse mode (UC → observed)",
+    "inverseLi1": "Enable <strong>Enter UC → compute observed</strong>.",
+    "inverseLi2": "Make sure you have <strong>Min</strong> and <strong>Max</strong> defined in <strong>Remapping</strong> (they’re required to reconstruct the observed value).",
+    "inverseLi3": "Choose whether you’ll enter <strong>UC</strong> or <strong>extended UC</strong>, type the value in Results, and the app will compute the observed value.",
+    "inverseLi4": "In <strong>EP</strong>, if the UC is negative (out of range) you can indicate whether it corresponds to <strong>&lt; Min</strong> or <strong>&gt; Max</strong> to disambiguate.",
+    "inverseLi5": "In <strong>NR</strong>, the out-of-range sign is not uniquely reversible; when reconstructing, the app assumes a value within the range.",
+    "privacyTitle": "Storage and privacy",
+    "privacyP1": "The app runs 100% locally: normalizations and preferences (language/theme) are stored in your device’s browser. No data is sent to any server."
+  },
+  "constants": {
+    "title": "Known values",
+    "empty": "No values loaded.",
+    "toMin": "→ Min",
+    "toObs": "→ Obs",
+    "toMax": "→ Max",
+    "useMin": "Set as Minimum",
+    "useObs": "Set as Value (observed)",
+    "useMax": "Set as Maximum",
+    "fieldMin": "Minimum",
+    "fieldObs": "Value (observed)",
+    "fieldMax": "Maximum",
+    "assignedTo": "Assigned “{name}” to {field}."
+  },
+  "utils": {
+    "title": "Utilities",
+    "page1": {
+      "title": "Date → ordinal converter",
+      "desc": "Interprets UTC and the proleptic Gregorian calendar (year 0 = 1 BCE). Origin ≡ “second 1”."
+    },
+    "originLabel": "Origin (second 1)",
+    "originPlaceholder": "e.g., 01-01-0001 12:35:12",
+    "targetLabel": "Destination",
+    "targetPlaceholder": "e.g., 31-12-2025 23:59:59",
+    "unitLabel": "Unit",
+    "unit": {
+      "s": "seconds (1‑based ordinal)",
+      "min": "minutes (ordinal)",
+      "h": "hours (ordinal)",
+      "d": "days (ordinal)",
+      "sem": "weeks (ordinal)",
+      "mes": "months (calendar ordinal)",
+      "año": "years (calendar ordinal)",
+      "lustro": "lustrums (5 years)",
+      "decada": "decades (10 years)",
+      "c25": "¼ century (25 years)",
+      "c50": "½ century (50 years)",
+      "c75": "¾ century (75 years)",
+      "c100": "centuries (100 years)"
+    },
+    "calc": "Calculate",
+    "resultLabel": "Result",
+    "resultTitle": "Click to send to ‘Value to normalize’",
+    "copy": "Copy",
+    "tip": "Tip: click the result to transfer it to “Value to normalize (observed)”.",
+    "toValue": "Transferred to “Value to normalize”.",
+    "errors": {
+      "revDates": "Check the dates (Origin and Destination).",
+      "targetBefore": "Destination must be after or equal to Origin.",
+      "generic": "Could not calculate."
+    }
+  },
+  "lang": {
+    "title": "Language",
+    "description": "Choose the interface language. Saved content and numeric values are not modified.",
+    "applied": "Language applied."
+  },
+  "themes": {
+    "title": "Themes",
+    "description": "Choose a visual theme. It applies to the whole app and will be remembered on this device.",
+    "default": "Night default",
+    "solar": "Warm solar",
+    "ocean": "Cold ocean",
+    "forest": "Forest",
+    "monoLight": "Light monochrome",
+    "monoDark": "Dark monochrome",
+    "neon": "Neon",
+    "paper": "Warm paper",
+    "applied": "Theme applied."
+  },
+  "footer": {
+    "appName": "Normaliza Coherente",
+    "subtitle": "Universal Coherence Scale",
+    "version": "Normaliza Coherente — v1.0",
+    "author": "Andrés Calvo Espinosa",
+    "privacyBtn": "Privacy"
+  },
+  "errors": {
+    "equalMinMax": "Min and Max cannot be equal."
+  },
+  "coherence": {
+    "title": "Universal Coherence",
+    "text": "May this work serve as gratitude and as commitment: to think, feel, and act in the same direction, without “ornaments”; to keep creating with ethics, with joy, and with respect for everything that connects us."
+  },
+  "privacy": {
+    "title": "Privacy",
+    "body": "<p><strong>OptimeFlow(s) Normaliza Coherente</strong> runs 100% locally (in your browser). We don’t send the values you enter to external servers, and we don’t use analytics or trackers.</p><h4>Data stored on this device</h4><ul class=\"steps\"><li><strong>Preferences</strong>: visual theme and language.</li><li><strong>Saved normalizations</strong>: name, unit, and Min/Max ranges (and, if you save it, the observed value).</li><li><strong>Offline cache</strong> (if you install it as a PWA): the browser may store app files so it can open without a connection.</li></ul><h4>Browser permissions</h4><ul class=\"steps\"><li><strong>Clipboard</strong>: only used when you press “Copy”.</li><li><strong>Storage</strong>: used to save your preferences and normalizations in <em>localStorage</em>.</li></ul><h4>Connectivity</h4><p>To load or update the app, your browser may download the files (HTML/CSS/JS) from the same origin. This does not include sending your usage data. If you enable offline/PWA mode, the <em>Service Worker</em> may cache those files.</p><h4>How to delete your data</h4><p>You can remove everything from your browser settings (site data: storage/localStorage and cache) or by uninstalling the PWA, if you installed it.</p><h4>External links</h4><p>If you open links to external sites (for example, DOI/Zenodo or ORCID), their own privacy policies apply.</p>"
+  }
+}

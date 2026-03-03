@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="es" data-theme="default">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Normaliza Coherente</title>
+  <meta name="theme-color" content="#0b1120" id="metaThemeColor">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/img/normalizacoherente192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="assets/img/normalizacoherente180.png">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#mainContent">Saltar al contenido</a>
+
+  <!-- === HEADER (logo + OptimeFlow(s) + rótulo animado centrado + engranaje) === -->
+  <header class="brand-header app-header" role="banner">
+    <div class="brand">
+      <img
+        id="appLogo"
+        class="brand-logo heat"
+        alt="Logo OptimeFlow(s)"
+        src="assets/img/logo.png"
+      />
+      <span class="brand-word brand-neon">OptimeFlow(s)</span>
+
+      <!-- Rótulo animado: “Normaliza Coherente” -->
+      <div id="tagline" class="tagline" aria-label="Normaliza Coherente"></div>
+
+      <!-- Botón de engranaje con menú -->
+      <nav class="quick-controls topnav" aria-label="Acciones de la app">
+        <div class="gear-menu-wrapper">
+          <!-- ✅ Botón estilo ensaYOnesa (misma estética / compacto) -->
+          <button
+            type="button"
+            class="icon-button"
+            id="gearButton"
+            aria-label="Menú"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="gearMenu"
+          >
+            <span class="sr-only">Menú</span>
+            <span class="icon-gear" aria-hidden="true"></span>
+          </button>
+
+          <div id="gearMenu" class="gear-menu" role="menu" aria-hidden="true">
+            <button class="gear-item" data-open="aboutDialog" data-i18n="menu.whatIsCU" role="menuitem">
+              ¿Qué es la Escala CU?
+            </button>
+            <button class="gear-item" data-open="helpDialog" data-i18n="menu.help" role="menuitem">
+              Ayuda
+            </button>
+            <button class="gear-item" id="langMenuBtn" data-open="langDialog" data-i18n="menu.language" role="menuitem">
+              Idioma
+            </button>
+            <button class="gear-item" id="themeMenuBtn" data-open="themeDialog" data-i18n="menu.themes" role="menuitem">
+              Temas
+            </button>
+            <button class="gear-item" id="installMenuBtn" data-i18n="menu.install" role="menuitem">
+              Instalar
+            </button>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="mainContent" class="container" data-i18n-scope="main">
+    <!-- === Panel: Modo === -->
+    <section class="card">
+      <h3 data-i18n="mode.title">Modo</h3>
+      <div class="row">
+        <label class="switch">
+          <input type="radio" name="mode" id="modeEP" checked>
+          <span data-i18n="mode.epLabel"> Estructural Puro </span>
+        </label>
+        <label class="switch">
+          <input type="radio" name="mode" id="modeNR">
+          <span data-i18n="mode.nrLabel"> Normalizado por Referencia </span>
+        </label>
+      </div>
+      <p class="notes" data-i18n="mode.notes">
+        <strong>EP:</strong> signo automático (±) y sin recorte de magnitud. <br>
+        <strong>NR:</strong> acota el cociente a [0,1] y aplica ±0.999…990; si hay desbordes se sugerirá redefinir el mínimo/máximo.
+      </p>
+    </section>
+
+    <!-- === Panel Reconversión de escala (debajo de Modo) === -->
+    <section class="card">
+      <h3 data-i18n="reconv.title">Reconversión de escala</h3>
+
+      <!-- Plantillas de escalas -->
+      <div class="row">
+        <label style="min-width:180px" data-i18n="reconv.templateLabel">Plantilla de escala</label>
+        <select id="scaleTemplates" aria-label="Plantillas de escala" style="flex:1"></select>
+        <button id="btnSaveFromTemplate" class="btn small" data-i18n="reconv.saveFromTemplate">
+          ➕ Guardar como normalización
+        </button>
+      </div>
+      <p id="templateNote" class="tiny muted"></p>
+
+      <div class="grid3">
+        <div>
+          <label data-i18n="reconv.normNameLabel">Nombre de la normalización</label>
+          <input id="normName" placeholder="p.ej., Latitud" data-i18n-placeholder="reconv.normNamePlaceholder" />
+        </div>
+        <div>
+          <label data-i18n="reconv.unitLabel">Unidad (opcional)</label>
+          <input id="normUnit" placeholder="p.ej., grados" data-i18n-placeholder="reconv.unitPlaceholder" />
+        </div>
+        <div>
+          <label data-i18n="reconv.valueLabel">Valor a normalizar (observado)</label>
+          <input id="normValue" inputmode="decimal" placeholder="p.ej., 37.5" data-i18n-placeholder="reconv.valuePlaceholder" />
+          <div class="row mt8">
+            <button id="openConstants" class="btn small ghost" data-i18n="reconv.knownValues">
+              Valores conocidos
+            </button>
+            <button id="openUtils" class="btn small ghost" data-open="utilsDialog" data-i18n="reconv.utils">
+              Utilidades
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid3 mt8">
+        <div>
+          <label data-i18n="reconv.minLabel">Mínimo</label>
+          <input id="normMin" inputmode="decimal" placeholder="p.ej., -90" data-i18n-placeholder="reconv.minPlaceholder" />
+        </div>
+        <div>
+          <label data-i18n="reconv.maxLabel">Máximo</label>
+          <input id="normMax" inputmode="decimal" placeholder="p.ej., 90" data-i18n-placeholder="reconv.maxPlaceholder" />
+        </div>
+        <div class="row" style="align-items:flex-end">
+          <button id="btnSaveNorm" class="btn" data-i18n="reconv.saveNorm">Guardar normalización</button>
+          <button id="btnApplyNow" class="btn ghost" data-i18n="reconv.applyNow">Normalizar ahora</button>
+        </div>
+      </div>
+
+      <div class="side-card mt8">
+        <h4 style="margin:0 0 8px 0" data-i18n="reconv.savedTitle">Normalizaciones guardadas</h4>
+        <div class="row">
+          <select id="normList" aria-label="Normalizaciones guardadas" style="flex:1"></select>
+          <button id="btnUseNorm" class="btn small" data-i18n="reconv.useInInputs">Usar en Entradas</button>
+          <button id="btnDeleteNorm" class="btn small ghost" data-i18n="reconv.delete">Eliminar</button>
+        </div>
+        <p class="tiny muted" data-i18n="reconv.tip">
+          Consejo: crea “Latitud (−90, 90) grados” y “Longitud (−180, 180) grados” para reutilizarlas.
+        </p>
+      </div>
+    </section>
+
+    <!-- === Panel: Entradas === -->
+    <section class="card">
+      <h3>
+        <span data-i18n="inputs.title">Entradas</span>
+        <span id="activeTemplateTag" class="badge" hidden></span>
+      </h3>
+      <div class="grid3">
+        <div>
+          <label data-i18n="inputs.obsLabel">Valor observado</label>
+          <input
+            id="inObs"
+            inputmode="decimal"
+            placeholder="0.000000000000010"
+            aria-label="Valor observado"
+            data-i18n-placeholder="inputs.obsPlaceholder"
+          >
+          <div class="under tiny">
+            <span><span id="cntObs">0</span> <span data-i18n="inputs.digits">cifras</span></span>
+          </div>
+        </div>
+        <div>
+          <label data-i18n="inputs.minLabel">Valor mínimo observado</label>
+          <input
+            id="inMin"
+            inputmode="decimal"
+            placeholder="0.000000000000010"
+            aria-label="Valor mínimo"
+            data-i18n-placeholder="inputs.obsPlaceholder"
+          >
+          <div class="under tiny">
+            <span><span id="cntMin">0</span> <span data-i18n="inputs.digits">cifras</span></span>
+          </div>
+          <div class="row mt8">
+            <button id="btnVmO" class="btn small ghost" data-i18n="inputs.vmoButton">
+              VmO (Valor Mínimo Observable)
+            </button>
+          </div>
+        </div>
+        <div>
+          <label data-i18n="inputs.maxLabel">Valor máximo observado</label>
+          <input
+            id="inMax"
+            inputmode="decimal"
+            placeholder="0.999999999999990"
+            aria-label="Valor máximo"
+            data-i18n-placeholder="inputs.maxPlaceholder"
+          >
+          <div class="under tiny">
+            <span><span id="cntMax">0</span> <span data-i18n="inputs.digits">cifras</span></span>
+          </div>
+          <div class="row mt8">
+            <button id="btnVMO" class="btn small ghost" data-i18n="inputs.vmoMaxButton">
+              VMO (Valor Máximo Observable)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt8">
+        <button id="btnClear" class="btn ghost" data-i18n="inputs.clear">Limpiar</button>
+        <div class="grow"></div>
+        <span class="badge ok" id="factorBadge">+ 0.999999999999990</span>
+      </div>
+
+      <p id="msg" class="error" role="alert" aria-live="polite"></p>
+    </section>
+
+    <!-- === Panel: Resultados === -->
+    <section class="card" id="resultPanel">
+      <h3 data-i18n="results.title">Resultados</h3>
+
+      <div class="grid-res">
+        <!-- IZQ: CU + CUExt -->
+        <div>
+          <label data-i18n="results.cuLabel">Valor CU</label>
+          <div class="row">
+            <input id="outCU" class="mono" readonly value="—" aria-label="Valor CU">
+            <button id="copyCU" class="btn small" data-i18n="results.copy">Copiar</button>
+          </div>
+
+          <div class="mt8"></div>
+
+          <label data-i18n="results.cuExtLabel">Valor CU extendido</label>
+          <div class="row">
+            <input id="outCUExt" class="mono" readonly value="—" aria-label="Valor CU extendido">
+            <button id="copyCUExt" class="btn small" data-i18n="results.copy">Copiar</button>
+          </div>
+
+          <div id="outCUExtRichContainer" class="cu-ext-rich mono">
+            <span id="outCUExtRich">—</span>
+          </div>
+        </div>
+
+        <!-- DCHA: MODO INVERSO -->
+        <div>
+          <div class="inverse-box">
+            <label class="switch">
+              <input type="checkbox" id="invMode">
+              <span data-i18n="inverse.title"><strong>Introducir CU → calcular observado</strong></span>
+            </label>
+            <div class="tiny muted" data-i18n="inverse.description">
+              Bloquea “Valor a normalizar” y usa el CU (o CU extendido) para reconstruir el observado con el Mín/Máx de Reconversión.
+            </div>
+
+            <div class="row mt8">
+              <label class="switch">
+                <input type="radio" name="invSource" id="invFromCU" checked>
+                <span data-i18n="inverse.useCU">Usar CU</span>
+              </label>
+              <label class="switch">
+                <input type="radio" name="invSource" id="invFromCUExt">
+                <span data-i18n="inverse.useCUExt">Usar CU extendido</span>
+              </label>
+            </div>
+
+            <div class="row mt8" id="invSideRow" hidden>
+              <label class="switch">
+                <input type="radio" name="invSide" id="invSideBelow" checked>
+                <span data-i18n="inverse.sideBelow">Fuera de rango: <strong>&lt; Min</strong></span>
+              </label>
+              <label class="switch">
+                <input type="radio" name="invSide" id="invSideAbove">
+                <span data-i18n="inverse.sideAbove">Fuera de rango: <strong>&gt; Max</strong></span>
+              </label>
+            </div>
+
+            <div class="row mt8">
+              <button id="invDo" class="btn" disabled data-i18n="inverse.calc">
+                Calcular observado
+              </button>
+              <span id="invStatus" class="tiny muted"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="notes" data-i18n="results.note">
+        En la Escala CU el <strong>0</strong> es un <em>límite asintótico inalcanzable</em>;
+        trabajamos siempre con expresiones mínimas/máximas ±0.000…010 y ±0.999…990.
+      </p>
+    </section>
+
+    <!-- === Panel: Fórmula aplicada (visual) === -->
+    <section class="card">
+      <h3 data-i18n="formula.title">Fórmula aplicada</h3>
+      <div class="formula">
+        <span class="lhs" data-i18n="formula.value">Valor</span>
+        <span class="sub">CU</span><span class="eq">=</span>
+        <span class="frac" aria-label="(Observado − Mínimo) / (Máximo − Mínimo)">
+          <span class="num"><span id="fObs">Obs</span> − <span id="fMin">Min</span></span>
+          <span class="bar"></span>
+          <span class="den"><span id="fMax">Max</span> − <span id="fMin2">Min</span></span>
+        </span>
+        <span class="times">×</span>
+        <span class="pm" id="fSign">±</span>
+        <span class="factor mono" id="fFactor">0.999999999999990</span>
+        <span class="approx">≈</span>
+        <span class="mono" id="fResult">—</span>
+      </div>
+      <p class="tiny muted" data-i18n="formula.note">
+        La fracción y el signo se actualizan con tus entradas y el modo seleccionado.
+      </p>
+    </section>
+  </main>
+
+  <!-- === FOOTER estilo OptimeFlow(s) (compacto y fijo) === -->
+  <footer class="brand-footer" id="siteFooter" role="contentinfo">
+    <div class="footer-left">
+      <div class="f-left-row1">
+        <strong>OptimeFlow(s)®</strong>
+        <span class="sep">•</span>
+        <span id="footerAppName" data-i18n="footer.appName">Normaliza Coherente</span>
+      </div>
+      <div class="f-left-row2">
+        <span id="f-year">2026</span>
+        <span class="sep">•</span>
+        <a
+          id="footerAuthor"
+          href="https://orcid.org/0009-0005-4079-7418"
+          target="_blank"
+          rel="noopener"
+          data-i18n="footer.author"
+          style="
+            color:var(--muted);
+            text-decoration:underline;
+            text-decoration-color:color-mix(in srgb, var(--accent) 55%, transparent);
+            text-underline-offset:2px;
+            text-decoration-thickness:2px;
+          "
+        >Andrés Calvo Espinosa</a>
+      </div>
+    </div>
+    <div class="footer-center">
+      <button
+        class="footer-logo-btn"
+        id="footerCoherenceBtn"
+        type="button"
+        data-open="coherenceDialog"
+        aria-label="Coherencia Universal"
+        title="Coherencia Universal"
+      >
+        <img
+          class="tag-logo footer-logo heat"
+          src="assets/img/normalizacoherente192.png"
+          alt="Normaliza Coherente"
+        >
+      </button>
+    </div>
+    <div class="footer-right">
+      <button
+        class="footer-mit-btn"
+        type="button"
+        data-open="privacyDialog"
+        aria-label="Privacidad"
+        title="Privacidad"
+        data-i18n="footer.privacyBtn"
+      >Privacidad</button>
+
+      <button class="footer-mit-btn" type="button" data-open="mitDialog" aria-label="MIT License" title="MIT License">MIT</button>
+    </div>
+  </footer>
+
+  <!-- === Toast (no tapa errores) === -->
+  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+
+  <!-- === Modal Coherencia Universal (footer centro) === -->
+  <dialog id="coherenceDialog" class="modal">
+    <div class="modal-head">
+      <h3 data-i18n="coherence.title">Coherencia Universal</h3>
+      <button class="chip ghost" data-close aria-label="Cerrar">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <p class="notes" data-i18n="coherence.text">
+        Que esta obra sirva como agradecimiento y como compromiso: pensar, sentir y actuar en la misma dirección, sin &quot;adornos&quot;; seguir creando con ética, con alegría y con respeto por todo lo que nos conecta.
+      </p>
+    </div>
+
+    <div class="modal-foot">
+      <button class="btn" data-close data-i18n="common.close">Cerrar</button>
+    </div>
+  </dialog>
+
+  <!-- === Modal Privacidad (footer derecha) === -->
+  <dialog id="privacyDialog" class="modal">
+    <div class="modal-head">
+      <h3 data-i18n="privacy.title">Privacidad</h3>
+      <button class="chip ghost" data-close aria-label="Cerrar">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="side-card" data-i18n="privacy.body">
+        <p><strong>OptimeFlow(s) Normaliza Coherente</strong> funciona 100% en local (en tu navegador). No enviamos a servidores externos los valores que introduces, ni utilizamos analítica o rastreadores.</p>
+
+        <h4>Datos que se guardan en este dispositivo</h4>
+        <ul class="steps">
+          <li><strong>Preferencias</strong>: tema visual e idioma.</li>
+          <li><strong>Normalizaciones guardadas</strong>: nombre, unidad y rangos Mín/Máx (y, si lo guardas, el valor observado).</li>
+          <li><strong>Cache offline</strong> (si la instalas como PWA): el navegador puede almacenar archivos de la app para abrirla sin conexión.</li>
+        </ul>
+
+        <h4>Permisos del navegador</h4>
+        <ul class="steps">
+          <li><strong>Portapapeles</strong>: solo se usa cuando pulsas “Copiar”.</li>
+          <li><strong>Almacenamiento</strong>: se usa para guardar tus preferencias y normalizaciones en <em>localStorage</em>.</li>
+        </ul>
+
+        <h4>Conectividad</h4>
+        <p>Para cargar o actualizar la app, tu navegador puede descargar los archivos (HTML/CSS/JS) desde el mismo origen. Esto no incluye el envío de tus datos de uso. Si activas el modo offline/PWA, el <em>Service Worker</em> puede cachear esos archivos.</p>
+
+        <h4>Cómo borrar tus datos</h4>
+        <p>Puedes eliminar todo desde la configuración del navegador (datos del sitio: almacenamiento/localStorage y cache) o desinstalando la PWA, si la instalaste.</p>
+
+        <h4>Enlaces externos</h4>
+        <p>Si abres enlaces a sitios externos (por ejemplo, DOI/Zenodo u ORCID), aplican sus propias políticas de privacidad.</p>
+      </div>
+    </div>
+
+    <div class="modal-foot">
+      <button class="btn" data-close data-i18n="common.close">Cerrar</button>
+    </div>
+  </dialog>
+
+  <!-- === Modal Licencia MIT (footer derecha) === -->
+  <dialog id="mitDialog" class="modal">
+    <div class="modal-head">
+      <h3>Licencia MIT</h3>
+      <button class="chip ghost" data-close aria-label="Cerrar">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <pre class="license-pre mono">MIT License
+
+Copyright (c) 2026 OptimeFlow(s) by Andrés Calvo Espinosa
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</pre>
+
+    </div>
+
+    <div class="modal-foot">
+      <button class="btn" data-close data-i18n="common.close">Cerrar</button>
+    </div>
+  </dialog>
+
+  <!-- === Modal Idioma === -->
+  <dialog id="langDialog" class="modal">
+    <div class="modal-head">
+      <h3 data-i18n="lang.title">Idioma</h3>
+      <button class="chip ghost" data-close aria-label="Cerrar">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="tiny muted" data-i18n="lang.description">
+        Elige el idioma de la interfaz. El contenido guardado y los valores numéricos no se modifican.
+      </p>
+      <div class="grid3 lang-grid">
+        <button class="btn small" data-lang="es">Español</button>
+        <button class="btn small" data-lang="en">English</button>
+        <button class="btn small" data-lang="pt-br">Português (BR)</button>
+        <button class="btn small" data-lang="fr">Français</button>
+        <button class="btn small" data-lang="de">Deutsch</button>
+        <button class="btn small" data-lang="it">Italiano</button>
+        <button class="btn small" data-lang="ko">한국어</button>
+        <button class="btn small" data-lang="zh">中文</button>
+        <button class="btn small" data-lang="ja">日本語</button>
+        <button class="btn small" data-lang="ru">Русский</button>
+        <button class="btn small" data-lang="hi">हिन्दी</button>
+        <button class="btn small" data-lang="cat">Català</button>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn" data-close data-i18n="common.close">Cerrar</button>
+    </div>
+  </dialog>
+
+  <!-- === Modal Temas === -->
+  <dialog id="themeDialog" class="modal">
+    <div class="modal-head">
+      <h3 data-i18n="themes.title">Temas</h3>
+      <button class="chip ghost" data-close aria-label="Cerrar">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="tiny muted" data-i18n="themes.description">
+        Elige un tema visual. Se aplica a toda la app y se recordará en este dispositivo.
+      </p>
+      <div class="themes-grid">
+        <button class="theme-chip" data-theme="default" data-i18n="themes.default">Default nocturno</button>
+        <button class="theme-chip" data-theme="solar" data-i18n="themes.solar">Solar cálido</button>
+        <button class="theme-chip" data-theme="ocean" data-i18n="themes.ocean">Océano frío</button>
+        <button class="theme-chip" data-theme="forest" data-i18n="themes.forest">Bosque</button>
+        <button class="theme-chip" data-theme="mono-light" data-i18n="themes.monoLight">Monocromo claro</button>
+        <button class="theme-chip" data-theme="mono-dark" data-i18n="themes.monoDark">Monocromo oscuro</button>
+        <button class="theme-chip" data-theme="neon" data-i18n="themes.neon">Neón</button>
+        <button class="theme-chip" data-theme="paper" data-i18n="themes.paper">Papel cálido</button>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn" data-close data-i18n="common.close">Cerrar</button>
+    </div>
+  </dialog>
+
+  <!-- === Modales simples === -->
+  <dialog id="aboutDialog" class="modal">
+    <div class="modal-head">
+      <h3 data-i18n="about.title">¿Qué es la Escala CU?</h3>
+      <button class="chip ghost" data-close aria-label="Cerrar">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <p data-i18n="about.intro">
+        La <strong>Escala de Coherencia Universal (CU)</strong> es una forma de <em>normalizar</em> cualquier magnitud
+        (temperatura, distancia, probabilidad, etc.) a un valor <strong>adimensional</strong> comparable. En lugar de
+        mezclar unidades, defines un rango de referencia (<strong>Mín</strong> y <strong>Máx</strong>) y la app expresa dónde
+        cae tu <strong>Observado</strong> dentro (o fuera) de ese rango.
+      </p>
+
+      <h4 data-i18n="about.coreTitle">Idea central</h4>
+      <ul class="steps">
+        <li data-i18n="about.coreLi1">Defines un rango: <strong>Mín</strong> y <strong>Máx</strong> (la referencia).</li>
+        <li data-i18n="about.coreLi2">Calculas la posición relativa: <code>(Obs − Min) / (Max − Min)</code>.</li>
+        <li data-i18n="about.coreLi3">Escalas el resultado a un máximo operativo (evitando ±1): <code>× (±0.999…990)</code>.</li>
+      </ul>
+
+      <h4 data-i18n="about.rangeTitle">Centro estructural y rango operativo</h4>
+      <p data-i18n="about.rangeP1">
+        En CU, el <strong>0</strong> representa un <strong>centro estructural ideal (Cₛ)</strong> tratado como
+        <em>límite asintótico inalcanzable</em>. Por eso, en la práctica se trabaja con un mínimo operativo:
+        <strong>VmO = 0.000000000000010</strong> (y su simétrico negativo).
+      </p>
+      <p data-i18n="about.rangeP2">
+        En el extremo superior ocurre lo mismo: se usa <strong>VMO = 0.999999999999990</strong> (y su simétrico negativo)
+        para mantener un margen asintótico y evitar saturaciones en ±1.
+      </p>
+
+      <h4 data-i18n="about.formulaTitle">Cómo se calcula (modo directo)</h4>
+      <p data-i18n="about.formulaP1">
+        La conversión que aplica la app es: <code>(Obs − Min) / (Max − Min) × (±0.999…990)</code>.
+        La fracción mide la posición relativa dentro del rango; el factor fija el techo operativo.
+      </p>
+      <p data-i18n="about.formulaP2">
+        El signo se determina así: si <strong>Obs</strong> está dentro de <code>[Min, Max]</code>, el resultado va con <strong>+</strong>.
+        Si está fuera, se marca con <strong>−</strong> (en EP, además, la magnitud puede superar 1).
+      </p>
+
+      <h4 data-i18n="about.modesTitle">Diferencia entre EP y NR</h4>
+      <ul class="steps">
+        <li data-i18n="about.modesLi1">
+          <strong>EP (Estructural Puro)</strong>: no recorta la magnitud. Si Obs se aleja del rango, el cociente puede ser &gt; 1
+          y el CU también crecerá en magnitud (manteniendo el signo de fuera de rango).
+        </li>
+        <li data-i18n="about.modesLi2">
+          <strong>NR (Normalizado por Referencia)</strong>: acota la magnitud a <code>[0,1]</code>. Si Obs está fuera del rango se mostrará un aviso
+          y el resultado quedará limitado a ±0.999…990.
+        </li>
+      </ul>
+
+      <h4 data-i18n="about.extTitle">CU extendido</h4>
+      <p data-i18n="about.extP1">
+        Además del CU redondeado, se muestra un <strong>CU extendido</strong> con mayor precisión (50 decimales) para auditoría,
+        registro o copiado exacto. Es la misma cantidad, solo con más decimales.
+      </p>
+
+      <div class="side-card mt8">
+        <h4 style="margin:0 0 8px 0" data-i18n="about.refTitle">Referencia / ensayo</h4>
+        <p class="tiny muted" data-i18n="about.refP1">
+          Ensayo / documento de referencia (DOI/Zenodo):
+          <a href="https://doi.org/10.5281/zenodo.18714577" target="_blank" rel="noopener">10.5281/zenodo.18714577</a>.
+        </p>
+      </div>
+    </div>
+
+    <div class="modal-foot">
+      <button class="btn" data-close data-i18n="common.close">Cerrar</button>
+    </div>
+  </dialog>
+
+  <dialog id="helpDialog" class="modal">
+    <div class="modal-head">
+      <h3 data-i18n="help.title">Ayuda</h3>
+      <button class="chip ghost" data-close aria-label="Cerrar">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <p data-i18n="help.intro">
+        Esta app convierte de <strong>Observado → CU</strong> (modo directo) o de <strong>CU → Observado</strong> (modo inverso).
+        Lo importante es definir bien el rango de referencia (<strong>Mín</strong> y <strong>Máx</strong>), porque ese rango es el “contexto” de la normalización.
+      </p>
+
+      <h4 data-i18n="help.quickTitle">Guía rápida (modo directo)</h4>
+      <ol class="steps">
+        <li data-i18n="help.quick1">Elige el <strong>Modo</strong>: EP o NR.</li>
+        <li data-i18n="help.quick2">En <strong>Reconversión de escala</strong>, selecciona una <strong>Plantilla</strong> o escribe tu propio rango (Mín/Máx) y, si quieres, el valor observado.</li>
+        <li data-i18n="help.quick3">Pulsa <strong>Usar en Entradas</strong> (o <strong>Normalizar ahora</strong>) para copiar los valores a <strong>Entradas</strong> y ver la <strong>Fórmula aplicada</strong>.</li>
+        <li data-i18n="help.quick4">Revisa <strong>Resultados</strong>: se calculan <strong>Valor CU</strong> y <strong>Valor CU extendido</strong>. Puedes copiarlos con un toque.</li>
+        <li data-i18n="help.quick5">Si quieres empezar de cero, usa <strong>Limpiar</strong>.</li>
+      </ol>
+
+      <h4 data-i18n="help.resultsTitle">Interpretar Resultados</h4>
+      <ul class="steps">
+        <li data-i18n="help.resultsLi1"><strong>Valor CU</strong>: resultado en formato compacto (redondeado) para lectura rápida.</li>
+        <li data-i18n="help.resultsLi2"><strong>Valor CU extendido</strong>: el mismo valor con 50 decimales para máxima precisión.</li>
+        <li data-i18n="help.resultsLi3">La “pastilla” con <code>±0.999…990</code> indica el factor operativo y el signo usado. En general: <strong>+</strong> = dentro de rango, <strong>−</strong> = fuera de rango (según el modo).</li>
+      </ul>
+
+      <h4 data-i18n="help.normTitle">Plantillas y normalizaciones guardadas</h4>
+      <ul class="steps">
+        <li data-i18n="help.normLi1">Las <strong>Plantillas</strong> rellenan Mín/Máx (y unidad) rápidamente para escalas comunes (pH, Kelvin, Likert, etc.).</li>
+        <li data-i18n="help.normLi2">Con <strong>➕ Guardar como normalización</strong> o <strong>Guardar normalización</strong> puedes guardar tu rango y reutilizarlo.</li>
+        <li data-i18n="help.normLi3">Con <strong>Usar en Entradas</strong> aplicas la normalización guardada a la calculadora sin reescribir datos.</li>
+        <li data-i18n="help.normLi4">Para limpiar tu lista, usa <strong>Eliminar</strong> en “Normalizaciones guardadas”.</li>
+      </ul>
+
+      <h4 data-i18n="help.inverseTitle">Modo inverso (CU → observado)</h4>
+      <ul class="steps">
+        <li data-i18n="help.inverseLi1">Activa <strong>Introducir CU → calcular observado</strong>.</li>
+        <li data-i18n="help.inverseLi2">Asegúrate de tener <strong>Mín</strong> y <strong>Máx</strong> definidos en <strong>Reconversión</strong> (son necesarios para reconstruir el observado).</li>
+        <li data-i18n="help.inverseLi3">Elige si introducirás <strong>CU</strong> o <strong>CU extendido</strong>, escribe el valor en Resultados y la app calculará el observado.</li>
+        <li data-i18n="help.inverseLi4">En <strong>EP</strong>, si el CU es negativo (fuera de rango) puedes indicar si corresponde a <strong>&lt; Min</strong> o <strong>&gt; Max</strong> para desambiguar.</li>
+        <li data-i18n="help.inverseLi5">En <strong>NR</strong>, el signo fuera de rango no es reversible de forma única; al reconstruir, la app asume un valor dentro del rango.</li>
+      </ul>
+
+      <h4 data-i18n="help.privacyTitle">Guardado y privacidad</h4>
+      <p class="tiny muted" data-i18n="help.privacyP1">
+        La app funciona 100% en local: las normalizaciones y preferencias (idioma/tema) se guardan en el navegador de tu dispositivo. No se envían datos a ningún servidor.
+      </p>
+    </div>
+
+    <div class="modal-foot">
+      <button class="btn" data-close data-i18n="common.close">Cerrar</button>
+    </div>
+  </dialog>
+
+  <!-- === Valores conocidos (60 números, 6 páginas) === -->
+  <dialog id="constantsDialog" class="modal">
+    <div class="modal-head">
+      <button class="chip ghost" data-close aria-label="Cerrar">✕</button>
+      <h3 data-i18n="constants.title">Valores conocidos</h3>
+      <div></div>
+    </div>
+    <div class="modal-body">
+      <div id="constantsList" class="consts-grid"></div>
+    </div>
+    <div class="modal-foot constants-foot">
+      <div class="row">
+        <button id="constantsPrevPage" class="chip" aria-label="Anterior">◀</button>
+        <span id="constantsPageLabel" class="muted">Página 1/6</span>
+        <button id="constantsNextPage" class="chip" aria-label="Siguiente">▶</button>
+      </div>
+      <div class="grow"></div>
+      <button class="btn" data-close data-i18n="common.close">Cerrar</button>
+    </div>
+  </dialog>
+
+  <!-- === Utilidades === -->
+  <dialog id="utilsDialog" class="modal">
+    <div class="modal-head">
+      <button class="chip ghost" data-close aria-label="Cerrar">✕</button>
+      <h3 data-i18n="utils.title">Utilidades</h3>
+      <div></div>
+    </div>
+
+    <div class="modal-body">
+      <div class="row mb8">
+        <button id="utilsPrevPage" class="chip" aria-label="Anterior">◀</button>
+        <span id="utilsPageLabel" class="muted">Página 1/1</span>
+        <button id="utilsNextPage" class="chip" aria-label="Siguiente">▶</button>
+      </div>
+
+      <!-- Página 1: Conversor Fecha → Ordinal -->
+      <section id="utilsPage1">
+        <h4 style="margin:0 0 8px 0" data-i18n="utils.page1.title">Conversor fecha → ordinal</h4>
+        <p class="tiny muted" id="utilsPage1Desc" data-i18n="utils.page1.desc">
+          Interpreta UTC y calendario gregoriano proléptico (año 0 = 1 a.C.). Origen ≡ “segundo 1”.
+        </p>
+
+        <div class="utils-grid">
+          <div>
+            <label data-i18n="utils.originLabel">Origen (segundo 1)</label>
+            <input
+              id="uOriginText"
+              placeholder="p. ej., 01-01-0001 12:35:12"
+              data-i18n-placeholder="utils.originPlaceholder"
+            />
+            <div class="tiny muted" id="uOriginIso">—</div>
+          </div>
+          <div>
+            <label data-i18n="utils.targetLabel">Destino</label>
+            <input
+              id="uTargetText"
+              placeholder="p. ej., 31-12-2025 23:59:59"
+              data-i18n-placeholder="utils.targetPlaceholder"
+            />
+            <div class="tiny muted" id="uTargetIso">—</div>
+          </div>
+        </div>
+
+        <div class="row mt8">
+          <label class="switch">
+            <span data-i18n="utils.unitLabel">Unidad</span>
+          </label>
+          <select id="uUnit" style="flex:1">
+            <option value="s" data-i18n="utils.unit.s">segundos (ordinal 1‑based)</option>
+            <option value="min" data-i18n="utils.unit.min">minutos (ordinal)</option>
+            <option value="h" data-i18n="utils.unit.h">horas (ordinal)</option>
+            <option value="d" data-i18n="utils.unit.d">días (ordinal)</option>
+            <option value="sem" data-i18n="utils.unit.sem">semanas (ordinal)</option>
+            <option value="mes" data-i18n="utils.unit.mes">meses (ordinal calendario)</option>
+            <option value="año" data-i18n="utils.unit.año">años (ordinal calendario)</option>
+            <option value="lustro" data-i18n="utils.unit.lustro">lustros (5 años)</option>
+            <option value="decada" data-i18n="utils.unit.decada">décadas (10 años)</option>
+            <option value="c25" data-i18n="utils.unit.c25">¼ de siglo (25 años)</option>
+            <option value="c50" data-i18n="utils.unit.c50">½ siglo (50 años)</option>
+            <option value="c75" data-i18n="utils.unit.c75">¾ de siglo (75 años)</option>
+            <option value="c100" data-i18n="utils.unit.c100">siglos (100 años)</option>
+          </select>
+          <button id="uCalc" class="btn" data-i18n="utils.calc">Calcular</button>
+        </div>
+
+        <div class="row mt8">
+          <label style="min-width:120px" data-i18n="utils.resultLabel">Resultado</label>
+          <input
+            id="uResult"
+            class="mono utils-result"
+            readonly
+            value="—"
+            title="Click para enviar a ‘Valor a normalizar’"
+            data-i18n-title="utils.resultTitle"
+          >
+          <button id="uCopy" class="btn small" data-i18n="utils.copy">Copiar</button>
+        </div>
+        <p class="tiny muted" data-i18n="utils.tip">
+          Consejo: haz click en el resultado para trasladarlo a “Valor a normalizar (observado)”.
+        </p>
+      </section>
+    </div>
+
+    <div class="modal-foot">
+      <button class="btn" data-close data-i18n="common.close">Cerrar</button>
+    </div>
+  </dialog>
+
+  <!-- Filtro heat‑waves para logos -->
+  <svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+    <filter id="heat-waves">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="1" seed="3">
+        <animate attributeName="baseFrequency"
+                 dur="7.5s"
+                 values="0.012 0.02; 0.02 0.04; 0.012 0.02; 0.012 0.02"
+                 keyTimes="0;0.3;0.6;1"
+                 calcMode="spline"
+                 keySplines="0.4 0 0.2 1; 0.4 0 0.2 1; 0 0 1 1"
+                 repeatCount="indefinite" />
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" scale="0">
+        <animate attributeName="scale"
+                 dur="7.5s"
+                 values="0;28;0;0"
+                 keyTimes="0;0.3;0.6;1"
+                 calcMode="spline"
+                 keySplines="0.4 0 0.2 1; 0.4 0 0.2 1; 0 0 1 1"
+                 repeatCount="indefinite" />
+      </feDisplacementMap>
+    </filter>
+  </svg>
+
+  <!-- === SW register === -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(()=>{});
+    }
+  </script>
+  <script src="i18n.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "Si utilizas este software, por favor cítalo. Si publicas resultados basados en el marco conceptual, considera citar también el ensayo de referencia (ver references)."
+title: "Normaliza Coherente"
+type: software
+version: "1.0.0"
+date-released: "2026-03-02"
+authors:
+  - family-names: "Calvo Espinosa"
+    given-names: "Andrés"
+    orcid: "https://orcid.org/0009-0005-4079-7418"
+license: "MIT"
+keywords:
+  - "Coherencia Universal"
+  - "Escala CU"
+  - "normalización"
+  - "métrica estructural"
+  - "PWA"
+  - "offline"
+references:
+  - type: article
+    title: "The Limited-Precision Universal Coherence Scale: Una Métrica Estructural Universal para Fenómenos Heterogéneos (ES-EN)"
+    authors:
+      - family-names: "Calvo Espinosa"
+        given-names: "Andrés"
+        orcid: "https://orcid.org/0009-0005-4079-7418"
+    doi: "10.5281/zenodo.18714577"
+    publisher: "Zenodo"
+    date-published: "2026-02-20"

@@ -1,0 +1,236 @@
+{
+  "common": {
+    "close": "닫기",
+    "copied": "복사됨."
+  },
+  "menu": {
+    "whatIsCU": "UC 스케일이란?",
+    "help": "도움말",
+    "language": "언어",
+    "themes": "테마",
+    "install": "설치",
+    "installUnavailable": "이 기기/브라우저에서는 설치를 사용할 수 없습니다."
+  },
+  "mode": {
+    "title": "모드",
+    "epLabel": "순수 구조",
+    "nrLabel": "기준 정규화",
+    "notes": "<strong>EP:</strong> 자동 부호(±) 및 크기 자르기 없음. <br><strong>NR:</strong> 비율을 [0,1]로 제한하고 ±0.999…990을 적용; 오버플로가 있으면 최소/최대 재정의를 제안합니다."
+  },
+  "reconv": {
+    "title": "스케일 재변환",
+    "templateLabel": "스케일 템플릿",
+    "templatePlaceholder": "— 템플릿 선택 —",
+    "saveFromTemplate": "➕ 정규화로 저장",
+    "normNameLabel": "정규화 이름",
+    "normNamePlaceholder": "예: 위도",
+    "unitLabel": "단위(선택)",
+    "unitPlaceholder": "예: 도",
+    "valueLabel": "정규화할 값(관측)",
+    "valuePlaceholder": "예: 37.5",
+    "knownValues": "알려진 값",
+    "utils": "유틸리티",
+    "minLabel": "최소",
+    "minPlaceholder": "예: -90",
+    "maxLabel": "최대",
+    "maxPlaceholder": "예: 90",
+    "saveNorm": "정규화 저장",
+    "applyNow": "지금 정규화",
+    "savedTitle": "저장된 정규화",
+    "useInInputs": "입력에 사용",
+    "delete": "삭제",
+    "tip": "팁: “위도 (−90, 90) 도”와 “경도 (−180, 180) 도”를 만들어 재사용하세요.",
+    "noNorms": "— 저장된 정규화가 없습니다 —",
+    "templateApplied": "템플릿이 적용되었습니다. “정규화할 값”을 입력하세요.",
+    "saved": "정규화가 저장되었습니다.",
+    "savedFromTemplate": "정규화로 저장되었습니다.",
+    "applied": "입력에 적용되었습니다.",
+    "use": "정규화가 입력에 적용되었습니다.",
+    "useNamed": "입력에서 “{name}” 사용 중.",
+    "loaded": "재변환에 “{name}” 불러옴.",
+    "deleted": "“{name}” 삭제됨.",
+    "errors": {
+      "noName": "정규화에 이름을 붙여 주세요.",
+      "revMinMax": "Min과 Max를 확인하세요.",
+      "complete": "값/Min/Max를 모두 입력하세요.",
+      "selectTemplate": "먼저 템플릿을 선택하세요.",
+      "revMinMaxSave": "저장하기 전에 Min과 Max를 확인하세요."
+    }
+  },
+  "inputs": {
+    "title": "입력",
+    "obsLabel": "관측값",
+    "obsPlaceholder": "0.000000000000010",
+    "minLabel": "관측 최소값",
+    "maxLabel": "관측 최대값",
+    "maxPlaceholder": "0.999999999999990",
+    "digits": "자리",
+    "vmoButton": "VmO (관측 가능한 최소값)",
+    "vmoMaxButton": "VMO (관측 가능한 최대값)",
+    "clear": "지우기"
+  },
+  "results": {
+    "title": "결과",
+    "cuLabel": "UC 값",
+    "cuExtLabel": "확장 UC 값",
+    "copy": "복사",
+    "note": "UC 스케일에서 <strong>0</strong>은 <em>도달 불가능한 점근 한계</em>입니다; 우리는 항상 최소/최대 표현 ±0.000…010 및 ±0.999…990으로 작업합니다."
+  },
+  "inverse": {
+    "title": "UC 입력 → 관측값 계산",
+    "description": "“정규화할 값”을 잠그고, UC(또는 확장 UC)로 재변환의 Min/Max를 사용해 관측값을 재구성합니다.",
+    "useCU": "UC 사용",
+    "useCUExt": "확장 UC 사용",
+    "sideBelow": "범위 밖: <strong>&lt; Min</strong>",
+    "sideAbove": "범위 밖: <strong>&gt; Max</strong>",
+    "calc": "관측값 계산",
+    "blocked": "역모드 활성: 결과에서 UC를 입력하세요.",
+    "blockedObs": "역모드 활성: 관측값이 잠겼습니다.",
+    "revMinMax": "재변환에서 Min과 Max를 입력하세요.",
+    "revCU": "결과에 유효한 UC를 입력하세요.",
+    "invalidCU": "유효하지 않은 UC입니다.",
+    "noteNR": "NR에서는 범위 밖 부호가 되돌릴 수 없으며, 범위 안으로 가정합니다.",
+    "done": "UC로부터 관측값 계산 → 재변환으로 전송됨."
+  },
+  "formula": {
+    "title": "적용된 수식",
+    "value": "값",
+    "note": "분수와 부호는 입력값과 선택한 모드에 따라 업데이트됩니다."
+  },
+  "about": {
+    "title": "UC 스케일이란?",
+    "intro": "<strong>보편적 일관성(UC) 스케일</strong>은 어떤 크기(온도, 거리, 확률 등)든 <em>정규화</em>하여 <strong>무차원</strong> 비교 가능한 값으로 만드는 방법입니다. 단위를 섞는 대신 기준 범위(<strong>Min</strong>과 <strong>Max</strong>)를 정의하고, 앱이 당신의 <strong>관측값</strong>이 그 범위 안(또는 밖) 어디에 위치하는지 표현합니다.",
+    "coreTitle": "핵심 아이디어",
+    "coreLi1": "범위를 정의합니다: <strong>Min</strong>과 <strong>Max</strong> (기준).",
+    "coreLi2": "상대 위치를 계산합니다: <code>(Obs − Min) / (Max − Min)</code>.",
+    "coreLi3": "결과를 운용 최대치(±1 회피)로 스케일합니다: <code>× (±0.999…990)</code>.",
+    "rangeTitle": "구조적 중심과 운용 범위",
+    "rangeP1": "UC에서 <strong>0</strong>은 <em>도달 불가능한 점근 한계</em>로 취급되는 <strong>이상적 구조 중심(Cₛ)</strong>을 나타냅니다. 그래서 실제로는 운용 최소값 <strong>VmO = 0.000000000000010</strong>(및 그 음의 대칭값)으로 작업합니다.",
+    "rangeP2": "상단 극값에서도 동일합니다: <strong>VMO = 0.999999999999990</strong>(및 그 음의 대칭값)을 사용해 점근 여유를 유지하고 ±1에서의 포화를 피합니다.",
+    "formulaTitle": "계산 방법(직접 모드)",
+    "formulaP1": "앱이 적용하는 변환은 다음과 같습니다: <code>(Obs − Min) / (Max − Min) × (±0.999…990)</code>. 분수는 범위 내 상대 위치를 측정하고, 계수는 운용 상한을 고정합니다.",
+    "formulaP2": "부호는 다음처럼 결정됩니다: <strong>Obs</strong>가 <code>[Min, Max]</code> 안이면 <strong>+</strong>. 밖이면 <strong>−</strong>로 표시됩니다(EP에서는 크기가 1을 넘을 수도 있음).",
+    "modesTitle": "EP와 NR의 차이",
+    "modesLi1": "<strong>EP(순수 구조)</strong>: 크기를 자르지 않습니다. Obs가 범위에서 멀어지면 비율이 &gt; 1이 될 수 있고 UC도 크기가 커질 수 있습니다(범위 밖 부호 유지).",
+    "modesLi2": "<strong>NR(기준 정규화)</strong>: 크기를 <code>[0,1]</code>로 제한합니다. Obs가 범위 밖이면 경고가 표시되며 결과는 ±0.999…990으로 제한됩니다.",
+    "extTitle": "확장 UC",
+    "extP1": "반올림된 UC 외에, 감사(감사·검증), 기록, 정확한 복사를 위해 더 높은 정밀도(소수 50자리)의 <strong>확장 UC</strong>를 표시합니다. 값은 동일하며 소수 자릿수만 더 많습니다.",
+    "refTitle": "참고 / 문서",
+    "refP1": "참고 에세이/문서(DOI/Zenodo): <a href=\"https://doi.org/10.5281/zenodo.18714577\" target=\"_blank\" rel=\"noopener\">10.5281/zenodo.18714577</a>."
+  },
+  "help": {
+    "title": "도움말",
+    "intro": "이 앱은 <strong>관측값 → UC</strong>(직접 모드) 또는 <strong>UC → 관측값</strong>(역모드) 변환을 제공합니다. 핵심은 기준 범위(<strong>Min</strong>, <strong>Max</strong>)를 정확히 정의하는 것입니다. 그 범위가 정규화의 “컨텍스트”이기 때문입니다.",
+    "quickTitle": "빠른 가이드(직접 모드)",
+    "quick1": "<strong>모드</strong>를 선택: EP 또는 NR.",
+    "quick2": "<strong>스케일 재변환</strong>에서 <strong>템플릿</strong>을 선택하거나 Min/Max 범위를 직접 입력하고, 원하면 관측값도 입력합니다.",
+    "quick3": "<strong>입력에 사용</strong>(또는 <strong>지금 정규화</strong>)을 눌러 값을 <strong>입력</strong>으로 복사하고 <strong>적용된 수식</strong>을 확인합니다.",
+    "quick4": "<strong>결과</strong>를 확인: <strong>UC 값</strong>과 <strong>확장 UC 값</strong>이 계산됩니다. 한 번 탭으로 복사할 수 있습니다.",
+    "quick5": "처음부터 다시 하려면 <strong>지우기</strong>를 사용하세요.",
+    "resultsTitle": "결과 해석",
+    "resultsLi1": "<strong>UC 값</strong>: 빠른 읽기를 위한 간결(반올림) 형식.",
+    "resultsLi2": "<strong>확장 UC 값</strong>: 최대 정밀도를 위한 소수 50자리 형식.",
+    "resultsLi3": "<code>±0.999…990</code> “알약”은 운용 계수와 사용된 부호를 나타냅니다. 일반적으로 <strong>+</strong> = 범위 내, <strong>−</strong> = 범위 밖(모드에 따라).",
+    "normTitle": "템플릿과 저장된 정규화",
+    "normLi1": "<strong>템플릿</strong>은 일반적인 스케일(pH, Kelvin, Likert 등)의 Min/Max(및 단위)를 빠르게 채워줍니다.",
+    "normLi2": "<strong>➕ 정규화로 저장</strong> 또는 <strong>정규화 저장</strong>으로 범위를 저장해 재사용할 수 있습니다.",
+    "normLi3": "<strong>입력에 사용</strong>으로 저장된 정규화를 계산기에 적용(재입력 없이)할 수 있습니다.",
+    "normLi4": "목록을 정리하려면 “저장된 정규화”에서 <strong>삭제</strong>를 사용하세요.",
+    "inverseTitle": "역모드(UC → 관측값)",
+    "inverseLi1": "<strong>UC 입력 → 관측값 계산</strong>을 활성화합니다.",
+    "inverseLi2": "<strong>재변환</strong>에 <strong>Min</strong>과 <strong>Max</strong>가 정의되어 있어야 합니다(관측값 재구성에 필요).",
+    "inverseLi3": "<strong>UC</strong> 또는 <strong>확장 UC</strong> 중 입력 방식을 선택하고, 결과에 값을 입력하면 앱이 관측값을 계산합니다.",
+    "inverseLi4": "<strong>EP</strong>에서 UC가 음수(범위 밖)라면 <strong>&lt; Min</strong>인지 <strong>&gt; Max</strong>인지 선택해 모호성을 해소할 수 있습니다.",
+    "inverseLi5": "<strong>NR</strong>에서는 범위 밖 부호를 유일하게 되돌릴 수 없으므로, 재구성 시 앱이 범위 안으로 가정합니다.",
+    "privacyTitle": "저장 및 개인정보",
+    "privacyP1": "앱은 100% 로컬에서 동작합니다: 정규화와 설정(언어/테마)은 기기 브라우저에 저장되며 서버로 전송되지 않습니다."
+  },
+  "constants": {
+    "title": "알려진 값",
+    "empty": "불러온 값이 없습니다.",
+    "toMin": "→ Min",
+    "toObs": "→ Obs",
+    "toMax": "→ Max",
+    "useMin": "최소에 넣기",
+    "useObs": "값(관측)에 넣기",
+    "useMax": "최대에 넣기",
+    "fieldMin": "최소",
+    "fieldObs": "값(관측)",
+    "fieldMax": "최대",
+    "assignedTo": "“{name}”을(를) {field}에 할당했습니다."
+  },
+  "utils": {
+    "title": "유틸리티",
+    "page1": {
+      "title": "날짜 → 서수 변환기",
+      "desc": "UTC 및 프로렙틱 그레고리력(연도 0 = 기원전 1년)을 해석합니다. 기준 ≡ “1초”."
+    },
+    "originLabel": "기준(1초)",
+    "originPlaceholder": "예: 01-01-0001 12:35:12",
+    "targetLabel": "목표",
+    "targetPlaceholder": "예: 31-12-2025 23:59:59",
+    "unitLabel": "단위",
+    "unit": {
+      "s": "초(1-based 서수)",
+      "min": "분(서수)",
+      "h": "시간(서수)",
+      "d": "일(서수)",
+      "sem": "주(서수)",
+      "mes": "월(달력 서수)",
+      "año": "년(달력 서수)",
+      "lustro": "러스트럼(5년)",
+      "decada": "10년(데케이드)",
+      "c25": "¼세기(25년)",
+      "c50": "½세기(50년)",
+      "c75": "¾세기(75년)",
+      "c100": "세기(100년)"
+    },
+    "calc": "계산",
+    "resultLabel": "결과",
+    "resultTitle": "클릭하여 ‘정규화할 값’으로 보내기",
+    "copy": "복사",
+    "tip": "팁: 결과를 클릭하면 “정규화할 값(관측)”으로 옮겨집니다.",
+    "toValue": "“정규화할 값”으로 옮겨졌습니다.",
+    "errors": {
+      "revDates": "날짜(기준/목표)를 확인하세요.",
+      "targetBefore": "목표는 기준보다 이후이거나 같아야 합니다.",
+      "generic": "계산할 수 없습니다."
+    }
+  },
+  "lang": {
+    "title": "언어",
+    "description": "인터페이스 언어를 선택하세요. 저장된 콘텐츠와 숫자 값은 변경되지 않습니다.",
+    "applied": "언어가 적용되었습니다."
+  },
+  "themes": {
+    "title": "테마",
+    "description": "시각 테마를 선택하세요. 앱 전체에 적용되며 이 기기에 저장됩니다.",
+    "default": "야간 기본",
+    "solar": "따뜻한 솔라",
+    "ocean": "차가운 오션",
+    "forest": "포레스트",
+    "monoLight": "라이트 모노크롬",
+    "monoDark": "다크 모노크롬",
+    "neon": "네온",
+    "paper": "따뜻한 페이퍼",
+    "applied": "테마가 적용되었습니다."
+  },
+  "footer": {
+    "appName": "Normaliza Coherente",
+    "subtitle": "보편적 일관성 스케일",
+    "version": "Normaliza Coherente — v1.0",
+    "author": "Andrés Calvo Espinosa",
+    "privacyBtn": "개인정보"
+  },
+  "errors": {
+    "equalMinMax": "Min과 Max는 같을 수 없습니다."
+  },
+  "coherence": {
+    "title": "보편적 일관성",
+    "text": "이 작품이 감사이자 다짐이 되길: “장식” 없이 같은 방향으로 생각하고, 느끼고, 행동하기; 윤리와 기쁨, 그리고 우리를 연결하는 모든 것에 대한 존중으로 계속 창조하기."
+  },
+  "privacy": {
+    "title": "개인정보",
+    "body": "<p><strong>OptimeFlow(s) Normaliza Coherente</strong>는 100% 로컬(브라우저)에서 동작합니다. 입력한 값을 외부 서버로 전송하지 않으며, 분석 도구나 트래커를 사용하지 않습니다.</p><h4>이 기기에 저장되는 데이터</h4><ul class=\"steps\"><li><strong>환경설정</strong>: 테마와 언어.</li><li><strong>저장된 정규화</strong>: 이름, 단위, Min/Max 범위(그리고 저장한 경우 관측값).</li><li><strong>오프라인 캐시</strong>(PWA로 설치한 경우): 인터넷 없이 열 수 있도록 브라우저가 앱 파일을 저장할 수 있습니다.</li></ul><h4>브라우저 권한</h4><ul class=\"steps\"><li><strong>클립보드</strong>: “복사”를 누를 때만 사용됩니다.</li><li><strong>저장소</strong>: 환경설정과 정규화를 <em>localStorage</em>에 저장하는 데 사용됩니다.</li></ul><h4>연결</h4><p>앱을 불러오거나 업데이트하기 위해 브라우저가 동일한 출처에서 파일(HTML/CSS/JS)을 다운로드할 수 있습니다. 이는 사용 데이터 전송을 포함하지 않습니다. 오프라인/PWA 모드를 활성화하면 <em>Service Worker</em>가 해당 파일을 캐시할 수 있습니다.</p><h4>데이터 삭제 방법</h4><p>브라우저 설정(사이트 데이터: 저장소/localStorage 및 캐시)에서 모두 삭제하거나, 설치한 경우 PWA를 제거하면 됩니다.</p><h4>외부 링크</h4><p>외부 사이트(예: DOI/Zenodo 또는 ORCID)로 연결되는 링크를 열면, 해당 사이트의 개인정보 정책이 적용됩니다.</p>"
+  }
+}

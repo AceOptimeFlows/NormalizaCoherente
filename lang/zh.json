@@ -1,0 +1,236 @@
+{
+  "common": {
+    "close": "关闭",
+    "copied": "已复制。"
+  },
+  "menu": {
+    "whatIsCU": "什么是 UC 标度？",
+    "help": "帮助",
+    "language": "语言",
+    "themes": "主题",
+    "install": "安装",
+    "installUnavailable": "此设备/浏览器不支持安装。"
+  },
+  "mode": {
+    "title": "模式",
+    "epLabel": "纯结构",
+    "nrLabel": "参考归一化",
+    "notes": "<strong>EP:</strong> 自动符号(±)，不裁剪幅度。 <br><strong>NR:</strong> 将比值限制在[0,1]并应用 ±0.999…990；如发生溢出，将建议重新定义最小/最大值。"
+  },
+  "reconv": {
+    "title": "标度重映射",
+    "templateLabel": "标度模板",
+    "templatePlaceholder": "— 选择模板 —",
+    "saveFromTemplate": "➕ 保存为归一化",
+    "normNameLabel": "归一化名称",
+    "normNamePlaceholder": "例如：纬度",
+    "unitLabel": "单位（可选）",
+    "unitPlaceholder": "例如：度",
+    "valueLabel": "待归一化的值（观测）",
+    "valuePlaceholder": "例如：37.5",
+    "knownValues": "已知值",
+    "utils": "工具",
+    "minLabel": "最小值",
+    "minPlaceholder": "例如：-90",
+    "maxLabel": "最大值",
+    "maxPlaceholder": "例如：90",
+    "saveNorm": "保存归一化",
+    "applyNow": "立即归一化",
+    "savedTitle": "已保存的归一化",
+    "useInInputs": "用于输入",
+    "delete": "删除",
+    "tip": "提示：创建“纬度（−90, 90）度”和“经度（−180, 180）度”以便复用。",
+    "noNorms": "— 没有已保存的归一化 —",
+    "templateApplied": "已应用模板。请填写“待归一化的值”。",
+    "saved": "已保存归一化。",
+    "savedFromTemplate": "已保存为归一化。",
+    "applied": "已应用到输入。",
+    "use": "归一化已应用到输入。",
+    "useNamed": "在输入中使用“{name}”。",
+    "loaded": "已在重映射中加载“{name}”。",
+    "deleted": "已删除“{name}”。",
+    "errors": {
+      "noName": "请为归一化命名。",
+      "revMinMax": "请检查 Min 和 Max。",
+      "complete": "请填写 值/Min/Max。",
+      "selectTemplate": "请先选择模板。",
+      "revMinMaxSave": "保存前请检查 Min 和 Max。"
+    }
+  },
+  "inputs": {
+    "title": "输入",
+    "obsLabel": "观测值",
+    "obsPlaceholder": "0.000000000000010",
+    "minLabel": "观测最小值",
+    "maxLabel": "观测最大值",
+    "maxPlaceholder": "0.999999999999990",
+    "digits": "位数",
+    "vmoButton": "VmO（最小可观测值）",
+    "vmoMaxButton": "VMO（最大可观测值）",
+    "clear": "清空"
+  },
+  "results": {
+    "title": "结果",
+    "cuLabel": "UC 值",
+    "cuExtLabel": "扩展 UC 值",
+    "copy": "复制",
+    "note": "在 UC 标度中，<strong>0</strong>是一个<em>不可达的渐近极限</em>；我们始终使用最小/最大表达式 ±0.000…010 与 ±0.999…990。"
+  },
+  "inverse": {
+    "title": "输入 UC → 计算观测值",
+    "description": "锁定“待归一化的值”，使用 UC（或扩展 UC）以及重映射中的 Min/Max 来重建观测值。",
+    "useCU": "使用 UC",
+    "useCUExt": "使用扩展 UC",
+    "sideBelow": "超出范围：<strong>&lt; Min</strong>",
+    "sideAbove": "超出范围：<strong>&gt; Max</strong>",
+    "calc": "计算观测值",
+    "blocked": "逆向模式已启用：请在结果中输入 UC。",
+    "blockedObs": "逆向模式已启用：观测值已锁定。",
+    "revMinMax": "请在重映射中填写 Min 和 Max。",
+    "revCU": "请在结果中输入有效的 UC。",
+    "invalidCU": "UC 无效。",
+    "noteNR": "在 NR 中，超出范围的符号不可逆；重建时默认在范围内。",
+    "done": "已由 UC 计算观测值 → 已发送到重映射。"
+  },
+  "formula": {
+    "title": "应用公式",
+    "value": "值",
+    "note": "分数与符号会随你的输入与所选模式自动更新。"
+  },
+  "about": {
+    "title": "什么是 UC 标度？",
+    "intro": "<strong>普遍一致性（UC）标度</strong>是一种把任何量（温度、距离、概率等）<em>归一化</em>为<strong>无量纲</strong>、可比较数值的方法。你无需混用单位，只需定义参考范围（<strong>Min</strong> 与 <strong>Max</strong>），应用就会表达你的<strong>观测值</strong>落在该范围之内（或之外）的什么位置。",
+    "coreTitle": "核心思路",
+    "coreLi1": "定义范围：<strong>Min</strong> 与 <strong>Max</strong>（参考）。",
+    "coreLi2": "计算相对位置：<code>(Obs − Min) / (Max − Min)</code>。",
+    "coreLi3": "将结果缩放到运作上限（避免 ±1）：<code>× (±0.999…990)</code>。",
+    "rangeTitle": "结构中心与运作范围",
+    "rangeP1": "在 UC 中，<strong>0</strong>代表一个<strong>理想结构中心（Cₛ）</strong>，被视为<em>不可达的渐近极限</em>。因此实践中使用运作最小值：<strong>VmO = 0.000000000000010</strong>（及其负对称）。",
+    "rangeP2": "在上端同样如此：使用<strong>VMO = 0.999999999999990</strong>（及其负对称）以保留渐近余量并避免在 ±1 饱和。",
+    "formulaTitle": "如何计算（直接模式）",
+    "formulaP1": "应用所使用的转换为：<code>(Obs − Min) / (Max − Min) × (±0.999…990)</code>。分数衡量在范围内的相对位置；乘数固定运作上限。",
+    "formulaP2": "符号规则：若<strong>Obs</strong>在<code>[Min, Max]</code>内，则结果为<strong>+</strong>；若在范围外，则标记为<strong>−</strong>（在 EP 中，幅度还可能超过 1）。",
+    "modesTitle": "EP 与 NR 的区别",
+    "modesLi1": "<strong>EP（纯结构）</strong>：不裁剪幅度。Obs 偏离范围时，比值可能 &gt; 1，UC 的幅度也可能增大（保持范围外符号）。",
+    "modesLi2": "<strong>NR（参考归一化）</strong>：将幅度限制在<code>[0,1]</code>。Obs 超出范围会提示警告，结果限制为 ±0.999…990。",
+    "extTitle": "扩展 UC",
+    "extP1": "除四舍五入后的 UC 外，还会显示更高精度（50 位小数）的<strong>扩展 UC</strong>，用于审计、记录或精确复制。同一数值，仅小数位更多。",
+    "refTitle": "参考 / 论文",
+    "refP1": "参考论文/文档（DOI/Zenodo）：<a href=\"https://doi.org/10.5281/zenodo.18714577\" target=\"_blank\" rel=\"noopener\">10.5281/zenodo.18714577</a>。"
+  },
+  "help": {
+    "title": "帮助",
+    "intro": "本应用可进行<strong>观测值 → UC</strong>（直接模式）或<strong>UC → 观测值</strong>（逆向模式）的转换。关键在于正确定义参考范围（<strong>Min</strong> 与 <strong>Max</strong>），因为该范围就是归一化的“上下文”。",
+    "quickTitle": "快速指南（直接模式）",
+    "quick1": "选择<strong>模式</strong>：EP 或 NR。",
+    "quick2": "在<strong>标度重映射</strong>中选择<strong>模板</strong>，或输入你的 Min/Max（如需也可输入观测值）。",
+    "quick3": "点击<strong>用于输入</strong>（或<strong>立即归一化</strong>）把数值复制到<strong>输入</strong>并查看<strong>应用公式</strong>。",
+    "quick4": "查看<strong>结果</strong>：会计算<strong>UC 值</strong>与<strong>扩展 UC 值</strong>，可一键复制。",
+    "quick5": "想从头开始，使用<strong>清空</strong>。",
+    "resultsTitle": "如何解读结果",
+    "resultsLi1": "<strong>UC 值</strong>：用于快速阅读的紧凑（四舍五入）格式。",
+    "resultsLi2": "<strong>扩展 UC 值</strong>：同一数值但保留 50 位小数以获得最高精度。",
+    "resultsLi3": "带有<code>±0.999…990</code>的“胶囊”表示运作系数与所用符号。一般：<strong>+</strong>＝范围内，<strong>−</strong>＝范围外（取决于模式）。",
+    "normTitle": "模板与已保存归一化",
+    "normLi1": "<strong>模板</strong>可快速填充常见标度（pH、Kelvin、Likert 等）的 Min/Max（以及单位）。",
+    "normLi2": "通过<strong>➕ 保存为归一化</strong>或<strong>保存归一化</strong>保存范围以便复用。",
+    "normLi3": "使用<strong>用于输入</strong>将已保存归一化应用到计算器，无需重复输入。",
+    "normLi4": "想清理列表，在“已保存的归一化”中使用<strong>删除</strong>。",
+    "inverseTitle": "逆向模式（UC → 观测值）",
+    "inverseLi1": "启用<strong>输入 UC → 计算观测值</strong>。",
+    "inverseLi2": "确保在<strong>重映射</strong>中已定义<strong>Min</strong>与<strong>Max</strong>（重建观测值必需）。",
+    "inverseLi3": "选择输入<strong>UC</strong>或<strong>扩展 UC</strong>，在结果中输入后即可计算观测值。",
+    "inverseLi4": "在<strong>EP</strong>中，若 UC 为负（范围外），可选择对应<strong>&lt; Min</strong>或<strong>&gt; Max</strong>以消除歧义。",
+    "inverseLi5": "在<strong>NR</strong>中，范围外符号不可唯一逆推；重建时默认在范围内。",
+    "privacyTitle": "保存与隐私",
+    "privacyP1": "应用 100% 本地运行：归一化与偏好（语言/主题）保存在设备浏览器中，不会发送到任何服务器。"
+  },
+  "constants": {
+    "title": "已知值",
+    "empty": "没有已加载的值。",
+    "toMin": "→ Min",
+    "toObs": "→ Obs",
+    "toMax": "→ Max",
+    "useMin": "放入最小值",
+    "useObs": "放入值（观测）",
+    "useMax": "放入最大值",
+    "fieldMin": "最小值",
+    "fieldObs": "值（观测）",
+    "fieldMax": "最大值",
+    "assignedTo": "已将“{name}”分配到 {field}。"
+  },
+  "utils": {
+    "title": "工具",
+    "page1": {
+      "title": "日期 → 序数转换器",
+      "desc": "解释 UTC 与前推格里高利历（年份 0 = 公元前 1 年）。起点 ≡ “第 1 秒”。"
+    },
+    "originLabel": "起点（第 1 秒）",
+    "originPlaceholder": "例如：01-01-0001 12:35:12",
+    "targetLabel": "目标",
+    "targetPlaceholder": "例如：31-12-2025 23:59:59",
+    "unitLabel": "单位",
+    "unit": {
+      "s": "秒（从 1 开始的序数）",
+      "min": "分钟（序数）",
+      "h": "小时（序数）",
+      "d": "天（序数）",
+      "sem": "周（序数）",
+      "mes": "月（历法序数）",
+      "año": "年（历法序数）",
+      "lustro": "五年期（5 年）",
+      "decada": "十年（10 年）",
+      "c25": "¼ 世纪（25 年）",
+      "c50": "½ 世纪（50 年）",
+      "c75": "¾ 世纪（75 年）",
+      "c100": "世纪（100 年）"
+    },
+    "calc": "计算",
+    "resultLabel": "结果",
+    "resultTitle": "点击发送到“待归一化的值”",
+    "copy": "复制",
+    "tip": "提示：点击结果可将其转移到“待归一化的值（观测）”。",
+    "toValue": "已转移到“待归一化的值”。",
+    "errors": {
+      "revDates": "请检查日期（起点与目标）。",
+      "targetBefore": "目标必须晚于或等于起点。",
+      "generic": "无法计算。"
+    }
+  },
+  "lang": {
+    "title": "语言",
+    "description": "选择界面语言。已保存内容与数值不会被修改。",
+    "applied": "语言已应用。"
+  },
+  "themes": {
+    "title": "主题",
+    "description": "选择视觉主题。将应用于整个应用，并保存在此设备上。",
+    "default": "夜间默认",
+    "solar": "暖阳",
+    "ocean": "冷海",
+    "forest": "森林",
+    "monoLight": "浅色单色",
+    "monoDark": "深色单色",
+    "neon": "霓虹",
+    "paper": "暖纸",
+    "applied": "主题已应用。"
+  },
+  "footer": {
+    "appName": "Normaliza Coherente",
+    "subtitle": "普遍一致性标度",
+    "version": "Normaliza Coherente — v1.0",
+    "author": "Andrés Calvo Espinosa",
+    "privacyBtn": "隐私"
+  },
+  "errors": {
+    "equalMinMax": "Min 与 Max 不能相等。"
+  },
+  "coherence": {
+    "title": "普遍一致性",
+    "text": "愿此作品既是感谢也是承诺：不加“装饰”，在同一方向上思考、感受与行动；以伦理、喜悦与对一切连接我们的事物的尊重继续创造。"
+  },
+  "privacy": {
+    "title": "隐私",
+    "body": "<p><strong>OptimeFlow(s) Normaliza Coherente</strong> 100% 本地运行（在你的浏览器中）。我们不会把你输入的数值发送到外部服务器，也不使用分析或追踪器。</p><h4>保存在此设备上的数据</h4><ul class=\"steps\"><li><strong>偏好设置</strong>：主题与语言。</li><li><strong>已保存的归一化</strong>：名称、单位与 Min/Max 范围（以及你保存时的观测值）。</li><li><strong>离线缓存</strong>（若以 PWA 安装）：浏览器可能会存储应用文件，以便无网络时打开。</li></ul><h4>浏览器权限</h4><ul class=\"steps\"><li><strong>剪贴板</strong>：仅在你点击“复制”时使用。</li><li><strong>存储</strong>：用于将偏好与归一化保存到 <em>localStorage</em>。</li></ul><h4>连接</h4><p>为加载或更新应用，你的浏览器可能会从同一来源下载文件（HTML/CSS/JS）。这不包括发送你的使用数据。若启用离线/PWA 模式，<em>Service Worker</em> 可能会缓存这些文件。</p><h4>如何删除你的数据</h4><p>你可以在浏览器设置中删除全部内容（站点数据：存储/localStorage 与缓存），或在已安装的情况下卸载 PWA。</p><h4>外部链接</h4><p>若打开指向外部站点的链接（例如 DOI/Zenodo 或 ORCID），将适用它们各自的隐私政策。</p>"
+  }
+}

@@ -1,0 +1,1246 @@
+:root{
+  /* Paleta base (oscura) */
+  --bg:#0d0e12;
+  --bg2:#141418;
+  --card:#171a22;
+  --muted:#a8abb4;
+  --text:#eceff3;
+  --ok:#22c55e;
+  --bad:#ef4444;
+  --accent:#f4bf62;
+  --chip:#1b1c22;
+  --line:#242831;
+
+  --surface:#141821;
+  --surface2:#0f1217;
+  --input-bg:#0f1217;
+  --input-border:#222632;
+  --shadow:0 8px 28px rgba(0,0,0,.28);
+
+  --viz1:#101319;
+  --viz2:#0b0d12;
+  --radius:12px;
+  --radius-sm:8px;
+
+  /* Variables extra para header/footer tipo ColoCode */
+  --border: var(--line);
+  --ink: var(--text);
+  --panel: var(--card);
+  --primary: var(--accent);
+  --ghost: #111827;
+
+  /* Colores para bloques de decimales */
+  --cu-blue:#3b82f6;
+  --cu-gold:#f4bf62;
+
+  /* Espaciado dinámico (se actualiza desde JS con ResizeObserver) */
+  --footer-h: 64px;
+  --footer-space: 112px;
+
+  /* ✅ Safe areas (notch / iPhone / landscape) */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+
+  /* ✅ Vidrio / blur (mismo “feel” que ensaYOnesa) */
+  --glass: blur(18px) saturate(1.1);
+
+  /* ✅ Compat estilo OptimeFlow(s) (como ensaYOnesa) */
+  --border-subtle: color-mix(in srgb, var(--border) 65%, transparent);
+  --text-soft: var(--muted);
+  --accent-blue: var(--accent);
+}
+
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  padding:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+
+  /* ✅ Evita scroll horizontal por rótulos largos en móvil */
+  overflow-x:hidden;
+}
+
+body{
+  min-height:100dvh;
+  touch-action:manipulation;
+}
+
+.mono{
+  font-family:ui-monospace,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+}
+.muted{ color:var(--muted); }
+
+/* Accesibilidad: salto al contenido */
+.skip-link{
+  position:absolute;
+  left:12px;
+  top:12px;
+  z-index:1000;
+  padding:10px 12px;
+  border-radius:999px;
+  background:var(--surface2);
+  border:1px solid var(--input-border);
+  color:var(--text);
+  text-decoration:none;
+  transform:translateY(-140%);
+  transition:transform .18s ease;
+}
+.skip-link:focus{
+  transform:translateY(0);
+  outline:none;
+}
+
+/* Utilidad accesible */
+.sr-only{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+
+/* Focus ring consistente */
+:focus-visible{
+  outline:3px solid color-mix(in oklab, var(--accent) 55%, white);
+  outline-offset:2px;
+}
+
+/* Estados deshabilitado */
+button:disabled,
+.btn:disabled,
+.chip:disabled,
+input:disabled,
+select:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+
+/* === THEMES (8 temas visuales) ======================================= */
+
+/* 1) Default nocturno (por defecto en :root) */
+
+/* 2) Solar cálido */
+html[data-theme="solar"]{
+  --bg:#1f2933;
+  --bg2:#202937;
+  --card:#29354a;
+  --text:#fdf7e3;
+  --muted:#d1c8aa;
+  --accent:#f9c46b;
+  --chip:#2c3444;
+  --line:#3b465c;
+  --surface:#222b3a;
+  --surface2:#1a2230;
+  --input-bg:#151b24;
+  --input-border:#3b465c;
+  --ok:#5ee2a0;
+  --bad:#ff6b7a;
+}
+
+/* 3) Océano frío */
+html[data-theme="ocean"]{
+  --bg:#020617;
+  --bg2:#020817;
+  --card:#020b23;
+  --text:#e5f3ff;
+  --muted:#94a3b8;
+  --accent:#38bdf8;
+  --chip:#020617;
+  --line:#1e293b;
+  --surface:#020818;
+  --surface2:#020617;
+  --input-bg:#020617;
+  --input-border:#1e293b;
+  --ok:#22c55e;
+  --bad:#f97373;
+}
+
+/* 4) Bosque */
+html[data-theme="forest"]{
+  --bg:#020b07;
+  --bg2:#04120b;
+  --card:#062015;
+  --text:#e5fbe9;
+  --muted:#92b29c;
+  --accent:#4ade80;
+  --chip:#04140d;
+  --line:#14532d;
+  --surface:#041b11;
+  --surface2:#02150c;
+  --input-bg:#02150c;
+  --input-border:#14532d;
+}
+
+/* 5) Monocromo claro */
+html[data-theme="mono-light"]{
+  --bg:#f5f5f5;
+  --bg2:#e5e5e5;
+  --card:#ffffff;
+  --text:#111827;
+  --muted:#6b7280;
+  --accent:#111827;
+  --chip:#e5e7eb;
+  --line:#d1d5db;
+  --surface:#ffffff;
+  --surface2:#f3f4f6;
+  --input-bg:#ffffff;
+  --input-border:#d1d5db;
+  --ok:#16a34a;
+  --bad:#dc2626;
+}
+
+/* 6) Monocromo oscuro */
+html[data-theme="mono-dark"]{
+  --bg:#020617;
+  --bg2:#020617;
+  --card:#020617;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --accent:#e5e7eb;
+  --chip:#020617;
+  --line:#111827;
+  --surface:#020617;
+  --surface2:#020617;
+  --input-bg:#020617;
+  --input-border:#111827;
+}
+
+/* 7) Neón */
+html[data-theme="neon"]{
+  --bg:#02010a;
+  --bg2:#050016;
+  --card:#050020;
+  --text:#f9f9ff;
+  --muted:#a5b4fc;
+  --accent:#f97316;
+  --chip:#020014;
+  --line:#4f46e5;
+  --surface:#050016;
+  --surface2:#020010;
+  --input-bg:#020010;
+  --input-border:#4f46e5;
+  --ok:#22c55e;
+  --bad:#fb7185;
+}
+
+/* 8) Papel cálido */
+html[data-theme="paper"]{
+  --bg:#fdf8ee;
+  --bg2:#f7ecdc;
+  --card:#fefcf6;
+  --text:#2b2114;
+  --muted:#8b7355;
+  --accent:#d97706;
+  --chip:#f2e4cf;
+  --line:#e0d0b6;
+  --surface:#fefcf6;
+  --surface2:#f8efe1;
+  --input-bg:#fefdf9;
+  --input-border:#e0d0b6;
+  --ok:#15803d;
+  --bad:#b91c1c;
+}
+
+/* === HEADER estilo OptimeFlow(s) (compacto como ensaYOnesa) ======================= */
+
+.brand-header{
+  position:sticky;
+  top:0;
+  z-index:40;
+
+  padding:
+    calc(6px + var(--safe-top))
+    calc(14px + var(--safe-right))
+    6px
+    calc(14px + var(--safe-left));
+
+  background:
+    radial-gradient(circle at 0% 0%, color-mix(in srgb, var(--muted) 18%, transparent), transparent 55%),
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 55%),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--bg) 92%, transparent),
+      color-mix(in srgb, var(--bg) 70%, transparent)
+    );
+
+  backdrop-filter:var(--glass);
+  border-bottom:1px solid var(--border);
+  box-shadow:0 18px 40px rgba(0,0,0,0.85);
+}
+
+/* bloque de marca */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  position:relative;
+  min-height:40px;
+  font-weight:700;
+  letter-spacing:.2px;
+  min-width:0;
+}
+
+.brand-title{
+  flex:1 1 auto;
+  min-width:0;
+}
+
+.brand-logo{
+  height:clamp(32px, 5vw, 48px);
+  width:clamp(32px, 5vw, 48px);
+  object-fit:contain;
+  border-radius:10px;
+  flex-shrink:0;
+}
+
+.brand-logo.heat{
+  filter:
+    url(#heat-waves)
+    drop-shadow(0 0 6px rgba(255,255,255,.35))
+    drop-shadow(0 0 16px color-mix(in srgb, var(--accent) 55%, transparent));
+}
+
+.brand-word{
+  font-weight:800;
+  font-size:clamp(1.6rem, 2.8vw, 2.0rem);
+  letter-spacing:.2px;
+  white-space:nowrap;
+  line-height:1;
+}
+
+.brand-neon{
+  filter:hue-rotate(0deg);
+  animation:hue 12s linear infinite, glow 3.2s ease-in-out infinite;
+  color:#000;
+}
+
+/* Tagline centrado */
+.tagline{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%);
+  display:flex;
+  align-items:center;
+  gap:0;
+  line-height:1;
+  white-space:nowrap;
+  pointer-events:none;
+  text-align:center;
+
+  min-width:0;
+  max-width:100%;
+  font-size:1rem; /* base para escalar glyphs en em */
+}
+
+/* Glyphs del rótulo animado */
+.glyph{
+  display:inline-block;
+  transform-origin:center bottom;
+}
+.sun-i{
+  font-weight:900;
+  font-size:1.35em;
+  color:#fff;
+  text-shadow:
+    0 0 8px rgba(204,192,192,.9),
+    0 0 22px rgba(255,255,255,.8),
+    0 0 40px rgba(207,229,248,.65);
+}
+.orb-gold{
+  font-weight:900;
+  font-size:1.55em;
+  color:#ffe08a;
+  text-shadow:
+    0 0 8px rgba(255,220,120,.95),
+    0 0 22px rgba(255,190,60,.85),
+    0 0 40px rgba(255,160,0,.65);
+  animation:goldGlow 6s ease-in-out infinite;
+}
+.tag-gap{
+  display:inline-block;
+  width:clamp(10px,2.5vw,28px);
+}
+
+@keyframes hue{
+  from{filter:hue-rotate(0)}
+  to{filter:hue-rotate(360deg)}
+}
+@keyframes glow{
+  0%,100%{
+    text-shadow:0 0 6px rgba(255,255,255,.25), 0 0 14px rgba(34,211,238,.55);
+  }
+  50%{
+    text-shadow:0 0 10px rgba(255,255,255,.5), 0 0 24px rgba(167,139,250,.7);
+  }
+}
+@keyframes goldGlow{
+  0%,100%{
+    text-shadow:0 0 8px rgba(255,220,120,.80),
+                0 0 22px rgba(255,190, 60,.55),
+                0 0 40px rgba(255,160,  0,.40);
+  }
+  50%{
+    text-shadow:0 0 10px rgba(255,230,150,.95),
+                0 0 28px rgba(255,210,100,.80),
+                0 0 48px rgba(255,190, 60,.60);
+  }
+}
+
+/* Controles rápidos (nav header) */
+.quick-controls{
+  margin-left:auto;
+  display:flex;
+  gap:8px;
+  align-items:center;
+  flex-wrap:nowrap;
+  justify-content:flex-end;
+}
+
+.topnav{
+  display:flex;
+  gap:8px;
+  flex-wrap:nowrap;
+}
+
+/* ✅ Botón estilo ensaYOnesa */
+.icon-button{
+  border-radius:999px;
+  border:1px solid var(--border-subtle);
+  background:
+    radial-gradient(circle at 30% 0%, rgba(255,255,255,0.16), transparent 55%),
+    linear-gradient(145deg, color-mix(in srgb, var(--bg) 96%, transparent), color-mix(in srgb, var(--bg) 80%, transparent));
+  padding:6px 10px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  box-shadow:
+    0 8px 22px rgba(0,0,0,0.55),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+  transition:
+    background .15s ease,
+    border-color .15s ease,
+    transform .08s ease,
+    box-shadow .15s ease,
+    filter .16s ease;
+}
+.icon-button:hover{
+  background:
+    radial-gradient(circle at 30% 0%, rgba(255,255,255,0.22), transparent 55%),
+    linear-gradient(145deg, color-mix(in srgb, var(--bg) 88%, transparent), color-mix(in srgb, var(--bg) 70%, transparent));
+  border-color:var(--accent);
+  box-shadow:
+    0 10px 26px rgba(0,0,0,0.65),
+    0 0 20px color-mix(in srgb, var(--accent) 28%, transparent);
+  transform:translateY(-1px);
+  filter:brightness(1.03);
+}
+.icon-button:active{
+  transform:translateY(0);
+  box-shadow:
+    0 6px 16px rgba(0,0,0,0.7),
+    inset 0 0 0 1px rgba(0,0,0,0.18);
+  filter:brightness(0.98);
+}
+
+.icon-gear{
+  width:18px;
+  height:18px;
+  border-radius:999px;
+  border:2px solid var(--accent);
+  box-shadow:0 0 0 1px rgba(0,0,0,0.25);
+  position:relative;
+}
+.icon-gear::before,
+.icon-gear::after{
+  content:"";
+  position:absolute;
+  inset:4px;
+  border-radius:999px;
+  border:2px solid color-mix(in srgb, var(--muted) 75%, transparent);
+}
+.icon-gear::after{
+  inset:7px;
+  border-width:3px;
+  border-color:var(--accent);
+}
+
+/* Menú engranaje */
+.gear-menu-wrapper{ position:relative; }
+
+.gear-menu{
+  position:absolute;
+  right:0;
+  top:120%;
+  min-width:200px;
+  max-width:min(92vw, 320px);
+  max-height: min(60vh, 420px);
+  overflow:auto;
+  background:var(--surface2);
+  border:1px solid var(--input-border);
+  border-radius:10px;
+  box-shadow:var(--shadow);
+  padding:6px;
+  display:none;
+}
+
+.gear-menu.open{ display:block; }
+
+.gear-item{
+  width:100%;
+  text-align:left;
+  border:none;
+  background:transparent;
+  color:var(--text);
+  padding:10px 10px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:0.95rem;
+}
+
+.gear-item:hover{
+  background:color-mix(in oklab,var(--chip) 80%, var(--accent));
+}
+
+/* ✅ Móvil/tablet en vertical: mismo comportamiento que ensaYOnesa */
+@media (max-width:1024px) and (orientation: portrait){
+  .brand{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    min-height:40px;
+    flex-wrap:nowrap;
+  }
+
+  /* Ocultar “OptimeFlow(s)” para compactar */
+  .brand-word{ display:none; }
+
+  /* Rótulo dentro del flujo, una línea, sin crecer en altura */
+  .tagline{
+    position:static;
+    transform:none;
+    flex:1;
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    pointer-events:none;
+
+    white-space:nowrap;
+    min-width:0;
+    max-width:100%;
+    overflow:hidden;
+
+    font-size:clamp(0.78rem, 3.8vw, 0.98rem);
+  }
+
+  .quick-controls{
+    margin-left:8px;
+    flex-shrink:0;
+  }
+}
+
+/* === Layout y superficies =============================================== */
+.container{
+  max-width:1280px;
+  margin:20px auto;
+  padding:0 20px calc(var(--footer-space) + env(safe-area-inset-bottom));
+}
+
+.card{
+  background:linear-gradient(180deg,var(--card),var(--surface));
+  border:1px solid rgba(255,255,255,.04);
+  border-radius:var(--radius);
+  padding:16px;
+  margin-bottom:16px;
+  box-shadow:0 0 0 1px rgba(255,255,255,.02) inset, var(--shadow);
+}
+
+.side-card{
+  background:linear-gradient(180deg,var(--card),var(--surface));
+  border:1px solid var(--input-border);
+  border-radius:var(--radius);
+  padding:12px;
+  box-shadow:var(--shadow);
+}
+
+h3,h4{ margin:0 0 8px 0; }
+
+label{
+  display:block;
+  font-size:13px;
+  color:var(--muted);
+  margin:6px 0 4px;
+}
+
+input,select,textarea{
+  width:100%;
+  padding:10px 12px;
+  border-radius:var(--radius-sm);
+  border:1px solid var(--input-border);
+  background:var(--input-bg);
+  color:var(--text);
+}
+
+input:focus,select:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px color-mix(in oklab, var(--accent) 30%, transparent);
+}
+
+input[readonly]{opacity:.95}
+input.is-locked{
+  background:color-mix(in oklab, var(--input-bg) 88%, var(--chip));
+  border-style:dashed;
+}
+
+.row{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.grid2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.grid3{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:12px;
+}
+
+.mt8{margin-top:8px}
+.mb8{margin-bottom:8px}
+
+.notes{ font-size:13px; color:var(--muted); }
+.tiny{ font-size:12px; color:var(--muted); }
+.error{ color:#fca5a5; }
+
+.badge{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:999px;
+  background:#1f2937;
+}
+
+.badge.ok{
+  background:#032a16;
+  color:#a7f3d0;
+}
+
+.btn{
+  background:var(--chip);
+  border:1px solid #334155;
+  color:var(--text);
+  padding:10px 14px;
+  border-radius:var(--radius-sm);
+  cursor:pointer;
+  min-height:44px;
+}
+
+.btn:hover{
+  background:color-mix(in oklab,var(--chip) 85%,var(--accent));
+}
+
+.btn.small{
+  font-size:12px;
+  padding:8px 12px;
+  min-height:36px;
+}
+
+.btn.ghost{ background:transparent; }
+
+.chip{
+  background:var(--chip);
+  border:1px solid #111827;
+  color:var(--text);
+  border-radius:999px;
+  padding:8px 12px;
+  cursor:pointer;
+  min-height:36px;
+}
+
+.chip.ghost{ background:transparent; }
+
+.switch{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-right:12px;
+}
+
+.grow{flex:1}
+
+/* Grid de idioma */
+.lang-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:8px;
+}
+
+/* Grid de temas */
+.themes-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:8px;
+}
+
+.theme-chip{
+  border-radius:999px;
+  border:1px solid var(--input-border);
+  background:var(--chip);
+  color:var(--text);
+  padding:8px 12px;
+  text-align:center;
+  cursor:pointer;
+  font-size:0.9rem;
+}
+
+.theme-chip:hover{
+  background:color-mix(in oklab,var(--chip) 80%, var(--accent));
+}
+
+.theme-chip.active,
+.theme-chip[aria-pressed="true"]{
+  border-color:color-mix(in oklab, var(--accent) 75%, white);
+  box-shadow:0 0 0 2px color-mix(in oklab, var(--accent) 30%, transparent);
+}
+
+/* Responsivo */
+@media (max-width:760px){
+  .grid2,
+  .grid3{
+    grid-template-columns:1fr;
+  }
+  .card{
+    padding:12px;
+    margin-bottom:12px;
+  }
+  .container{
+    padding:0 12px calc(var(--footer-space) + env(safe-area-inset-bottom));
+  }
+  .row{
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .switch{
+    margin-right:0;
+    margin-bottom:8px;
+  }
+}
+
+/* === Fórmula visual === */
+.formula{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  font-family:Georgia, 'Times New Roman', serif;
+  font-size:1.25rem;
+}
+
+.formula .lhs{ font-style:italic }
+.formula .sub{ font-size:.95rem; vertical-align:super; margin-left:2px; }
+.formula .eq,
+.formula .times,
+.formula .approx{
+  font-weight:700;
+  margin:0 2px;
+}
+
+.frac{
+  display:inline-block;
+  text-align:center;
+  vertical-align:middle;
+  min-width:12ch;
+}
+
+.frac .num,
+.frac .den{
+  display:block;
+  padding:0 6px;
+}
+
+.frac .bar{
+  display:block;
+  border-top:2px solid var(--text);
+  margin:.15em 0;
+}
+
+.pm{ font-weight:800; }
+.factor{ letter-spacing:.5px; }
+
+/* Etiqueta de plantilla activa */
+#activeTemplateTag{
+  background:#1f2937;
+  border:1px solid var(--input-border);
+}
+
+/* Under (contador de cifras bajo inputs) */
+.under{
+  display:flex;
+  justify-content:flex-end;
+  margin-top:4px;
+}
+
+/* === Valor CU extendido enriquecido === */
+.cu-ext-rich{
+  margin-top:8px;
+  padding:10px 12px;
+  border:1px solid var(--input-border);
+  border-radius:var(--radius-sm);
+  background:var(--surface2);
+  overflow:auto;
+  white-space:pre;
+  line-height:1.5;
+}
+
+.cu-ext-rich .dg{ font-weight:700; }
+
+/* ✅ SIN AZUL NI AMARILLO: todo el CU extendido se renderiza en el color del tema */
+.cu-ext-rich .g1,
+.cu-ext-rich .g2,
+.cu-ext-rich .g3{
+  color: var(--text);
+}
+
+/* Listas largas en modales (Ayuda / Escala CU) */
+.steps{
+  margin:8px 0 0 0;
+  padding-left:18px;
+}
+.steps li{
+  margin:8px 0;
+}
+.steps li::marker{
+  color: var(--accent);
+}
+
+/* === Modales === */
+.modal{
+  border:none;
+  border-radius:12px;
+  max-width:920px;
+  width:92vw;
+  background:linear-gradient(180deg,var(--card),var(--surface));
+  color:var(--text);
+  box-shadow:var(--shadow);
+}
+
+.modal-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:10px 14px;
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.modal-body{ padding:14px; }
+
+.modal-foot{
+  padding:10px 14px;
+  border-top:1px solid rgba(255,255,255,.05);
+  display:flex;
+  justify-content:flex-end;
+}
+
+/* Texto largo (Licencia MIT) dentro de modales */
+.license-pre{
+  margin:0;
+  padding:12px;
+  border-radius:var(--radius-sm);
+  border:1px solid var(--input-border);
+  background:var(--surface2);
+  white-space:pre-wrap;
+  word-break:break-word;
+  line-height:1.45;
+  max-height:60vh;
+  overflow:auto;
+}
+
+dialog::backdrop{
+  background:rgba(0,0,0,.55);
+  backdrop-filter: blur(2px);
+}
+
+/* Valores conocidos: grid 2×5 */
+.consts-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.const-item{
+  border:1px solid var(--input-border);
+  border-radius:10px;
+  background:var(--surface2);
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.const-name{ font-weight:700; }
+
+.const-desc{
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* NUEVO: valor como “pill” (no botón) */
+.const-value{
+  align-self:flex-start;
+  border:1px solid #334155;
+  background:color-mix(in oklab, var(--chip) 92%, black);
+  color:var(--text);
+  border-radius:999px;
+  padding:6px 10px;
+  font-size:0.9rem;
+}
+
+/* NUEVO: fila de 3 botones (Min / Obs / Max) */
+.const-actions{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:8px;
+}
+
+.const-action{
+  min-height:34px;
+  padding:8px 10px;
+  width:100%;
+}
+
+@media (max-width:760px){
+  .consts-grid{ grid-template-columns:1fr; }
+}
+
+/* Si el móvil es MUY estrecho, apilamos botones */
+@media (max-width:420px){
+  .const-actions{ grid-template-columns:1fr; }
+}
+
+/* === Utilidades (Conversor) === */
+.utils-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+@media (max-width:760px){
+  .utils-grid{ grid-template-columns:1fr; }
+}
+.utils-result{ cursor:pointer; }
+
+/* === RESULTADOS: rejilla con modo inverso === */
+.grid-res{
+  display:grid;
+  grid-template-columns:1fr 340px;
+  gap:12px;
+}
+@media (max-width:980px){
+  .grid-res{ grid-template-columns:1fr; }
+}
+.inverse-box{
+  border:1px solid var(--input-border);
+  border-radius:var(--radius-sm);
+  background:var(--surface2);
+  padding:12px;
+}
+.inverse-box .row{ flex-wrap:wrap; }
+
+/* Mejora general: transiciones suaves y touch-friendly */
+.btn,
+.chip,
+input,
+select{
+  transition:background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform .12s ease;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+}
+
+@media (max-width:480px){
+  label{font-size:12px}
+  .notes,
+  .tiny{font-size:11px}
+  .formula{font-size:1.1rem}
+  .cu-ext-rich{font-size:0.85rem}
+}
+
+/* === FOOTER estilo OptimeFlow(s) (compacto como ensaYOnesa) === */
+
+.brand-footer{
+  background:
+    radial-gradient(circle at 0% 100%, color-mix(in srgb, var(--muted) 18%, transparent), transparent 55%),
+    radial-gradient(circle at 100% 100%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 55%),
+    linear-gradient(
+      0deg,
+      color-mix(in srgb, var(--bg) 92%, transparent),
+      color-mix(in srgb, var(--bg) 70%, transparent)
+    );
+  border-top: 1px solid var(--border);
+
+  padding:
+    4px
+    calc(12px + var(--safe-right))
+    calc(4px + var(--safe-bottom))
+    calc(12px + var(--safe-left));
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  color:var(--muted);
+  box-shadow:0 -14px 32px rgba(0,0,0,.55);
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:40;
+  backdrop-filter:var(--glass);
+}
+
+.brand-footer strong{ color:var(--ink); }
+.brand-footer .sep{ opacity:.6; }
+
+.footer-left{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  font-size:0.78rem;
+  min-width:0;
+}
+
+.footer-left .sep{ opacity:.6; }
+
+.footer-center{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+}
+
+.footer-right{
+  display:flex;
+  align-items:center;
+  gap: clamp(8px, 2vw, 18px);
+  min-width:0;
+}
+
+/* Mantener la versión en una línea para no “engordar” el footer */
+.footer-version{
+  font-size:0.78rem;
+  line-height:1.1;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  max-width:min(46vw, 420px);
+}
+
+/* Botón MIT: mismo “feel” que los botones compactos del footer de ensaYOnesa */
+.footer-mit-btn{
+  background:var(--ghost);
+  border:1px solid var(--border);
+  color:var(--ink);
+  height:26px;
+  border-radius:7px;
+  padding:0 10px;
+  font-weight:800;
+  letter-spacing:.35px;
+  cursor:pointer;
+  transition:
+    background .15s ease,
+    border-color .15s ease,
+    box-shadow .15s ease,
+    transform .08s ease,
+    filter .15s ease;
+}
+
+.footer-mit-btn:hover{
+  transform:translateY(-1px);
+  background:color-mix(in srgb, var(--ghost) 70%, var(--accent) 30%);
+  border-color:var(--accent);
+  box-shadow:
+    0 8px 24px rgba(0,0,0,.35),
+    0 0 16px color-mix(in srgb, var(--accent) 30%, transparent);
+  filter:brightness(1.03);
+}
+
+.footer-mit-btn:active{
+  transform:translateY(0);
+  filter:brightness(0.98);
+  box-shadow:0 6px 16px rgba(0,0,0,.4);
+}
+
+/* Icono central */
+.footer-logo-btn{
+  display:inline-grid;
+  place-items:center;
+  padding:0;
+  border-radius:50%;
+  border:1px solid transparent;
+  background:transparent;
+  cursor:pointer;
+  -webkit-appearance:none;
+  appearance:none;
+  transition:
+    box-shadow .14s ease,
+    transform .08s ease,
+    filter .14s ease,
+    border-color .12s ease,
+    background-color .12s ease;
+  box-shadow:none;
+}
+
+.footer-logo-btn:hover,
+.footer-logo-btn:focus-visible{
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255,255,255,0.16), transparent 55%),
+    linear-gradient(145deg, color-mix(in srgb, var(--bg) 96%, transparent), color-mix(in srgb, var(--bg) 80%, transparent));
+  border-color:var(--accent);
+  box-shadow:
+    0 8px 24px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.footer-logo-btn:active{
+  transform:scale(0.97);
+}
+
+.footer-logo{
+  height: clamp(22px, 5vw, 28px);
+  width: clamp(22px, 5vw, 28px);
+  object-fit:contain;
+  border-radius:10px;
+}
+
+.tag-logo{
+  object-fit:contain;
+  transform-origin:center center;
+  animation:sway 5.5s ease-in-out infinite;
+  filter:
+    drop-shadow(0 0 6px rgba(255,255,255,.35))
+    drop-shadow(0 0 16px color-mix(in srgb, var(--accent) 55%, transparent));
+}
+
+@keyframes sway{
+  0%{transform:rotate(-3deg);}
+  50%{transform:rotate(3deg);}
+  100%{transform:rotate(-3deg);}
+}
+
+/* Footer responsive (igual patrón que ensaYOnesa: 3 columnas, NO apilar todo) */
+@media (max-width:600px) and (orientation: portrait){
+  .brand-footer{
+    display:grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items:center;
+
+    padding-left: calc(10px + var(--safe-left));
+    padding-right: calc(10px + var(--safe-right));
+
+    column-gap:8px;
+  }
+
+  .footer-left{
+    justify-self:flex-start;
+    text-align:left;
+  }
+
+  .footer-center{
+    position:static;
+    transform:none;
+    justify-self:center;
+  }
+
+  .footer-right{
+    justify-self:flex-end;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:4px;
+  }
+
+  .footer-version{
+    max-width:44vw;
+  }
+
+  .footer-logo{
+    height: clamp(32px, 10vw, 40px);
+    width: clamp(32px, 10vw, 40px);
+  }
+}
+
+/* Auto-ocultar header/footer en móvil y tablet al hacer scroll */
+@media (max-width:1024px){
+  .brand-header,
+  .brand-footer{
+    transition:transform 0.22s ease, opacity 0.22s ease;
+  }
+  body.chrome-hidden .brand-header{
+    transform:translateY(-100%);
+    opacity:0;
+  }
+  body.chrome-hidden .brand-footer{
+    transform:translateY(100%);
+    opacity:0;
+  }
+}
+
+/* === TOAST ============================================================= */
+.toast{
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%) translateY(6px);
+  bottom:calc(var(--footer-h) + 12px + env(safe-area-inset-bottom));
+  z-index:60;
+  min-width:min(92vw, 720px);
+  max-width:min(92vw, 720px);
+  padding:10px 12px;
+  border-radius:12px;
+  background:color-mix(in oklab, var(--surface2) 90%, black);
+  border:1px solid var(--input-border);
+  box-shadow:var(--shadow);
+  color:var(--text);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .18s ease, transform .18s ease;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+
+.toast[data-type="ok"]{
+  border-color: color-mix(in oklab, var(--ok) 55%, var(--input-border));
+}
+
+.toast[data-type="warn"]{
+  border-color: color-mix(in oklab, var(--accent) 55%, var(--input-border));
+}
+
+.toast[data-type="bad"]{
+  border-color: color-mix(in oklab, var(--bad) 55%, var(--input-border));
+}
+
+/* UTILES */
+body.overlay-open{
+  overflow:hidden;
+}

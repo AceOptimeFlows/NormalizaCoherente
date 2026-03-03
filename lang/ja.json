@@ -1,0 +1,236 @@
+{
+  "common": {
+    "close": "閉じる",
+    "copied": "コピーしました。"
+  },
+  "menu": {
+    "whatIsCU": "UCスケールとは？",
+    "help": "ヘルプ",
+    "language": "言語",
+    "themes": "テーマ",
+    "install": "インストール",
+    "installUnavailable": "このデバイス/ブラウザではインストールできません。"
+  },
+  "mode": {
+    "title": "モード",
+    "epLabel": "純粋構造",
+    "nrLabel": "参照正規化",
+    "notes": "<strong>EP:</strong> 自動符号(±)・大きさの切り詰めなし。 <br><strong>NR:</strong> 比を[0,1]に制限し、±0.999…990を適用。オーバーフローがあれば最小/最大の再定義を提案します。"
+  },
+  "reconv": {
+    "title": "スケール再変換",
+    "templateLabel": "スケールテンプレート",
+    "templatePlaceholder": "— テンプレートを選択 —",
+    "saveFromTemplate": "➕ 正規化として保存",
+    "normNameLabel": "正規化名",
+    "normNamePlaceholder": "例：緯度",
+    "unitLabel": "単位（任意）",
+    "unitPlaceholder": "例：度",
+    "valueLabel": "正規化する値（観測）",
+    "valuePlaceholder": "例：37.5",
+    "knownValues": "既知の値",
+    "utils": "ユーティリティ",
+    "minLabel": "最小",
+    "minPlaceholder": "例：-90",
+    "maxLabel": "最大",
+    "maxPlaceholder": "例：90",
+    "saveNorm": "正規化を保存",
+    "applyNow": "今すぐ正規化",
+    "savedTitle": "保存済み正規化",
+    "useInInputs": "入力で使用",
+    "delete": "削除",
+    "tip": "ヒント：「緯度（−90, 90）度」と「経度（−180, 180）度」を作って再利用しましょう。",
+    "noNorms": "— 保存済み正規化はありません —",
+    "templateApplied": "テンプレートを適用しました。「正規化する値」を入力してください。",
+    "saved": "正規化を保存しました。",
+    "savedFromTemplate": "正規化として保存しました。",
+    "applied": "入力に適用しました。",
+    "use": "正規化を入力に適用しました。",
+    "useNamed": "入力で「{name}」を使用中。",
+    "loaded": "再変換に「{name}」を読み込みました。",
+    "deleted": "「{name}」を削除しました。",
+    "errors": {
+      "noName": "正規化に名前を付けてください。",
+      "revMinMax": "MinとMaxを確認してください。",
+      "complete": "値/Min/Maxをすべて入力してください。",
+      "selectTemplate": "先にテンプレートを選択してください。",
+      "revMinMaxSave": "保存前にMinとMaxを確認してください。"
+    }
+  },
+  "inputs": {
+    "title": "入力",
+    "obsLabel": "観測値",
+    "obsPlaceholder": "0.000000000000010",
+    "minLabel": "観測最小値",
+    "maxLabel": "観測最大値",
+    "maxPlaceholder": "0.999999999999990",
+    "digits": "桁",
+    "vmoButton": "VmO（観測可能な最小値）",
+    "vmoMaxButton": "VMO（観測可能な最大値）",
+    "clear": "クリア"
+  },
+  "results": {
+    "title": "結果",
+    "cuLabel": "UC値",
+    "cuExtLabel": "拡張UC値",
+    "copy": "コピー",
+    "note": "UCスケールでは<strong>0</strong>は<em>到達不能な漸近限界</em>です。常に最小/最大の表現 ±0.000…010 と ±0.999…990 で扱います。"
+  },
+  "inverse": {
+    "title": "UC入力 → 観測値を計算",
+    "description": "「正規化する値」をロックし、UC（または拡張UC）で再変換のMin/Maxを使って観測値を復元します。",
+    "useCU": "UCを使う",
+    "useCUExt": "拡張UCを使う",
+    "sideBelow": "範囲外：<strong>&lt; Min</strong>",
+    "sideAbove": "範囲外：<strong>&gt; Max</strong>",
+    "calc": "観測値を計算",
+    "blocked": "逆モード有効：結果にUCを入力してください。",
+    "blockedObs": "逆モード有効：観測値はロックされています。",
+    "revMinMax": "再変換でMinとMaxを入力してください。",
+    "revCU": "結果に有効なUCを入力してください。",
+    "invalidCU": "無効なUCです。",
+    "noteNR": "NRでは範囲外の符号は一意に戻せないため、範囲内とみなします。",
+    "done": "UCから観測値を計算 → 再変換へ送信しました。"
+  },
+  "formula": {
+    "title": "適用された式",
+    "value": "値",
+    "note": "分数と符号は、入力と選択したモードに応じて更新されます。"
+  },
+  "about": {
+    "title": "UCスケールとは？",
+    "intro": "<strong>普遍的コヒーレンス（UC）スケール</strong>は、あらゆる量（温度、距離、確率など）を<em>正規化</em>し、比較可能な<strong>無次元</strong>値にする方法です。単位を混ぜる代わりに参照範囲（<strong>Min</strong>と<strong>Max</strong>）を定義し、アプリが<strong>観測値</strong>がその範囲の内側（または外側）のどこにあるかを表します。",
+    "coreTitle": "中核アイデア",
+    "coreLi1": "範囲を定義：<strong>Min</strong>と<strong>Max</strong>（参照）。",
+    "coreLi2": "相対位置を計算：<code>(Obs − Min) / (Max − Min)</code>。",
+    "coreLi3": "結果を運用上限（±1回避）へスケール：<code>× (±0.999…990)</code>。",
+    "rangeTitle": "構造中心と運用範囲",
+    "rangeP1": "UCでは<strong>0</strong>は、<em>到達不能な漸近限界</em>として扱う<strong>理想的な構造中心（Cₛ）</strong>を表します。そのため実務では運用最小値<strong>VmO = 0.000000000000010</strong>（および負の対称）を用います。",
+    "rangeP2": "上端でも同様で、<strong>VMO = 0.999999999999990</strong>（および負の対称）を使い、漸近マージンを保ち±1の飽和を避けます。",
+    "formulaTitle": "計算方法（直接モード）",
+    "formulaP1": "アプリが適用する変換は：<code>(Obs − Min) / (Max − Min) × (±0.999…990)</code>。分数は範囲内の相対位置を測り、係数が運用上限を固定します。",
+    "formulaP2": "符号は次の通り：<strong>Obs</strong>が<code>[Min, Max]</code>内なら<strong>+</strong>、外なら<strong>−</strong>（EPでは大きさが1を超えることもあります）。",
+    "modesTitle": "EPとNRの違い",
+    "modesLi1": "<strong>EP（純粋構造）</strong>：大きさを切り詰めません。Obsが範囲から離れると比が&gt; 1になり、UCも大きくなり得ます（範囲外の符号は保持）。",
+    "modesLi2": "<strong>NR（参照正規化）</strong>：大きさを<code>[0,1]</code>に制限。Obsが範囲外なら警告を表示し、結果は±0.999…990に制限されます。",
+    "extTitle": "拡張UC",
+    "extP1": "丸めたUCに加え、監査・記録・正確なコピーのために高精度（小数50桁）の<strong>拡張UC</strong>を表示します。値は同じで小数が増えるだけです。",
+    "refTitle": "参照 / エッセイ",
+    "refP1": "参照エッセイ/文書（DOI/Zenodo）：<a href=\"https://doi.org/10.5281/zenodo.18714577\" target=\"_blank\" rel=\"noopener\">10.5281/zenodo.18714577</a>。"
+  },
+  "help": {
+    "title": "ヘルプ",
+    "intro": "このアプリは<strong>観測値 → UC</strong>（直接）または<strong>UC → 観測値</strong>（逆）を変換します。重要なのは参照範囲（<strong>Min</strong>と<strong>Max</strong>）を正しく定義することです。そこが正規化の「文脈」になります。",
+    "quickTitle": "クイックガイド（直接モード）",
+    "quick1": "<strong>モード</strong>を選択：EPまたはNR。",
+    "quick2": "<strong>スケール再変換</strong>で<strong>テンプレート</strong>を選ぶか、Min/Maxを入力し、必要なら観測値も入力します。",
+    "quick3": "<strong>入力で使用</strong>（または<strong>今すぐ正規化</strong>）を押して値を<strong>入力</strong>に反映し、<strong>適用された式</strong>を確認します。",
+    "quick4": "<strong>結果</strong>を確認：<strong>UC値</strong>と<strong>拡張UC値</strong>が計算されます。ワンタップでコピー可能です。",
+    "quick5": "最初からやり直す場合は<strong>クリア</strong>。",
+    "resultsTitle": "結果の読み方",
+    "resultsLi1": "<strong>UC値</strong>：素早く読むためのコンパクト（丸め）表示。",
+    "resultsLi2": "<strong>拡張UC値</strong>：最大精度のための小数50桁表示。",
+    "resultsLi3": "<code>±0.999…990</code>の「ピル」は運用係数と符号を示します。一般に<strong>+</strong>＝範囲内、<strong>−</strong>＝範囲外（モードによる）。",
+    "normTitle": "テンプレートと保存済み正規化",
+    "normLi1": "<strong>テンプレート</strong>は一般的なスケール（pH、Kelvin、Likertなど）のMin/Max（と単位）を素早く埋めます。",
+    "normLi2": "<strong>➕ 正規化として保存</strong>または<strong>正規化を保存</strong>で範囲を保存し再利用できます。",
+    "normLi3": "<strong>入力で使用</strong>で、保存済み正規化を再入力なしで適用できます。",
+    "normLi4": "一覧を整理するには「保存済み正規化」で<strong>削除</strong>。",
+    "inverseTitle": "逆モード（UC → 観測値）",
+    "inverseLi1": "<strong>UC入力 → 観測値を計算</strong>を有効化。",
+    "inverseLi2": "観測値復元には<strong>再変換</strong>の<strong>Min</strong>と<strong>Max</strong>が必要です。",
+    "inverseLi3": "<strong>UC</strong>または<strong>拡張UC</strong>を選び、結果に値を入力すると観測値が計算されます。",
+    "inverseLi4": "<strong>EP</strong>でUCが負（範囲外）の場合、<strong>&lt; Min</strong>か<strong>&gt; Max</strong>かを指定して曖昧さを解消できます。",
+    "inverseLi5": "<strong>NR</strong>では範囲外の符号は一意に戻せないため、復元時は範囲内とみなします。",
+    "privacyTitle": "保存とプライバシー",
+    "privacyP1": "アプリは100%ローカル動作：正規化と設定（言語/テーマ）はデバイスのブラウザに保存され、サーバーには送信されません。"
+  },
+  "constants": {
+    "title": "既知の値",
+    "empty": "読み込まれた値はありません。",
+    "toMin": "→ Min",
+    "toObs": "→ Obs",
+    "toMax": "→ Max",
+    "useMin": "最小に入れる",
+    "useObs": "値（観測）に入れる",
+    "useMax": "最大に入れる",
+    "fieldMin": "最小",
+    "fieldObs": "値（観測）",
+    "fieldMax": "最大",
+    "assignedTo": "「{name}」を{field}に割り当てました。"
+  },
+  "utils": {
+    "title": "ユーティリティ",
+    "page1": {
+      "title": "日付 → 序数コンバーター",
+      "desc": "UTCと先延ばしグレゴリオ暦（年0＝紀元前1年）を解釈します。起点 ≡ 「秒1」。"
+    },
+    "originLabel": "起点（秒1）",
+    "originPlaceholder": "例：01-01-0001 12:35:12",
+    "targetLabel": "目的",
+    "targetPlaceholder": "例：31-12-2025 23:59:59",
+    "unitLabel": "単位",
+    "unit": {
+      "s": "秒（1始まりの序数）",
+      "min": "分（序数）",
+      "h": "時間（序数）",
+      "d": "日（序数）",
+      "sem": "週（序数）",
+      "mes": "月（暦の序数）",
+      "año": "年（暦の序数）",
+      "lustro": "5年（序数）",
+      "decada": "10年（序数）",
+      "c25": "¼世紀（25年）",
+      "c50": "½世紀（50年）",
+      "c75": "¾世紀（75年）",
+      "c100": "世紀（100年）"
+    },
+    "calc": "計算",
+    "resultLabel": "結果",
+    "resultTitle": "クリックして「正規化する値」へ送信",
+    "copy": "コピー",
+    "tip": "ヒント：結果をクリックすると「正規化する値（観測）」へ移します。",
+    "toValue": "「正規化する値」へ移しました。",
+    "errors": {
+      "revDates": "日付（起点/目的）を確認してください。",
+      "targetBefore": "目的は起点以降である必要があります。",
+      "generic": "計算できませんでした。"
+    }
+  },
+  "lang": {
+    "title": "言語",
+    "description": "インターフェース言語を選択します。保存済み内容や数値は変更されません。",
+    "applied": "言語を適用しました。"
+  },
+  "themes": {
+    "title": "テーマ",
+    "description": "ビジュアルテーマを選択します。アプリ全体に適用され、このデバイスに保存されます。",
+    "default": "ナイト（デフォルト）",
+    "solar": "ウォーム・ソーラー",
+    "ocean": "コールド・オーシャン",
+    "forest": "フォレスト",
+    "monoLight": "ライト・モノクロ",
+    "monoDark": "ダーク・モノクロ",
+    "neon": "ネオン",
+    "paper": "ウォーム・ペーパー",
+    "applied": "テーマを適用しました。"
+  },
+  "footer": {
+    "appName": "Normaliza Coherente",
+    "subtitle": "普遍的コヒーレンス・スケール",
+    "version": "Normaliza Coherente — v1.0",
+    "author": "Andrés Calvo Espinosa",
+    "privacyBtn": "プライバシー"
+  },
+  "errors": {
+    "equalMinMax": "MinとMaxは同じにできません。"
+  },
+  "coherence": {
+    "title": "普遍的コヒーレンス",
+    "text": "この作品が感謝であり誓いとなりますように：飾りなく同じ方向に考え、感じ、行動すること；倫理と喜び、そして私たちをつなぐすべてへの敬意をもって創造し続けること。"
+  },
+  "privacy": {
+    "title": "プライバシー",
+    "body": "<p><strong>OptimeFlow(s) Normaliza Coherente</strong>は100%ローカル（ブラウザ内）で動作します。入力した値を外部サーバーへ送信せず、解析やトラッカーも使用しません。</p><h4>このデバイスに保存されるデータ</h4><ul class=\"steps\"><li><strong>設定</strong>：テーマと言語。</li><li><strong>保存済み正規化</strong>：名前、単位、Min/Max範囲（保存した場合は観測値も）。</li><li><strong>オフラインキャッシュ</strong>（PWAとしてインストールした場合）：接続なしで開けるよう、ブラウザがアプリのファイルを保存することがあります。</li></ul><h4>ブラウザ権限</h4><ul class=\"steps\"><li><strong>クリップボード</strong>：「コピー」を押したときだけ使用します。</li><li><strong>ストレージ</strong>：設定と正規化を<em>localStorage</em>に保存するために使用します。</li></ul><h4>接続</h4><p>アプリの読み込み/更新のため、ブラウザが同一オリジンからファイル（HTML/CSS/JS）をダウンロードする場合があります。これは利用データの送信を含みません。オフライン/PWAモードを有効にすると、<em>Service Worker</em>がこれらのファイルをキャッシュすることがあります。</p><h4>データの削除方法</h4><p>ブラウザ設定（サイトデータ：ストレージ/localStorageとキャッシュ）から全削除するか、インストールしている場合はPWAをアンインストールしてください。</p><h4>外部リンク</h4><p>外部サイト（例：DOI/ZenodoやORCID）へのリンクを開く場合は、そのサイトのプライバシーポリシーが適用されます。</p>"
+  }
+}
