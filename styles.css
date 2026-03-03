@@ -612,6 +612,11 @@ input.is-locked{
   flex-wrap:wrap;
 }
 
+/* ✅ NUEVO: filas de toggles más compactas (reduce separación vertical en móvil) */
+.row.toggle-row{
+  gap:6px;
+}
+
 .grid2{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -677,10 +682,12 @@ input.is-locked{
 
 .chip.ghost{ background:transparent; }
 
+/* ✅ AJUSTE: quitamos el margen vertical heredado de label para switches */
 .switch{
   display:flex;
   align-items:center;
   gap:6px;
+  margin:0;              /* 👈 clave para que no “separe” verticalmente */
   margin-right:12px;
 }
 
@@ -1076,6 +1083,11 @@ dialog::backdrop{
   padding:12px;
 }
 .inverse-box .row{ flex-wrap:wrap; }
+
+/* ✅ mantenemos un pelín de aire entre el toggle principal y su descripción */
+.inverse-box .switch.toggle + .tiny.muted{
+  margin-top:6px;
+}
 
 /* Mejora general: transiciones suaves y touch-friendly */
 .btn,

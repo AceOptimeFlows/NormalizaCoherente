@@ -71,7 +71,9 @@
     <!-- === Panel: Modo === -->
     <section class="card">
       <h3 data-i18n="mode.title">Modo</h3>
-      <div class="row">
+
+      <!-- ✅ toggle-row para compactar el gap entre “botones” -->
+      <div class="row toggle-row">
         <!-- ✅ ahora estilo “botón” -->
         <label class="switch toggle">
           <input type="radio" name="mode" id="modeEP" checked>
@@ -83,6 +85,7 @@
           <span data-i18n="mode.nrLabel"> Normalizado por Referencia </span>
         </label>
       </div>
+
       <p class="notes" data-i18n="mode.notes">
         <strong>EP:</strong> signo automático (±) y sin recorte de magnitud. <br>
         <strong>NR:</strong> acota el cociente a [0,1] y aplica ±0.999…990; si hay desbordes se sugerirá redefinir el mínimo/máximo.
@@ -259,7 +262,8 @@
               Bloquea “Valor a normalizar” y usa el CU (o CU extendido) para reconstruir el observado con el Mín/Máx de Reconversión.
             </div>
 
-            <div class="row mt8">
+            <!-- ✅ toggle-row para compactar el gap entre “botones” -->
+            <div class="row mt8 toggle-row">
               <!-- ✅ ahora estilo “botón” -->
               <label class="switch toggle">
                 <input type="radio" name="invSource" id="invFromCU" checked>
@@ -272,7 +276,8 @@
               </label>
             </div>
 
-            <div class="row mt8" id="invSideRow" hidden>
+            <!-- ✅ toggle-row para compactar el gap entre “botones” -->
+            <div class="row mt8 toggle-row" id="invSideRow" hidden>
               <!-- ✅ ahora estilo “botón” -->
               <label class="switch toggle">
                 <input type="radio" name="invSide" id="invSideBelow" checked>
