@@ -1,4 +1,4 @@
-const CACHE_NAME = 'NormalizaCoherente.v1.0.0';
+const CACHE_NAME = 'NormalizaCoherente_v1.0.0';
 
 // Precache: todo lo necesario para que la app funcione 100% offline
 const ASSETS = [

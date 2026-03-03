@@ -612,9 +612,9 @@ input.is-locked{
   flex-wrap:wrap;
 }
 
-/* ✅ NUEVO: filas de toggles más compactas (reduce separación vertical en móvil) */
+/* ✅ filas de toggles: vertical más apretado, horizontal normal */
 .row.toggle-row{
-  gap:6px;
+  gap:4px 8px; /* row-gap column-gap */
 }
 
 .grid2{
@@ -687,20 +687,26 @@ input.is-locked{
   display:flex;
   align-items:center;
   gap:6px;
-  margin:0;              /* 👈 clave para que no “separe” verticalmente */
+  margin:0;              /* clave para que no “separe” verticalmente */
   margin-right:12px;
 }
 
 .grow{flex:1}
 
 /* ============================================================
-   ✅ NUEVO: “switches” como botones (radio/checkbox sin checks)
+   ✅ “switches” como botones (radio/checkbox sin checks)
    (solo cuando el label tenga class="toggle")
    ============================================================ */
 .switch.toggle{
   position:relative;
   display:block;               /* el “botón” manda */
-  flex:1 1 160px;              /* permite 2 en el panel inverso (340px) */
+
+  /* ✅ clave: evita que el basis se convierta en ALTURA cuando .row es column */
+  flex:1 1 auto;
+
+  /* ✅ mantiene el “2 por fila” en layouts horizontales cuando hay espacio */
+  min-width:160px;
+
   margin-right:0;
 }
 
